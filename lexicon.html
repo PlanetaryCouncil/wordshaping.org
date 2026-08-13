@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wordshaping — a lexicon</title>
+<style>
+  :root {
+    --bg:#fbfaf8; --fg:#1a1a18; --muted:#6f6e68; --faint:#94928b;
+    --line:#e3e0d9; --panel:#fff; --accent:#8a5a2b;
+    --y-bg:#fdf3e3; --y-fg:#8a5a2b; --m-bg:#eef1f5; --m-fg:#4a5768;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#151519; --fg:#e9e7e2; --muted:#9d9a92; --faint:#77746d;
+      --line:#31313a; --panel:#1c1c22; --accent:#d9a86c;
+      --y-bg:#3a2c17; --y-fg:#e8bd82; --m-bg:#242a33; --m-fg:#9fb2c9;
+    }
+  }
+  :root[data-theme="dark"]{--bg:#151519;--fg:#e9e7e2;--muted:#9d9a92;--faint:#77746d;--line:#31313a;--panel:#1c1c22;--accent:#d9a86c;--y-bg:#3a2c17;--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;}
+  :root[data-theme="light"]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;--line:#e3e0d9;--panel:#fff;--accent:#8a5a2b;--y-bg:#fdf3e3;--y-fg:#8a5a2b;--m-bg:#eef1f5;--m-fg:#4a5768;}
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:3.5rem 1.5rem 6rem;
+    background:var(--bg); color:var(--fg);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+
+  h1{
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-size:clamp(2.2rem,6vw,3.2rem);
+    letter-spacing:-.02em; margin:0 0 .3rem; font-weight:400;
+  }
+  .tag-line{color:var(--muted);margin:0 0 2rem;font-size:1.02rem}
+  blockquote{
+    margin:0 0 2.5rem; padding:.1rem 0 .1rem 1.2rem;
+    border-left:2px solid var(--accent);
+    font-family:Georgia,serif; font-size:1.2rem; line-height:1.5;
+  }
+  blockquote cite{display:block;margin-top:.5rem;font-size:.82rem;font-style:normal;color:var(--faint);font-family:inherit}
+
+  h2{
+    font-family:Georgia,serif; font-weight:400;
+    font-size:1.5rem; margin:4rem 0 .3rem;
+  }
+  h2 + .lede{color:var(--muted);font-size:.93rem;margin:0 0 1.5rem;max-width:60ch}
+
+  .entry{
+    border-top:1px solid var(--line);
+    padding:1.6rem 0 1.4rem;
+  }
+  .entry:last-child{border-bottom:1px solid var(--line)}
+
+  .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;margin-bottom:.15rem}
+  .word{
+    font-family:Georgia,serif; font-size:1.5rem; font-weight:600;
+    letter-spacing:-.01em; word-break:break-word;
+  }
+  .pos{font-style:italic;color:var(--faint);font-size:.92rem}
+  .say{color:var(--faint);font-size:.8rem;letter-spacing:.04em;margin-bottom:.6rem}
+
+  .def{margin:0 0 .7rem}
+  .cite{
+    font-family:Georgia,serif; font-style:italic;
+    color:var(--muted); padding-left:1rem;
+    border-left:2px solid var(--line); margin:0 0 .7rem;
+  }
+  .meta{font-size:.85rem;color:var(--muted);margin:0}
+  .meta b{color:var(--fg);font-weight:600}
+
+  .badge{
+    display:inline-block;font-size:.66rem;text-transform:uppercase;
+    letter-spacing:.07em;font-weight:700;padding:.15rem .45rem;
+    border-radius:3px;vertical-align:2px;
+  }
+  .yours{background:var(--y-bg);color:var(--y-fg)}
+  .mine{background:var(--m-bg);color:var(--m-fg)}
+
+  .real{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;padding:1.2rem 1.4rem;
+  }
+  .real dl{margin:0;display:grid;gap:.75rem}
+  .real dt{font-family:Georgia,serif;font-weight:600;font-size:1.05rem}
+  .real dd{margin:.1rem 0 0;color:var(--muted);font-size:.92rem}
+
+  .notes{margin-top:1rem;display:grid;gap:.9rem}
+  .note{border-left:2px solid var(--line);padding-left:1rem}
+  .note b{display:block;font-family:Georgia,serif;font-size:1.02rem;font-weight:600;margin-bottom:.1rem}
+  .note span{color:var(--muted);font-size:.92rem}
+
+  footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--faint);font-size:.85rem}
+  a{color:var(--accent)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Wordshaping</h1>
+<p class="tag-line">A lexicon of words that should already exist.</p>
+
+<blockquote>
+  Subtle nuances like this matter. Good wordsmithing and wordshaping matters.
+</blockquote>
+
+<h2>The lexicon</h2>
+<p class="lede">Coinages, in the order they were made. <span class="badge yours">yours</span> marks the words you brought; <span class="badge mine">mine</span> marks suggestions of mine that survived.</p>
+
+<div class="entry">
+  <div class="head"><span class="word">disclaimerciously</span><span class="pos">adverb</span><span class="badge yours">yours</span></div>
+  <div class="say">dis·clai·MER·cious·ly</div>
+  <p class="def">Publishing something extravagant while affixing a disclaimer that absolves nothing and advertises everything. Of an object: bearing a disclaimer as composition rather than appendix — the hedge given margin, weight and iconography.</p>
+  <p class="cite">He posted this image disclaimerciously.</p>
+  <p class="meta"><b>Note.</b> The buried <em>mercy</em> was never designed in. A disclaimer is a plea for clemency entered in advance, and the word admits it under its breath.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">followance</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <div class="say">FOL·low·ance</div>
+  <p class="def">Subscription sustained without attention; the dutiful maintenance of a following one does not read.</p>
+  <p class="cite">Her feed was mostly followance.</p>
+  <p class="meta"><b>Note.</b> Licensed outright by <em>allowance</em> — the same <code>-ow</code>+<code>-ance</code> junction. On the model of <em>attendance</em> (presence without engagement) and <em>observance</em> (practice without belief).</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">followification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">The conversion of every relation — colleagues, clergy, physicians, friends — into an account one subscribes to asymmetrically.</p>
+  <p class="cite">The followification of the newsroom.</p>
+  <p class="meta"><b>Relation.</b> The process; <em>followance</em> is what it leaves behind.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">loopholification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">The restructuring of a rule system around its exceptions, continued until the exceptions constitute the system.</p>
+  <p class="cite">Procurement reform ended in quiet loopholification.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">intertwinification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">Entanglement pursued as policy — things bound together so that they cannot later be separated. Vendor lock-in, forced bundling, the merger structured to be unwindable.</p>
+  <p class="cite">The contract was less a partnership than an intertwinification.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">reprogramification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">The doctrine that any settled thing — a habit, a belief, an institution, a culture — is a codebase awaiting a patch.</p>
+  <p class="cite">Every self-help shelf in the airport preaches reprogramification.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">preventification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">The condition of an institution in which every process exists to prevent rather than to do; the risk register eating the whole job.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">preventfully</span><span class="pos">adverb</span><span class="badge yours">yours</span></div>
+  <p class="def">Out of a temperament organised around what one is avoiding — as distinct from <em>preventively</em>, which describes a purpose rather than a disposition.</p>
+  <p class="cite">He lived preventfully, and had nothing to show for it but the absence of disasters.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">successification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">Work restructured around the measurement of winning, until the measuring is the work.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">clusterfuckification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">The mechanism, as opposed to the state — the incremental path by which individually reasonable decisions arrive at disaster with nobody having chosen it.</p>
+  <p class="cite">Six months of clusterfuckification, and not one meeting where anyone decided anything wrong.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">compostification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">Generative decay; breakdown that is the point. The dead thing becoming the material of the next thing.</p>
+  <p class="cite">Two years of compostification, and the failed company had fed four better ones.</p>
+  <p class="meta"><b>Note.</b> The only honest agent-deletion in the collection. Nothing decomposes a compost pile — bacteria, heat, time. Elsewhere the suffix hides a hand that is really there; here there is genuinely no hand.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">warification</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">The reframing of a non-war thing as war — a trial, a policy dispute, a newsroom argument.</p>
+  <p class="cite">Warification deployed by a defendant against the court trying him.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">couldism</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">Possibility held as identity. Faces forward — the novel that is always going to be written, the potential one is perpetually sitting on.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">wouldism</span><span class="pos">noun</span><span class="badge yours">yours</span></div>
+  <p class="def">The counterfactual held as identity. Faces back — <em>I would have been a—</em></p>
+  <p class="meta"><b>Note.</b> <em>Could</em> and <em>would</em> are past tenses doing non-past work, because English marks unreality as pastness. The bases carry "not real" before the suffix adds anything. The third member is taken: Karen Horney named the tyranny of the <em>should</em> in 1950.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">wordsmithingly</span><span class="pos">adverb</span><span class="badge yours">yours</span></div>
+  <p class="def">Polishing the wording while the substance sits untouched.</p>
+  <p class="cite">They spent the meeting wordsmithingly, and the problem was exactly where they left it.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">vibepromptingly</span><span class="pos">adverb</span><span class="badge yours">yours</span></div>
+  <p class="def">Building by asks given as moods rather than specifications. The input end of the thing <em>vibe coding</em> names at the output end.</p>
+  <p class="cite">He created new software vibepromptingly, then read every line of it.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">vibelicious</span><span class="pos">adjective</span><span class="badge yours">yours</span></div>
+  <p class="def">Of an atmosphere: consumed with appetite rather than merely present. <em>Vibey</em> describes a room; <em>vibelicious</em> describes wanting to eat it.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">warcriminalicious</span><span class="pos">adjective</span><span class="badge yours">yours</span></div>
+  <p class="def">Relishing the spectacle of an accused inverting the frame on the tribunal. Lives only in lurid register — in neutral prose the suffix means the wrong thing.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">absurdalistic</span><span class="pos">adjective</span><span class="badge yours">yours</span></div>
+  <p class="def">The absurd performed as a genre rather than arrived at. The phantom syllable enacts the pomposity it names.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">higherdimensionalshapeshifterously</span><span class="pos">adverb</span><span class="badge yours">yours</span></div>
+  <p class="def">In the manner of meaning asserted by accumulation — on the theory that enough stacked components must add up to profundity. Self-demonstrating, as <em>sesquipedalian</em> is a long word for long words.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">rebracketingly</span><span class="pos">adverb</span><span class="badge yours">yours</span></div>
+  <p class="def">Listening in such a way that the seams fall somewhere other than where the history put them.</p>
+  <p class="cite">She heard the word rebracketingly, and a new suffix fell out.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">unhappening</span><span class="pos">noun</span><span class="badge mine">mine</span></div>
+  <p class="def">The removal of an occurred event from the record; an incident officially declared not to have taken place while the people who lived it remain.</p>
+  <p class="meta"><b>Pair.</b> <em>The unhappened</em> — harm that never occurred because someone prevented it, the achievement that leaves no evidence. <code>-ed</code> never was; <code>-ing</code> was and then was not.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">infographicity</span><span class="pos">noun</span><span class="badge mine">mine</span></div>
+  <p class="def">Evidentiary appearance in excess of evidentiary content. The bar chart without an axis; the arrow diagram asserting a causation nobody measured.</p>
+  <p class="meta"><b>Provenance.</b> Proposed by you as <em>infographicously</em>. The suffix was blocked on rule, but the replacement changed suffix, part of speech and meaning — the last supplied rather than asked for. The only entry here not descended from the word that prompted it.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">ponderatiously</span><span class="pos">adverb</span><span class="badge mine">mine</span></div>
+  <p class="def">Performing thought without conducting any — the held pause, the stroked chin, the <em>hmm</em> that precedes no consideration.</p>
+  <p class="meta"><b>Note.</b> Probably unnecessary, and doubly shaky. <em>Ponderingly</em> was legal all along, off the original form, and was ruled out on an overstated rule. Worse, <code>-atious</code> is licensed by an <code>-ation</code> noun underneath — <em>ostentation, flirtation, vexation, disputation</em> — and <em>ponderation</em> is archaic. Kept as a record of the reasoning, not as a recommendation.</p>
+</div>
+
+<div class="entry">
+  <div class="head"><span class="word">successitiously</span><span class="pos">adverb</span><span class="badge mine">mine</span></div>
+  <p class="def">In a manner that performs success; the win assembled after the fact, the metric chosen once the number was known.</p>
+  <p class="meta"><b>Note.</b> An ear-word, not a rule-word — <code>-itious</code> is inherited and no longer productive. It works by echo of <em>fictitious</em>, which is also the nearest neighbour by sense.</p>
+</div>
+
+<h2>Words that turned out to be real</h2>
+<p class="lede">Proposed here, then found already living in the language. Half the work of coining is discovering you didn't need to.</p>
+
+<div class="real">
+<dl>
+  <dt>floordrobe</dt>
+  <dd>The clothing stratum on the bedroom floor, used as storage. Already in dictionaries. <em>Wardrobe</em> is Old French <em>warderobe</em>, "guard-robe" — so there is no morpheme <em>drobe</em>, and the blend is the seventh false seam in this project.</dd>
+
+  <dt>planification</dt>
+  <dd>Institutional planning at ministry scale, borrowed from French. <em>Planning</em> has a planner in it; <em>planification</em> has no doer-slot at all, which is the feature.</dd>
+
+  <dt>complexification</dt>
+  <dd>The process of growing more complex, as distinct from <em>complication</em>, which names a discrete snag.</dd>
+
+  <dt>chutzpah</dt>
+  <dd>Its canonical illustration — the man who murders his parents and pleads for mercy as an orphan — is exactly the inversion two entries here went looking for.</dd>
+
+  <dt>victoriously · infographically · unhingedly · ponderingly</dt>
+  <dd>All regular, all understood on first contact, all reached for by coinage before anyone checked whether the rules had already built them.</dd>
+</dl>
+</div>
+
+<h2>How the words were made</h2>
+<div class="notes">
+  <div class="note"><b>One suffix, one move.</b><span>Each suffix names a destination. They are alternate roads, not successive rungs — <code>-ification</code> plus <code>-ously</code> gains syllables without gaining density.</span></div>
+  <div class="note"><b><code>-ification</code> wants a noun.</b><span><em>Loophole, success, compost</em> worked. <em>Intertwine, reprogram, unhappen, prevent, expand</em> are round trips, because <code>-ify</code>'s only job is making a verb out of something that isn't one.</span></div>
+  <div class="note"><b>Compounds buy syllables.</b><span>Secondary stress keeps a long tail from collapsing. <em>WORD-smith-ing-ly</em> survives four syllables; <em>VIC-to-ri-ful</em> cannot.</span></div>
+  <div class="note"><b>Check whether the rules already built it.</b><span>Say it aloud. If it sounds merely unfamiliar rather than invented, it is not a coinage — it is English you hadn't happened to use.</span></div>
+  <div class="note"><b>The suffix must carry the meaning.</b><span>Not just the part of speech. <code>-licious</code> encodes appetite, <code>-ification</code> encodes process. Neither encodes inversion — that is prefix territory.</span></div>
+  <div class="note"><b>Inspect the typos.</b><span>Three accidents paid: <em>mercy</em> inside the founding word, Middle English <code>-tioun</code> from a slipped <em>u</em>, and a three-hundred-year-old split between <em>flour</em> and <em>flower</em>.</span></div>
+  <div class="note"><b>Seams are how suffixes are born.</b><span>Hearing a chunk where the join isn't gave English <code>-gate</code> (a hotel), <code>-athon</code> (a place), <code>-holic</code>, <code>-tastic</code>, <code>-splain</code>, <code>-burger</code>, <code>-licious</code> and <code>-drobe</code>. The only difference between the error and the innovation is uptake.</span></div>
+</div>
+
+<footer>
+  Forty-six proposals, seven false seams, three paid accidents, five corrections to the rules — every one of those caught by ear rather than by argument.
+  The working table, with everything rejected and why, is in <a href="index.html">index.html</a>.
+</footer>
+
+</div>
+</body>
+</html>

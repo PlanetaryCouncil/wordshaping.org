@@ -1,0 +1,56 @@
+; ──────────────────────────────────────────────────────────────
+;  GitHub Pages DNS — BIND zone file
+;  For import into Cloudflare. GitHub never reads this file;
+;  it only queries DNS once these records are live.
+; ──────────────────────────────────────────────────────────────
+;
+;  REPLACE:  EXAMPLE.COM  →  your domain
+;            USERNAME     →  your GitHub username, lowercase
+;
+;  LEAVE "Proxy imported DNS records" UNCHECKED.
+;  GitHub cannot complete its TLS certificate challenge through
+;  Cloudflare's proxy. Import grey-cloud, wait for the cert to
+;  provision, then enable proxying afterwards if you want it.
+;
+; ──────────────────────────────────────────────────────────────
+
+$ORIGIN EXAMPLE.COM.
+$TTL 3600
+
+; ── Apex domain → GitHub Pages, IPv4 ──────────────────────────
+@       3600    IN      A       185.199.108.153
+@       3600    IN      A       185.199.109.153
+@       3600    IN      A       185.199.110.153
+@       3600    IN      A       185.199.111.153
+
+; ── Apex domain → GitHub Pages, IPv6 ──────────────────────────
+@       3600    IN      AAAA    2606:50c0:8000::153
+@       3600    IN      AAAA    2606:50c0:8001::153
+@       3600    IN      AAAA    2606:50c0:8002::153
+@       3600    IN      AAAA    2606:50c0:8003::153
+
+; ── www subdomain → your Pages site ───────────────────────────
+;    Trailing dot on the target is required in BIND.
+www     3600    IN      CNAME   USERNAME.github.io.
+
+
+; ──────────────────────────────────────────────────────────────
+;  OPTIONAL — domain verification
+;
+;  You likely do NOT need this. Verification prevents someone
+;  else claiming a domain that already points at Pages. On a
+;  domain you just registered, which has never pointed anywhere,
+;  there is nothing to take over. The records above are enough
+;  to serve the site over HTTPS.
+;
+;  If you do want it, do NOT trust the record name below — it is
+;  written from documentation, not from your account. GitHub
+;  displays the exact name and value at:
+;
+;      Settings → Pages → Verify domains
+;
+;  Copy both fields from there verbatim. Pages-level and
+;  organisation-level verification use different record names.
+; ──────────────────────────────────────────────────────────────
+
+; _github-pages-challenge-USERNAME   3600   IN   TXT   "TOKENHERE"
