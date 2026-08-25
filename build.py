@@ -103,6 +103,20 @@ footer{margin-top:4rem;padding-top:1.4rem;border-top:1px solid var(--line);
 color:var(--faint);font-size:.85rem}
 footer a{color:var(--accent)}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.87em}
+figure{margin:0 0 2rem}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px}
+figcaption{font-size:.82rem;color:var(--faint);margin-top:.5rem}
+.wotd{background:var(--glow);border:1px solid var(--line);border-left:3px solid var(--accent);
+border-radius:7px;padding:1.4rem 1.6rem;margin:0 0 2.6rem}
+.wotd .k{font-size:.68rem;text-transform:uppercase;letter-spacing:.13em;font-weight:700;
+color:var(--accent);margin-bottom:.55rem}
+.wotd a.w{font-family:Georgia,serif;font-size:clamp(1.5rem,4.2vw,2.1rem);font-weight:600;
+color:var(--fg);text-decoration:none;letter-spacing:-.015em;word-break:break-word}
+.wotd a.w:hover{color:var(--accent)}
+.wotd p{margin:.45rem 0 0;color:var(--muted);font-size:.95rem}
+.stamp{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;
+font-weight:700;padding:.2rem .5rem;border-radius:3px;background:var(--accent);color:var(--bg);
+vertical-align:2px}
 """
 
 LABEL = {"marsita": "coined here", "claude": "suggested", "wild": "found in the wild"}
@@ -112,9 +126,11 @@ def e(s):
     return html.escape(str(s or ""))
 
 
-def page(title, desc, canon, body, depth, jsonld=None):
+def page(title, desc, canon, body, depth, jsonld=None, og_image=None):
     up = "../" * depth
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
+    card = "summary_large_image" if og_image else "summary"
+    img_tag = f'<meta property="og:image" content="{e(og_image)}">' if og_image else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -128,7 +144,8 @@ def page(title, desc, canon, body, depth, jsonld=None):
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{e(canon)}">
 <meta property="og:site_name" content="Wordshaping">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="{card}">
+{img_tag}
 {ld}
 <style>{CSS}</style>
 </head>
@@ -143,6 +160,22 @@ Sightings are the only thing ranked here. Add one by
 </div></body>
 </html>
 """
+
+
+MONTHS = ["January", "February", "March", "April", "May", "June", "July",
+          "August", "September", "October", "November", "December"]
+
+
+def pretty(iso):
+    """2026-08-25 -> 25 August 2026."""
+    y, m, dd = iso.split("-")
+    return f"{int(dd)} {MONTHS[int(m) - 1]} {y}"
+
+
+def word_of_the_day(ws):
+    """The entry with the latest wotd date. Ties break on document order."""
+    dated = [w for w in ws if w.get("wotd")]
+    return max(dated, key=lambda w: w["wotd"]) if dated else None
 
 
 def badge(c):
@@ -174,12 +207,26 @@ def word_page(w, site, author):
                    if w["coiner"] == "marsita" else
                    f'<p class="byline">{e(LABEL[w["coiner"]]).capitalize()}</p>')
 
+    stamp = ""
+    if w.get("wotd"):
+        stamp = (f'<p class="tag-line"><span class="stamp">Word of the day</span> '
+                 f'<span class="pos">{e(pretty(w["wotd"]))}</span></p>')
+
     p = [f'<h1>{e(w["word"])}</h1>',
          author_line,
+         stamp,
          f'<p class="tag-line"><span class="pos">{e(w["pos"])}</span> {badge(w["coiner"])}</p>',
          f'<p class="say">{e(w["say"])}</p>',
          origin_block(w, author),
          f'<p class="def">{e(w["def"])}</p>']
+
+    im = w.get("image")
+    og_image = None
+    if im:
+        og_image = f'{canon}{im["file"]}'
+        cap = f'<figcaption>{e(im.get("caption"))}</figcaption>' if im.get("caption") else ""
+        p.append(f'<figure><img src="{e(im["file"])}" alt="{e(im.get("alt"))}" '
+                 f'loading="lazy">{cap}</figure>')
     if w.get("cite"):
         p.append(f'<p class="cite">{e(w["cite"])}</p>')
     if w.get("etym"):
@@ -212,7 +259,11 @@ def word_page(w, site, author):
     if w["coiner"] == "marsita":
         ld["creator"] = {"@type": "Person", "name": author["name"], "url": author.get("url", "")}
 
-    return page(f'{w["word"]} — Wordshaping', w["def"][:180], canon, "\n".join(p), 1, ld)
+    if og_image:
+        ld["image"] = og_image
+
+    return page(f'{w["word"]} — Wordshaping', w["def"][:180], canon,
+                "\n".join(p), 1, ld, og_image)
 
 
 def lexicon_page(d, site, author):
@@ -254,6 +305,12 @@ def lexicon_page(d, site, author):
             f'<p class="tag-line">Words that should already exist.</p>'
             f'<blockquote class="epi">Subtle nuances like this matter. '
             f'Good wordsmithing and wordshaping matters.</blockquote>')
+    wd = word_of_the_day(ws)
+    if wd:
+        body += (f'<div class="wotd"><div class="k">Word of the day · {e(pretty(wd["wotd"]))}</div>'
+                 f'<a class="w" href="{wd["slug"]}/">{e(wd["word"])}</a>'
+                 f'<p>{e(wd["def"])}</p></div>')
+
     for title, lede, lst in groups:
         body += f'<h2>{title}</h2><p class="lede">{lede}</p>{block(lst)}'
     body += (f'<h2>Eight false seams</h2><p class="lede">Chunks heard as single suffixes where the '
@@ -307,11 +364,16 @@ def main():
     shutil.rmtree(ROOT / "w", ignore_errors=True)
 
     urls = [f"{site}/", f"{site}/leaderboard/"]
+    missing = []
     for w in d["words"]:
         out = ROOT / w["slug"]
         out.mkdir(exist_ok=True)
         (out / "index.html").write_text(word_page(w, site, author))
         urls.append(f'{site}/{w["slug"]}/')
+        # Images live beside their page, at /<slug>/<file>, and are never generated.
+        im = w.get("image")
+        if im and not (out / im["file"]).exists():
+            missing.append(f'{w["slug"]}/{im["file"]}')
 
     (ROOT / "index.html").write_text(lexicon_page(d, site, author))
     lb = ROOT / "leaderboard"
@@ -329,6 +391,11 @@ def main():
 
 
     print(f"{len(d['words'])} word pages at /<slug>/  ·  lexicon  ·  leaderboard  ·  sitemap")
+    wd = word_of_the_day(d["words"])
+    if wd:
+        print(f'word of the day: {wd["word"]} ({pretty(wd["wotd"])})')
+    for m in missing:
+        print(f"MISSING IMAGE: {m}")
     print(f"originals preserved: {sum(1 for w in d['words'] if w['proposed'] != w['word'])} "
           f"differ from their settled form")
 
