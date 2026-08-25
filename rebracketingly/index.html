@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>rebracketingly — Wordshaping</title>
+<meta name="description" content="Listening in such a way that the seams fall somewhere other than where the history put them.">
+<link rel="canonical" href="https://wordshaping.org/rebracketingly/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rebracketingly — Wordshaping">
+<meta property="og:description" content="Listening in such a way that the seams fall somewhere other than where the history put them.">
+<meta property="og:url" content="https://wordshaping.org/rebracketingly/">
+<meta property="og:site_name" content="Wordshaping">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTerm", "name": "rebracketingly", "description": "Listening in such a way that the seams fall somewhere other than where the history put them.", "url": "https://wordshaping.org/rebracketingly/", "alternateName": "rebracketingly", "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "Wordshaping", "url": "https://wordshaping.org/"}, "creator": {"@type": "Person", "name": "Marsita", "url": "https://github.com/marsrobertson"}}</script>
+<style>
+:root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;--line:#e3e0d9;
+--panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;--y-fg:#8a5a2b;
+--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45}
+@media (prefers-color-scheme:dark){:root{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;
+--faint:#77746d;--line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;
+--y-bg:#3a2c17;--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094}}
+:root[data-theme=dark]{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;--faint:#77746d;
+--line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;--y-bg:#3a2c17;
+--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094}
+:root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;
+--line:#e3e0d9;--panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;
+--y-fg:#8a5a2b;--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45}
+*{box-sizing:border-box}
+body{margin:0;padding:2.5rem 1.5rem 6rem;background:var(--bg);color:var(--fg);
+font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto}
+nav{font-size:.84rem;margin-bottom:2.8rem;color:var(--faint)}
+nav a{color:var(--accent);text-decoration:none;margin-right:1.1rem}
+nav a:hover{text-decoration:underline}
+h1{font-family:Georgia,"Iowan Old Style",serif;font-size:clamp(2rem,5.5vw,3rem);
+letter-spacing:-.022em;margin:0 0 .35rem;font-weight:400;word-break:break-word;line-height:1.1}
+.byline{color:var(--muted);margin:0 0 .1rem;font-size:.95rem}
+.byline b{color:var(--fg);font-weight:600}
+.tag-line{color:var(--muted);margin:0 0 2rem}
+.say{color:var(--faint);font-size:.82rem;letter-spacing:.05em;margin:.5rem 0 2rem}
+blockquote.epi{margin:0 0 2.5rem;padding:.1rem 0 .1rem 1.2rem;border-left:2px solid var(--accent);
+font-family:Georgia,serif;font-size:1.15rem;line-height:1.5}
+h2{font-family:Georgia,serif;font-weight:400;font-size:1.4rem;margin:3.2rem 0 .3rem}
+h2+.lede{color:var(--muted);font-size:.92rem;margin:0 0 1.4rem;max-width:62ch}
+.origin{background:var(--glow);border:1px solid var(--line);border-left:3px solid var(--accent);
+border-radius:7px;padding:1.3rem 1.5rem;margin:0 0 2rem}
+.origin .k{font-size:.68rem;text-transform:uppercase;letter-spacing:.13em;font-weight:700;
+color:var(--accent);margin-bottom:.5rem}
+.origin .p{font-family:Georgia,serif;font-size:clamp(1.3rem,3.6vw,1.9rem);font-weight:600;
+letter-spacing:-.015em;word-break:break-word;line-height:1.2;color:var(--fg)}
+.origin .who{font-size:.85rem;color:var(--muted);margin-top:.55rem}
+.origin .same{font-size:.85rem;color:var(--muted);margin-top:.5rem;font-style:italic}
+.badge{display:inline-block;font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;
+font-weight:700;padding:.15rem .45rem;border-radius:3px;vertical-align:2px}
+.b-marsita{background:var(--y-bg);color:var(--y-fg)}
+.b-claude{background:var(--m-bg);color:var(--m-fg)}
+.b-wild{background:var(--w-bg);color:var(--w-fg)}
+.pos{font-style:italic;color:var(--faint);font-size:.92rem}
+.def{font-size:1.14rem;margin:0 0 1.2rem}
+.cite{font-family:Georgia,serif;font-style:italic;color:var(--muted);padding-left:1rem;
+border-left:2px solid var(--line);margin:0 0 1.8rem}
+.field{margin:0 0 1.15rem;font-size:.94rem}
+.field b{display:block;font-family:Georgia,serif;font-size:.98rem;margin-bottom:.12rem;font-weight:600}
+.field span{color:var(--muted)}
+.entry{border-top:1px solid var(--line);padding:1.3rem 0}
+.entry:last-of-type{border-bottom:1px solid var(--line)}
+.entry a.w{font-family:Georgia,serif;font-size:1.35rem;font-weight:600;color:var(--fg);
+text-decoration:none;word-break:break-word}
+.entry a.w:hover{color:var(--accent)}
+.entry p{margin:.3rem 0 0;color:var(--muted);font-size:.94rem}
+.entry .orig{font-size:.82rem;color:var(--faint);margin-top:.3rem}
+.count{display:inline-block;min-width:2.2rem;font-family:Georgia,serif;font-size:1.5rem;
+font-weight:700;color:var(--accent)}
+.zero{color:var(--faint);font-weight:400}
+.rank{display:flex;gap:1rem;align-items:baseline;border-top:1px solid var(--line);padding:.9rem 0}
+.rank:last-of-type{border-bottom:1px solid var(--line)}
+.rank .n{font-variant-numeric:tabular-nums;color:var(--faint);font-size:.85rem;min-width:2rem}
+.rank .body{flex:1}
+.rank a{font-family:Georgia,serif;font-size:1.15rem;font-weight:600;color:var(--fg);
+text-decoration:none;word-break:break-word}
+.rank a:hover{color:var(--accent)}
+.sight{border-left:2px solid var(--accent);padding:.1rem 0 .1rem 1rem;margin:0 0 1.1rem}
+.sight .when{font-size:.76rem;color:var(--faint);letter-spacing:.05em;text-transform:uppercase}
+.sight .what{margin:.15rem 0 0}
+.empty{background:var(--panel);border:1px dashed var(--line);border-radius:8px;
+padding:1.3rem 1.4rem;color:var(--muted);font-size:.94rem}
+.cta{display:inline-block;margin-top:.9rem;padding:.55rem .95rem;border:1px solid var(--accent);
+border-radius:5px;color:var(--accent);text-decoration:none;font-size:.88rem;font-weight:600}
+.cta:hover{background:var(--accent);color:var(--bg)}
+.score{font-size:.79rem;color:var(--faint);font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin-top:1rem}
+th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.win{color:var(--accent);font-weight:700;font-size:.75rem;letter-spacing:.05em}
+footer{margin-top:4rem;padding-top:1.4rem;border-top:1px solid var(--line);
+color:var(--faint);font-size:.85rem}
+footer a{color:var(--accent)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.87em}
+</style>
+</head>
+<body><div class="wrap">
+<nav><a href="../">the lexicon</a><a href="../leaderboard/">leaderboard</a><a href="../working-table.html">working table</a><a href="https://github.com/PlanetaryCouncil/wordshaping.org">source</a></nav>
+<h1>rebracketingly</h1>
+<p class="byline">Coined by <b>Marsita</b></p>
+<p class="tag-line"><span class="pos">adverb</span> <span class="badge b-marsita">coined here</span></p>
+<p class="say">re·BRACK·et·ing·ly</p>
+<div class="origin"><div class="k">As first written</div><div class="p">rebracketingly</div><div class="same">Stands today exactly as it was first set down.</div></div>
+<p class="def">Listening in such a way that the seams fall somewhere other than where the history put them.</p>
+<p class="cite">She heard the word rebracketingly, and a new suffix fell out.</p>
+<p class="field"><b>Etymology</b><span>rebracket + -ingly.</span></p>
+<p class="field"><b>Note</b><span>The collection&#x27;s self-description: a lexicon built almost entirely by hearing seams in the wrong places, holding a word for doing exactly that. There is a racket inside rebracketingly, and finding it is itself a rebracketing.</span></p>
+<p class="score">slot 3 · form 4 · clarity 2 · music 3 → 12/25 · one reader's opinion, ranks nothing</p>
+<h2>Sightings in public <span class="count zero">0</span></h2>
+<div class="empty">No documented use yet. Every word in every dictionary started exactly here, and the only thing that ever moved one was somebody using it where other people could see.</div>
+<a class="cta" href="https://github.com/PlanetaryCouncil/wordshaping.org/issues/new?title=Sighting:+rebracketingly">Document a sighting →</a>
+<footer>
+<a href="../">Wordshaping</a> — a lexicon of words that should already exist.<br>
+Sightings are the only thing ranked here. Add one by
+<a href="https://github.com/PlanetaryCouncil/wordshaping.org/issues/new">opening an issue</a> or editing <code>words.json</code>.
+</footer>
+</div></body>
+</html>

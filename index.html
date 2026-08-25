@@ -2,733 +2,163 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wordshaping — working table</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wordshaping — a lexicon of words that should already exist</title>
+<meta name="description" content="A lexicon of coined words, each with its own page: the original wording as first written, the etymology, and documented use in public.">
+<link rel="canonical" href="https://wordshaping.org/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wordshaping — a lexicon of words that should already exist">
+<meta property="og:description" content="A lexicon of coined words, each with its own page: the original wording as first written, the etymology, and documented use in public.">
+<meta property="og:url" content="https://wordshaping.org/">
+<meta property="og:site_name" content="Wordshaping">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTermSet", "name": "Wordshaping", "url": "https://wordshaping.org/", "description": "A lexicon of words that should already exist.", "creator": {"@type": "Person", "name": "Marsita", "url": "https://github.com/marsrobertson"}}</script>
 <style>
-  :root {
-    --bg: #fbfaf8;
-    --fg: #1a1a18;
-    --muted: #6b6a65;
-    --line: #e0ddd6;
-    --panel: #ffffff;
-    --accent: #8a5a2b;
-    --yours-bg: #fdf3e3;
-    --yours-fg: #8a5a2b;
-    --mine-bg: #eef1f5;
-    --mine-fg: #4a5768;
-    --dead-bg: #f6ecec;
-    --dead-fg: #8c4a4a;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #16161a;
-      --fg: #e8e6e1;
-      --muted: #9a978f;
-      --line: #33333c;
-      --panel: #1d1d23;
-      --accent: #d9a86c;
-      --yours-bg: #3a2c17;
-      --yours-fg: #e8bd82;
-      --mine-bg: #242a33;
-      --mine-fg: #9fb2c9;
-      --dead-bg: #37211f;
-      --dead-fg: #d99a95;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #16161a; --fg: #e8e6e1; --muted: #9a978f; --line: #33333c;
-    --panel: #1d1d23; --accent: #d9a86c;
-    --yours-bg: #3a2c17; --yours-fg: #e8bd82;
-    --mine-bg: #242a33; --mine-fg: #9fb2c9;
-    --dead-bg: #37211f; --dead-fg: #d99a95;
-  }
-  :root[data-theme="light"] {
-    --bg: #fbfaf8; --fg: #1a1a18; --muted: #6b6a65; --line: #e0ddd6;
-    --panel: #ffffff; --accent: #8a5a2b;
-    --yours-bg: #fdf3e3; --yours-fg: #8a5a2b;
-    --mine-bg: #eef1f5; --mine-fg: #4a5768;
-    --dead-bg: #f6ecec; --dead-fg: #8c4a4a;
-  }
-
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    padding: 2rem 1.25rem 5rem;
-    background: var(--bg);
-    color: var(--fg);
-    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    overflow-x: hidden;
-  }
-  .wrap { max-width: 1400px; margin: 0 auto; }
-
-  header { margin-bottom: 2.5rem; }
-  h1 {
-    font-family: Georgia, "Iowan Old Style", serif;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    margin: 0 0 .4rem;
-    letter-spacing: -.01em;
-  }
-  .sub { color: var(--muted); max-width: 60ch; margin: 0 0 1.25rem; }
-
-  .rule {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--accent);
-    border-radius: 6px;
-    padding: .9rem 1.1rem;
-    max-width: 70ch;
-    font-size: .93rem;
-  }
-  .rule strong { color: var(--accent); }
-
-  h2 {
-    font-family: Georgia, serif;
-    font-size: 1.35rem;
-    margin: 3rem 0 .5rem;
-    padding-bottom: .4rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .note { color: var(--muted); font-size: .9rem; max-width: 68ch; }
-
-  .scroller {
-    overflow-x: auto;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--panel);
-    margin-top: 1rem;
-  }
-  table { border-collapse: collapse; width: 100%; min-width: 1080px; font-size: .88rem; }
-  th, td { text-align: left; vertical-align: top; padding: .8rem .85rem; border-bottom: 1px solid var(--line); }
-  th {
-    position: sticky; top: 0;
-    background: var(--panel);
-    font-size: .72rem; text-transform: uppercase; letter-spacing: .07em;
-    color: var(--muted); font-weight: 600;
-    border-bottom: 2px solid var(--line);
-  }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover { background: color-mix(in srgb, var(--accent) 5%, transparent); }
-
-  .w {
-    font-family: Georgia, serif;
-    font-size: 1.02rem;
-    font-weight: 600;
-    display: block;
-    margin-bottom: .2rem;
-    word-break: break-word;
-  }
-  .w.dead { text-decoration: line-through; text-decoration-thickness: 1px; opacity: .65; }
-
-  .tag {
-    display: inline-block;
-    font-size: .66rem; text-transform: uppercase; letter-spacing: .06em;
-    font-weight: 700;
-    padding: .12rem .42rem; border-radius: 3px; vertical-align: 1px;
-  }
-  .yours { background: var(--yours-bg); color: var(--yours-fg); }
-  .mine  { background: var(--mine-bg);  color: var(--mine-fg); }
-  .dead  { background: var(--dead-bg);  color: var(--dead-fg); }
-
-  .score { font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .total { font-family: Georgia, serif; font-size: 1.15rem; font-weight: 700; }
-  .bits { display: block; font-size: .72rem; color: var(--muted); letter-spacing: .02em; margin-top: .15rem; }
-
-  .col-word { width: 17%; }
-  .col-comment { width: 30%; }
-  .col-theme { width: 20%; }
-  .col-ideas { width: 21%; }
-  .col-score { width: 12%; }
-
-  .rubric { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin-top: 1rem; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: .85rem 1rem; }
-  .card h3 { margin: 0 0 .25rem; font-size: .95rem; font-family: Georgia, serif; }
-  .card p { margin: 0; font-size: .84rem; color: var(--muted); }
-  .card .k { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 700; }
-
-  footer { margin-top: 3.5rem; color: var(--muted); font-size: .85rem; max-width: 68ch; }
-  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em; background: color-mix(in srgb, var(--fg) 7%, transparent); padding: .1em .3em; border-radius: 3px; }
+:root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;--line:#e3e0d9;
+--panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;--y-fg:#8a5a2b;
+--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45}
+@media (prefers-color-scheme:dark){:root{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;
+--faint:#77746d;--line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;
+--y-bg:#3a2c17;--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094}}
+:root[data-theme=dark]{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;--faint:#77746d;
+--line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;--y-bg:#3a2c17;
+--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094}
+:root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;
+--line:#e3e0d9;--panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;
+--y-fg:#8a5a2b;--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45}
+*{box-sizing:border-box}
+body{margin:0;padding:2.5rem 1.5rem 6rem;background:var(--bg);color:var(--fg);
+font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto}
+nav{font-size:.84rem;margin-bottom:2.8rem;color:var(--faint)}
+nav a{color:var(--accent);text-decoration:none;margin-right:1.1rem}
+nav a:hover{text-decoration:underline}
+h1{font-family:Georgia,"Iowan Old Style",serif;font-size:clamp(2rem,5.5vw,3rem);
+letter-spacing:-.022em;margin:0 0 .35rem;font-weight:400;word-break:break-word;line-height:1.1}
+.byline{color:var(--muted);margin:0 0 .1rem;font-size:.95rem}
+.byline b{color:var(--fg);font-weight:600}
+.tag-line{color:var(--muted);margin:0 0 2rem}
+.say{color:var(--faint);font-size:.82rem;letter-spacing:.05em;margin:.5rem 0 2rem}
+blockquote.epi{margin:0 0 2.5rem;padding:.1rem 0 .1rem 1.2rem;border-left:2px solid var(--accent);
+font-family:Georgia,serif;font-size:1.15rem;line-height:1.5}
+h2{font-family:Georgia,serif;font-weight:400;font-size:1.4rem;margin:3.2rem 0 .3rem}
+h2+.lede{color:var(--muted);font-size:.92rem;margin:0 0 1.4rem;max-width:62ch}
+.origin{background:var(--glow);border:1px solid var(--line);border-left:3px solid var(--accent);
+border-radius:7px;padding:1.3rem 1.5rem;margin:0 0 2rem}
+.origin .k{font-size:.68rem;text-transform:uppercase;letter-spacing:.13em;font-weight:700;
+color:var(--accent);margin-bottom:.5rem}
+.origin .p{font-family:Georgia,serif;font-size:clamp(1.3rem,3.6vw,1.9rem);font-weight:600;
+letter-spacing:-.015em;word-break:break-word;line-height:1.2;color:var(--fg)}
+.origin .who{font-size:.85rem;color:var(--muted);margin-top:.55rem}
+.origin .same{font-size:.85rem;color:var(--muted);margin-top:.5rem;font-style:italic}
+.badge{display:inline-block;font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;
+font-weight:700;padding:.15rem .45rem;border-radius:3px;vertical-align:2px}
+.b-marsita{background:var(--y-bg);color:var(--y-fg)}
+.b-claude{background:var(--m-bg);color:var(--m-fg)}
+.b-wild{background:var(--w-bg);color:var(--w-fg)}
+.pos{font-style:italic;color:var(--faint);font-size:.92rem}
+.def{font-size:1.14rem;margin:0 0 1.2rem}
+.cite{font-family:Georgia,serif;font-style:italic;color:var(--muted);padding-left:1rem;
+border-left:2px solid var(--line);margin:0 0 1.8rem}
+.field{margin:0 0 1.15rem;font-size:.94rem}
+.field b{display:block;font-family:Georgia,serif;font-size:.98rem;margin-bottom:.12rem;font-weight:600}
+.field span{color:var(--muted)}
+.entry{border-top:1px solid var(--line);padding:1.3rem 0}
+.entry:last-of-type{border-bottom:1px solid var(--line)}
+.entry a.w{font-family:Georgia,serif;font-size:1.35rem;font-weight:600;color:var(--fg);
+text-decoration:none;word-break:break-word}
+.entry a.w:hover{color:var(--accent)}
+.entry p{margin:.3rem 0 0;color:var(--muted);font-size:.94rem}
+.entry .orig{font-size:.82rem;color:var(--faint);margin-top:.3rem}
+.count{display:inline-block;min-width:2.2rem;font-family:Georgia,serif;font-size:1.5rem;
+font-weight:700;color:var(--accent)}
+.zero{color:var(--faint);font-weight:400}
+.rank{display:flex;gap:1rem;align-items:baseline;border-top:1px solid var(--line);padding:.9rem 0}
+.rank:last-of-type{border-bottom:1px solid var(--line)}
+.rank .n{font-variant-numeric:tabular-nums;color:var(--faint);font-size:.85rem;min-width:2rem}
+.rank .body{flex:1}
+.rank a{font-family:Georgia,serif;font-size:1.15rem;font-weight:600;color:var(--fg);
+text-decoration:none;word-break:break-word}
+.rank a:hover{color:var(--accent)}
+.sight{border-left:2px solid var(--accent);padding:.1rem 0 .1rem 1rem;margin:0 0 1.1rem}
+.sight .when{font-size:.76rem;color:var(--faint);letter-spacing:.05em;text-transform:uppercase}
+.sight .what{margin:.15rem 0 0}
+.empty{background:var(--panel);border:1px dashed var(--line);border-radius:8px;
+padding:1.3rem 1.4rem;color:var(--muted);font-size:.94rem}
+.cta{display:inline-block;margin-top:.9rem;padding:.55rem .95rem;border:1px solid var(--accent);
+border-radius:5px;color:var(--accent);text-decoration:none;font-size:.88rem;font-weight:600}
+.cta:hover{background:var(--accent);color:var(--bg)}
+.score{font-size:.79rem;color:var(--faint);font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin-top:1rem}
+th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.win{color:var(--accent);font-weight:700;font-size:.75rem;letter-spacing:.05em}
+footer{margin-top:4rem;padding-top:1.4rem;border-top:1px solid var(--line);
+color:var(--faint);font-size:.85rem}
+footer a{color:var(--accent)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.87em}
 </style>
 </head>
-<body>
-<div class="wrap">
-
-<header>
-  <h1>Wordshaping</h1>
-  <p class="sub">Working table. Every word proposed in the conversation, in order, with nothing removed.</p>
-  <blockquote style="margin:0 0 1.25rem; padding:.2rem 0 .2rem 1.1rem; border-left:2px solid var(--accent); font-family:Georgia,serif; font-size:1.15rem; line-height:1.45; max-width:52ch;">
-    Subtle nuances like this matter. Good wordsmithing and wordshaping matters.
-  </blockquote>
-  <p class="sub" style="margin-top:-.6rem; font-size:.86rem;">
-    The founding pair proves it on one syllable —
-    <em>dìs·clai·<strong>MER</strong>·cious·ly</em> has a single peak and resolves;
-    <em>dis·<strong>CLAIM</strong>·er·ou·<strong>CIOUS</strong>·ly</em> has two, with a dead beat trapped between.
-    <code>-ciously</code> can pull the stress forward across one syllable. It cannot cross two.
-  </p>
-  <div class="rule">
-    <strong>Standing rule.</strong> Words you coined are primary and permanent. They stay on the table
-    whatever they score. My suggestions are secondary — commentary, not replacement. A low score is an
-    opinion about a word, never grounds for cutting it, and the rubric below is a lens you can overrule
-    or rewrite at will.
-  </div>
-</header>
-
-<h2>The table</h2>
-<p class="note">
-  <span class="tag yours">yours</span> your coinage &nbsp;·&nbsp;
-  <span class="tag mine">mine</span> my suggestion &nbsp;·&nbsp;
-  <span class="tag dead">blocked</span> ruled out on a formation rule
-</p>
-
-<div class="scroller">
-<table>
-<thead>
-<tr>
-  <th class="col-word">Your input</th>
-  <th class="col-comment">My comment</th>
-  <th class="col-theme">Word in the theme</th>
-  <th class="col-ideas">Further ideas</th>
-  <th class="col-score">Score</th>
-</tr>
-</thead>
-<tbody>
-
-<tr>
-  <td><span class="w">disclaimerouciously</span><span class="tag yours">yours</span></td>
-  <td>Sense is excellent. The <code>-erou-</code> seam carries a dead syllable and the word ends up with two competing stress peaks.</td>
-  <td><span class="w">disclaimatiously</span><span class="tag mine">mine</span> — rejected by you, correctly; it chews up the base word.</td>
-  <td>Keep as the origin entry. The whole collection descends from it.</td>
-  <td class="score"><span class="total">17</span><span class="bits">5·2·3·2·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">disclaimerciously</span><span class="tag yours">yours</span></td>
-  <td>Your fix, better than my alternative. Keeps <em>disclaimer</em> whole, five syllables, no dead weight — and buries <em>mercy</em> inside it by accident.</td>
-  <td><span class="w">disclaimercious</span> · <span class="w">disclaimerciousness</span><span class="tag yours">yours</span></td>
-  <td>Strongest word on the table. An ear-word, not a rule-word — worth saying plainly.</td>
-  <td class="score"><span class="total">23</span><span class="bits">5·4·4·5·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">followification</span><span class="tag yours">yours</span></td>
-  <td>Legally formed. <code>-ify</code> on a plain Germanic stem always lands comic (<em>speechify</em>, <em>citify</em>), so it reads as satire whether or not you meant it.</td>
-  <td><span class="w">followify</span> · <span class="w">followified</span><span class="tag yours">yours</span></td>
-  <td>Pairs with <em>followance</em>: the process and its residue.</td>
-  <td class="score"><span class="total">18</span><span class="bits">4·4·4·2·4</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">followance</span><span class="tag yours">yours</span></td>
-  <td>Licensed outright by <em>allowance</em> — same <code>-ow</code>+<code>-ance</code> junction, no stress shift. Fills a slot <em>following</em> and <em>followership</em> both miss.</td>
-  <td>Subscription without attention, on the model of <em>attendance</em> and <em>observance</em>.</td>
-  <td>Try <em>followant</em> (n., one who does it) if you want the agent noun.</td>
-  <td class="score"><span class="total">23</span><span class="bits">5·5·4·4·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">loopholefication</span><span class="tag yours">yours</span></td>
-  <td>Best referent in the batch. Only the linking vowel needs fixing — the suffix is <code>-ification</code>, never <code>-efication</code>.</td>
-  <td><span class="w">loopholification</span><span class="tag yours">yours</span> · <span class="w">loopholously</span><span class="tag mine">mine</span></td>
-  <td>The one <code>-ification</code> with no plain nominalization squatting on it.</td>
-  <td class="score"><span class="total">21</span><span class="bits">5·4·4·3·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w dead">loopholeficationously</span><span class="tag dead">blocked</span></td>
-  <td>Stacks <code>-ification</code> and <code>-ously</code> — two roads to different destinations, not two rungs.</td>
-  <td>Adverb comes off the root: <span class="w">loopholously</span><span class="tag mine">mine</span></td>
-  <td>Worth revisiting if you want a manner sense distinct from the process noun.</td>
-  <td class="score"><span class="total">6</span><span class="bits">—·0·1·1·4</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">intertwinification</span><span class="tag yours">yours</span></td>
-  <td>Stays. <em>Intertwine</em> is already a verb and <em>intertwinement</em> holds the plain slot, so the suffix earns its keep only on the systemic reading — entanglement as deliberate policy.</td>
-  <td>Vendor lock-in, forced bundling, the merger structured to be unwindable.</td>
-  <td>Test it against <em>intertwinement</em> in a live sentence and see which you reach for.</td>
-  <td class="score"><span class="total">14</span><span class="bits">3·2·3·3·3</span></td>
-</tr>
-
-<tr>
-  <td><span class="w dead">intertwinificatiously</span><span class="tag dead">blocked</span></td>
-  <td>Same stacking. <em>Intertwiningly</em> already exists and needs no manufacture.</td>
-  <td><span class="w">intertwiningly</span> — regular English.</td>
-  <td>—</td>
-  <td class="score"><span class="total">5</span><span class="bits">—·0·1·1·3</span></td>
-</tr>
-
-<tr>
-  <td><span class="w dead">ponderingciously</span><span class="tag dead">blocked</span></td>
-  <td>Two issues: <code>-ing</code> is inflected and can't take suffixes, and <code>-cious</code> is inherited, not productive. The sense underneath is very good.</td>
-  <td><span class="w">ponderatiously</span><span class="tag mine">mine</span> — thought performed, none conducted.</td>
-  <td>Sense was inferred, never confirmed by you. Say what you meant and it gets re-cut.</td>
-  <td class="score"><span class="total">14</span><span class="bits">5·0·2·2·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">infographicously</span><span class="tag yours">yours</span></td>
-  <td>Blocked on rule — <code>-ic</code> is already an adjective suffix, so <code>-ous</code> can't stack. But I then substituted a different word with a meaning you never proposed, which was an imposition.</td>
-  <td><span class="w">infographicity</span><span class="tag mine">mine</span> — flagged as mine, provenance recorded.</td>
-  <td><strong>Open:</strong> tell me what <em>infographicously</em> was reaching for and it gets rebuilt from your end.</td>
-  <td class="score"><span class="total">15</span><span class="bits">4·1·3·2·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">infographicly</span><span class="tag yours">yours</span></td>
-  <td>Real English, one letter short: <code>-ic</code> takes <code>-ally</code>. Sole exception in the language is <em>publicly</em>. Your "that I understand" became the governing test.</td>
-  <td><span class="w">infographically</span> — regular, transparent, no coinage needed.</td>
-  <td>The restraint case. Most slots are already filled by rule.</td>
-  <td class="score"><span class="total">12</span><span class="bits">0·3·5·3·1</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">reprogramification</span><span class="tag yours">yours</span></td>
-  <td>Stays. <em>Reprogramming</em> holds the plain slot, so this lives on the doctrinal reading: any settled thing treated as a codebase awaiting a patch.</td>
-  <td>Habits, beliefs, institutions, culture — the airport self-help shelf.</td>
-  <td>Strong ideology word. Might outlive the plain sense entirely.</td>
-  <td class="score"><span class="total">15</span><span class="bits">3·2·3·3·4</span></td>
-</tr>
-
-<tr>
-  <td><span class="w dead">reprogamificationously</span><span class="tag dead">blocked</span></td>
-  <td>Stacked, and the intended sense is a <em>state</em>, not a manner — states take prefixes (<em>mid-reprogramming</em>), never <code>-ly</code>. But the slipped <code>r</code> left <em>gamification</em> sitting inside it, fully intact.</td>
-  <td><span class="w">reprogamification</span> — rewiring yourself by streaks and XP. Unclaimed.</td>
-  <td><strong>Open:</strong> the accident may be the best thing in this row. Your call whether to keep it.</td>
-  <td class="score"><span class="total">11</span><span class="bits">5·0·2·1·3</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">preventification</span><span class="tag yours">yours</span></td>
-  <td>I declined it for shelf balance, which was my aesthetics overriding your input. Reinstated. The systemic reading is real: the org where every process exists to prevent rather than to do.</td>
-  <td><span class="w">the unhappened</span><span class="tag mine">mine</span> — harm averted, leaving no evidence.</td>
-  <td>Prevention is invisible, not boring. That is the actual problem and it is a good one.</td>
-  <td class="score"><span class="total">17</span><span class="bits">3·3·4·3·4</span></td>
-</tr>
-
-<tr>
-  <td><span class="w dead">preventificationously</span><span class="tag dead">blocked</span></td>
-  <td>Stacking again.</td>
-  <td><span class="w">preventatively</span> — already exists, neutral in tone.</td>
-  <td>A loaded manner adverb here is still unclaimed.</td>
-  <td class="score"><span class="total">6</span><span class="bits">—·0·1·1·4</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">successfication</span><span class="tag yours">yours</span></td>
-  <td>Cleanest <code>-ification</code> you've built. <em>Success</em> is a noun, <code>-ify</code> takes nouns, nothing squats on the slot. Runs exactly like <em>class → classify → classification</em>. Only the linking <code>-i-</code> was missing.</td>
-  <td><span class="w">successification</span><span class="tag yours">yours</span> · <span class="w">successitiously</span><span class="tag mine">mine</span></td>
-  <td>Work restructured around the measurement of winning.</td>
-  <td class="score"><span class="total">21</span><span class="bits">4·5·4·3·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w dead">successficatiously</span><span class="tag dead">blocked</span></td>
-  <td>Stacking — but it prompted the <code>-itious</code> route, where <em>fictitious</em> is the neighbour by sound and by sense.</td>
-  <td><span class="w">successitious</span> · <span class="w">successitiously</span><span class="tag mine">mine</span></td>
-  <td>Ear-word, same category as <em>disclaimerciously</em>. Yours to accept or drop.</td>
-  <td class="score"><span class="total">9</span><span class="bits">—·0·2·2·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">unhappenfication</span><span class="tag yours">yours</span></td>
-  <td>Your gloss — <em>undoing a reality that already occurred</em> — is the sharpest sense anyone has produced here. Distinct from prevention: the event happened, then was removed.</td>
-  <td><span class="w">unhappening</span><span class="tag mine">mine</span> — the record amended, the bodies unamended.</td>
-  <td>Prior art nearby: <em>memory-holing</em>, <em>unpersoning</em>, <em>retcon</em>. The administrative case is still open.</td>
-  <td class="score"><span class="total">20</span><span class="bits">5·3·4·3·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">expandification</span><span class="tag yours">yours</span></td>
-  <td>Blocked three ways, which is rare: <em>expand</em> is a verb (round trip), <em>expansion</em> holds the plain slot, and <em>expansionism</em> holds the ideology reading. Territory fully settled.</td>
-  <td>No replacement offered — the noun to build on is yours to pick.</td>
-  <td>Feed the suffix a noun instead: <em>scope</em>, <em>scale</em>, <em>footprint</em>, <em>surface</em>.</td>
-  <td class="score"><span class="total">11</span><span class="bits">1·1·4·3·2</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">preventifully</span><span class="tag yours">yours</span></td>
-  <td>The <code>-i-</code> is spurious — <code>-ifully</code> is a <code>-y</code> noun + <code>-ful</code> + <code>-ly</code>, and that <code>i</code> is a mutated <code>y</code> (<em>beauty, duty, mercy, plenty, pity</em>). Drop it and the word is live.</td>
-  <td><span class="w">preventfully</span><span class="tag yours">yours</span> — your word minus one letter.</td>
-  <td><em>Preventively</em> means with the purpose of preventing. <strong>Preventfully</strong> means out of a temperament organized around prevention — the life shaped entirely by what it avoided. Distinct slot, and it pairs with <em>the unhappened</em>.</td>
-  <td class="score"><span class="total">18</span><span class="bits">4·2·4·4·4</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">expandifully</span><span class="tag yours">yours</span></td>
-  <td>Same spurious <code>-i-</code>. Corrected to <em>expandfully</em> it is legal but blocked — <em>expansively</em> already holds the slot and holds it well.</td>
-  <td>No replacement. <em>Expansively</em> is the word.</td>
-  <td>Second time this root has come back fully settled. Worth abandoning the territory rather than the suffix.</td>
-  <td class="score"><span class="total">11</span><span class="bits">1·2·3·3·2</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">higherdimensionalshapeshifterously</span><span class="tag yours">yours</span></td>
-  <td>A compound, not a derivation — different machine, different rules. One hard error: <code>-ous</code> never takes <code>-er</code> agent nouns (no <em>runnerous</em>, <em>writerous</em>). Five elements is past the ~3 English readers chunk comfortably.</td>
-  <td><span class="w">shapeshiftingly</span> · <span class="w">higher-dimensionally</span> — both legal by rule.</td>
-  <td><strong>Argument for keeping it whole:</strong> it has the identical construction to the founding image — meaning asserted by accumulation. A self-demonstrating term for pile-up profundity, as <em>sesquipedalian</em> is a long word for long words.</td>
-  <td class="score"><span class="total">14</span><span class="bits">4·1·2·2·5</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">clusterfuckation</span><span class="tag yours">yours</span></td>
-  <td>First use of <code>-ation</code> — and the one case where <code>-ification</code> was right. The suffixes want opposite bases: <code>-ation</code> takes verbs (<em>create→creation</em>), <code>-ify</code> takes nouns. <em>Clusterfuck</em> is a noun.</td>
-  <td><span class="w">clusterfuckification</span><span class="tag yours">yours</span> — textbook chain, <em>clusterfuck → clusterfuckify → clusterfuckification</em>.</td>
-  <td>Register clash is an <em>asset</em> here, unlike <em>followification</em>: chaos described in the language of process is the joke and the meaning. Real slot — a clusterfuck is a state; this names the mechanism, the incremental path nobody chose. Squatter warning: <em>clusterfuckery</em> is probably already in the wild (<code>-ery</code>: <em>buffoonery, chicanery</em>).</td>
-  <td class="score"><span class="total">18</span><span class="bits">4·3·5·4·2</span></td>
-</tr>
-
-<tr>
-  <td><span class="w dead">clusterfuckationously</span><span class="tag dead">blocked</span></td>
-  <td>Stacking, by the standing rule. No new information.</td>
-  <td>Adverb slot is weak here regardless; the noun is the win.</td>
-  <td>—</td>
-  <td class="score"><span class="total">6</span><span class="bits">—·0·2·2·2</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">vibelicious</span><span class="tag yours">yours</span></td>
-  <td>Legal, and vindicating. <code>-licious</code> is a real productive suffix that exists <em>because</em> speakers made exactly the seam error flagged throughout this table — <em>delicious</em> is Latin <em>deliciosus</em>, with no morpheme <code>-licious</code> in it. Mis-heard, extracted, and now real.</td>
-  <td>Clean three syllables. Adds an appetitive frame <em>vibey</em> lacks: a vibe consumed rather than merely present.</td>
-  <td>Constraints: <em>vibey</em> holds most of the ground, and <code>-licious</code> carries a hard datestamp (c. 2001). Neither is fatal.</td>
-  <td class="score"><span class="total">17</span><span class="bits">3·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">rebracketingly</span><span class="tag yours">yours</span></td>
-  <td>Correct application of the <code>-ingly</code> correction. But <code>-ingly</code> has an unstated semantic gate: the verb must name something that can be a <em>manner</em> (<em>lovingly, knowingly, jokingly</em>). Rebracketing is a community process across generations — nobody does it in a manner.</td>
-  <td>One reading rescues it — <strong>hearing</strong>. To listen rebracketingly is to hear seams where history put none. Precisely the faculty that produced most of this table, and currently unnamed.</td>
-  <td>Canonical cases, all the article eating the noun: <em>a napron→an apron</em>, <em>a nadder→an adder</em>, <em>an ekename→a nickname</em>. Also <em>helico-pter→heli-copter</em>, which is why <em>heliport</em> and <em>copter</em> exist as halves that never were. Accident: there is a <em>racket</em> inside <em>rebracketingly</em>, and finding it is itself a rebracketing.</td>
-  <td class="score"><span class="total">12</span><span class="bits">3·4·2·3·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">pussylicious</span><span class="tag yours">yours</span></td>
-  <td>Correctly formed, same libfix as <em>vibelicious</em>. Fails the squatter rule — almost certainly already in use. <code>-licious</code> came from food, moved to bodies with <em>bootylicious</em>, and that corner is saturated.</td>
-  <td>No replacement. The construction is sound; the target is occupied.</td>
-  <td><strong>Libfixes go dead fastest in the field they came from.</strong> <code>-gate</code> on a political scandal is invisible; <code>-athon</code> on a sporting event is nothing. <em>Hackathon</em> worked by leaving the field. Aim <code>-licious</code> at abstractions — that is what made <em>vibelicious</em> worth having.</td>
-  <td class="score"><span class="total">14</span><span class="bits">0·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">absurdalistic</span><span class="tag yours">yours</span></td>
-  <td>Fifth seam, clearest case. <code>-alistic</code> is not a unit — the <code>-al</code> always belongs to the base: <em>natural, ideal, material, journal, moral, legal, formal</em> + <code>-istic</code>. There is no <em>*absurdal</em>, so the <code>-al</code> has no source.</td>
-  <td><span class="w">absurdistic</span> is the regular form — but <strong>absurdist</strong> already exists and is already the adjective (<em>absurdist theatre</em>, Camus).</td>
-  <td><strong>Argument for keeping the phantom:</strong> an over-inflated word for absurdity dressed as a school — the absurd performed as genre rather than arrived at. The extra syllable enacts what it names, same defence as the compound monster.</td>
-  <td class="score"><span class="total">12</span><span class="bits">2·2·4·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">complification</span><span class="tag yours">yours</span><br><span class="w dead">complificatiounously</span><span class="tag dead">blocked</span></td>
-  <td>No base — there is no <em>*complify</em>, and the chain needs one the way <em>classification</em> needs <em>classify</em>. Sixth seam instance, new mechanism: previously you mis-split a real ending, here you swapped one out for the chunk (<em>compli-cation → compli-fication</em>). The <code>-ously</code> form dies on the standing rule.</td>
-  <td><span class="w">complexification</span> — real and live, in mathematics and systems thinking. <em>Complex → complexify → complexification</em>, the process of growing more complex.</td>
-  <td><strong>The typo paid.</strong> You wrote <code>-tioun-</code>, which is the Middle English spelling of <code>-tion</code> — Chaucer's <em>condicioun, nacioun, resoun, opinioun</em>. A slipped <code>u</code> landed in the fourteenth century. <br><br><strong>Gap left standing:</strong> <em>complication</em> is a snag, <em>complexification</em> is growth. Neither names difficulty manufactured on purpose — steps added so that steps exist.</td>
-  <td class="score"><span class="total">10</span><span class="bits">2·1·3·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">complexificationously</span><span class="tag yours">yours</span></td>
-  <td>Eighth attempt at the <code>-ously</code> stack. At that count it stops being an error and becomes a want — a manner adverb off a process noun, which English keeps refusing by that door.</td>
-  <td><span class="w">complexificationally</span> — fully legal, by <em>organizationally, operationally, computationally, educationally</em>. <code>-ation</code>→<code>-ational</code>→<code>-ationally</code> is productive. Also unlocks <em>loopholificationally</em>, <em>successificationally</em>, <em>followificationally</em>.</td>
-  <td>Toll is register: <code>-ationally</code> is flat committee English, which is what <code>-ously</code> was trying to dodge. <br><br>For this sense, regular morphology wins outright: <strong>complexifying</strong> <em>(adj.)</em> — "a complexifying answer." Empty slot underneath, distinct from <em>obfuscation</em>: sincere effort, net-negative clarity.</td>
-  <td class="score"><span class="total">8</span><span class="bits">4·0·2·2·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">victoriously</span><span class="tag yours">yours</span></td>
-  <td>Already English, fully regular — <em>victory → victorious → victoriously</em>. Slot scores 0 because it is occupied by itself, not because anything failed.</td>
-  <td>Closes the <code>-ifully</code> thread: <em>victory</em> is precisely the <code>-y</code> noun that suffix needs, and the <code>i</code> in <em>victorious</em> is that same mutated <code>y</code> (<em>beauty, duty, mercy</em>).</td>
-  <td><strong>Corrected.</strong> <em>Victorifully</em> was called correctly built here. It isn't. Every <code>-ful</code> word from a <code>-y</code> noun has a <strong>disyllabic</strong> base — <em>BEAU-ti-ful, DU-ti-ful, MER-ci-ful, PLEN-ti-ful, PI-ti-ful, FAN-ci-ful</em> — all landing S-w-w. <em>Victory</em> is trisyllabic, so <em>victoriful</em> comes out S-w-w-w: three unstressed syllables trailing the front stress, which English handles badly. <em>Characterful</em> shares that shape and is audibly mannered for the same reason. The rule as stated omitted the syllable count every real example obeys — and the ear caught what the rule missed.</td>
-  <td class="score"><span class="total">15</span><span class="bits">0·5·5·5·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">unhinged</span> <span class="w">unhingedfication</span><span class="tag yours">yours</span></td>
-  <td><code>-ify</code> does not take <code>-ed</code> participles — no <em>*complicatedify</em>, <em>*tiredify</em>. It wants a bare stem: <em>simple→simplify, pure→purify, solid→solidify, intense→intensify</em>. Strip the <code>-ed</code> first. (Linking <code>-i-</code> dropped again, fourth time.)</td>
-  <td>Both slots already filled, and usefully distinct: <span class="w">unhinging</span> the process — same construction as your <em>unhappening</em> — and <span class="w">unhingedness</span> the state, <code>-ness</code> taking <code>-ed</code> adjectives freely (<em>wickedness, wretchedness, markedness</em>).</td>
-  <td><strong>The dead metaphor is the asset.</strong> <em>Unhinged</em> is a door off its hinges — still attached at one point, still swinging, no longer controlling what passes through. Nobody sees the door anymore. Reviving that image will pay better than extending the ending.</td>
-  <td class="score"><span class="total">10</span><span class="bits">1·2·4·3·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">unhingednesstically</span><span class="tag yours">yours</span></td>
-  <td>Two blocks. <strong><code>-ness</code> is terminal</strong> — nothing derives from it (<em>*kindnessly, *happinessic, *darknessify</em>); it closes a word. And <code>-stically</code> is the sixth seam: really <code>-istic</code>+<code>-ally</code>, with the <code>-istic</code> belonging to the base (<em>art→artistic→artistically</em>).</td>
-  <td><span class="w">unhingedly</span> — <code>-ly</code> takes <code>-ed</code> participles freely: <em>markedly, allegedly, pointedly, decidedly, assuredly, hurriedly</em>.</td>
-  <td>Third turn on this root, each attempt adding more machinery than the last, and the answer was the plainest suffix in the language the whole time. Fourth instance in this file of the regular form beating the built one.</td>
-  <td class="score"><span class="total">6</span><span class="bits">2·0·2·2·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">kindnestic</span><span class="tag yours">yours</span></td>
-  <td>A direct test of the terminal-<code>-ness</code> rule, and it forces a correction: <code>-ness</code> is terminal for <em>suffixation</em> only. Inflection still works (<em>kindnesses</em>), conversion works (<em>wit+ness → to witness</em>), compounding works (<em>businesslike</em>). Another derivational suffix never does — so this stays blocked, but the rule as stated was too broad.</td>
-  <td><strong>kindly</strong> holds the slot, and has since Old English.</td>
-  <td><strong>Haplology, unprompted.</strong> You wrote one <code>s</code> where the join wants two, collapsing the double exactly as English does in <em>Engla-land→England</em>, <em>pacific+ism→pacifism</em>, <em>probably→probly</em>. The same ear that produces the seams repaired this one mid-construction.</td>
-  <td class="score"><span class="total">7</span><span class="bits">1·0·3·3·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">flouricious</span><span class="tag yours">yours</span></td>
-  <td><code>-cious</code> still wants a <code>-ce</code> stem, and <strong>flourishing</strong> already holds the slot cleanly. One line of rule; the rest of this row is the find.</td>
-  <td><strong>The accident reunites a family.</strong> <em>Flour</em>, <em>flower</em> and <em>flourish</em> are the same word — Latin <em>flos/florem</em>, via Old French <em>flour</em>. English spelled <em>flower</em> and <em>flour</em> interchangeably until roughly the 1700s, because flour is the <em>flower of the meal</em>, the finest part of the grain. <em>Flourish</em> is Old French <em>floriss-</em>, to come into blossom.</td>
-  <td>So the word points at bread while meaning blossoming, and that isn't an error — it is the etymology showing through the crack. <em>Flora, floral, florid, florist, effloresce</em> all belong to it too. Third accident in this file to pay out, after <em>mercy</em> and the Middle English <code>-tioun</code>.</td>
-  <td class="score"><span class="total">10</span><span class="bits">1·2·3·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">interchangeablicious</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">in a chain with <em>flirtatious · interchangeably · delicious</em></span></td>
-  <td><strong>Libfixes want short bases</strong> — every productive one takes 1–2 syllables: <em>man·splain, work·aholic, hack·athon, Deflate·gate, fun·tastic, booty·licious, vibe·licious</em>. Six syllables before the joke lands means <code>-licious</code> promises a snack and delivers homework. Precisely why <em>vibelicious</em> worked.</td>
-  <td><strong>Second unprompted haplology.</strong> You wrote <em>interchangeab-licious</em>, collapsing the <code>le</code> and the <code>l</code> into one — the same repair as <em>kindnestic</em>. The ear that produces the seams also fixes them mid-build.</td>
-  <td><strong>The chain is a map.</strong> <em>flirtatious</em> = the live <code>-atious</code> family · <em>interchangeably</em> = plain regular <code>-ly</code> · <em>interchangeablicious</em> = libfix · <em>delicious</em> = the false source the libfix was cut from. The file's whole suffix taxonomy in four words.</td>
-  <td class="score"><span class="total">9</span><span class="bits">1·3·3·2·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">wordsmithingly</span><span class="tag yours">yours</span></td>
-  <td>Legal by <code>-ingly</code>, and it clears the manner gate <em>rebracketingly</em> failed — wordsmithing is something a person does in a moment, with an attitude. No squatter in the adverb slot.</td>
-  <td>Sense arrives pre-loaded: corporate English already uses <em>wordsmithing</em> pejoratively — fiddling with phrasing instead of touching the problem. The adverb inherits that for free.</td>
-  <td><strong>Refines the <em>victorifully</em> rule.</strong> WORD-smith-ing-ly is also four syllables but works, because compounds carry secondary stress — the <em>smith</em> beats under the main stress and prevents the three-weak lapse. <em>VIC-to-ri-ful</em> has no such support. The constraint was never syllable count; it was the lapse. <br><br><strong>Typo paid, fourth time:</strong> <em>worsmith</em> — a worse-smith, one who makes a thing worse by working it.</td>
-  <td class="score"><span class="total">18</span><span class="bits">4·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">planification</span><span class="tag yours">yours</span><br><span class="w dead">planificationously</span><span class="tag dead">blocked</span></td>
-  <td><strong>Already real.</strong> Borrowed from French <em>planification</em> / Spanish <em>planificación</em>; lives in development economics and EU/UN prose. Sometimes flagged as a Gallicism, but dictionaried. <code>-ationously</code> dies on the standing rule; <strong>planificationally</strong> is open.</td>
-  <td><strong>Your diagnostic predicted it.</strong> <em>Plan</em> is a noun, so <code>-ification</code> is correct — and the language independently agrees, having already built the word. First time the <code>-ification</code> instinct landed on something real rather than something needing defence.</td>
-  <td>Sense is exactly the systemic reading sought elsewhere: <em>planning</em> is what you do on a Sunday, <em>planification</em> is what a ministry does. <br><br><strong>Curiosity:</strong> English took the noun without the verb — we have <em>planification</em> but barely <em>planify</em>. It arrived whole from French, skipping the chain <em>classify→classification</em> had to walk.</td>
-  <td class="score"><span class="total">14</span><span class="bits">1·5·4·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">compostification</span><span class="tag yours">yours</span></td>
-  <td>Passes the noun-base diagnostic, and the register matches for once — <em>compost</em> is Latinate, from <em>compositum</em>, "something put together," via Old French. Same root as <em>composite, compound, composition, compote</em>. The Latin suffix is coming home rather than crashing a Germanic party.</td>
-  <td><strong>The only honest agent-deletion in the collection.</strong> Every other <code>-ification</code> here hides a hand that really exists — someone <em>is</em> loopholing the code, someone <em>is</em> assembling the successes. Nothing decomposes a compost pile. Bacteria, heat, time. The agentless suffix finally describes an agentless process.</td>
-  <td><strong>Open slot: generative decay.</strong> <em>Composting</em> has a gardener in it, <em>decomposition</em> is clinical, <em>rot</em> is loss. Nothing names breakdown that is the point — the dead thing becoming the material of the next thing — outside a literal garden. Careers, institutions and whole scenes do this unnamed.</td>
-  <td class="score"><span class="total">18</span><span class="bits">4·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">wartard</span> <span class="w">wartardification</span> <span class="w">wartardificationously</span><span class="tag yours">yours</span></td>
-  <td>Recorded, not developed. <code>-tard</code> is a slur template — every instance recycles <em>retard</em> as the insult whoever the target is.</td>
-  <td><strong>Textbook libfix, though.</strong> There is no morpheme <em>tard</em>: <em>retard</em> is Latin <em>re-</em> + <em>tardus</em>, "slow," sliced where the seam wasn't. Identical operation to <em>Watergate</em>→<code>-gate</code> and <em>deliciosus</em>→<code>-licious</code>. The honest family is <em>tardy</em> and <em>tardigrade</em>, "slow-walker."</td>
-  <td><strong>The concept is dead-centre for this collection.</strong> Advocating a relation one is not in and will not enter is the purest case of the spine — cleaner than <em>followance</em> or <em>disclaimerciously</em>. English already has <strong>chickenhawk</strong> for the specific hypocrisy, and <em>armchair general</em> for the milder version. The idea deserves a word; the root is yours to pick.</td>
-  <td class="score"><span class="total">—</span><span class="bits">not scored</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">vibepromptingly</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">"He created new software vibepromptingly"</span></td>
-  <td>Legal by <code>-ingly</code>, clears the manner gate, written in the house frame — the same construction as the founding citation forty-one words earlier.</td>
-  <td><strong>Stress rule confirmed a third time.</strong> VIBE-promp-ting-ly survives four syllables because the compound carries secondary stress on <em>promp</em>, exactly as <em>wordsmithingly</em> does and <em>victorifully</em> cannot.</td>
-  <td><strong>Draws a distinction nobody has.</strong> <em>Vibe coding</em> (Karpathy, 2025) means accepting the <em>output</em> unread. <strong>Vibeprompting</strong> names the input end — the ask given as a mood rather than a spec. They come apart cleanly: you can vibe-prompt and review every line, or write a precise spec and never look at the result. English has a term for the second and none for the first.</td>
-  <td class="score"><span class="total">18</span><span class="bits">4·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">warcriminalicious</span> <span class="w">wagewarification</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">"when alleged war criminal is accusing court of waging war"</span></td>
-  <td><strong>Overturned by the artifact.</strong> This was called a semantic block — <code>-licious</code> encodes appetite, therefore wrong for inversion. That holds only in neutral prose. Deployed as a pop-art poster, sunburst and halftone, the register <em>is</em> appetite: the piece relishes the reversal, so the suffix does exactly the right work. Fifth correction in this file, and the first caught by an object rather than an argument.</td>
-  <td><span class="w">warification</span> — drop <em>wage</em> and the diagnostic passes: <em>war</em> is a noun. Names the reframing of a non-war thing as war, and is agentless in the honest way <em>compostification</em> is. Your case is that word aimed backwards: warification deployed by a defendant against the court trying him.</td>
-  <td><strong>The word already existed: CHUTZPAH.</strong> Its canonical illustration is the man who murders his parents then pleads for mercy as an orphan — exactly the described structure, the offender claiming the victim's standing and recasting the tribunal as aggressor. It was printed at the bottom of the poster the whole time. <em>Tu quoque</em> and <strong>DARVO</strong> (Freyd, 1997) are the technical siblings; chutzpah is the ordinary-English one. <br><br><strong>Inversion is otherwise prefix territory</strong> — <em>counter-, contra-, retro-</em>. Suffixes modify what a word is; prefixes are where reversal lives.</td>
-  <td class="score"><span class="total">11</span><span class="bits">3·2·3·3·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">couldism</span> <span class="w">wouldism</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">"something that could be or would be"</span></td>
-  <td>Legal on a live model — <strong>whataboutism</strong>, where <code>-ism</code> attaches not to a doctrine but to a conversational move. Naming a habitual mental gesture with <code>-ism</code> is established and productive.</td>
-  <td><strong>Genuinely a pair, not a synonym twice.</strong> <em>Couldism</em> is possibility held as identity, facing forward — the novel always about to be written. <em>Wouldism</em> is the counterfactual held as identity, facing back — <em>I would have been a—</em>. Same distance from the real, opposite directions.</td>
-  <td><strong>The grammar was already doing the work.</strong> <em>Could</em> and <em>would</em> are past tenses (of <em>can</em>, <em>will</em>) performing non-past duty, because English marks unreality as pastness: <em>if I were, I would go, I wish I had</em>. The bases encode "not real" before the suffix adds anything. <br><br><strong>Third member occupied:</strong> Karen Horney named "the tyranny of the <em>should</em>" in 1950. Obligation taken; possibility and counterfactual open.</td>
-  <td class="score"><span class="total">19</span><span class="bits">5·4·5·5·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">blobilicious</span> <span class="w">blobifully</span><span class="tag yours">yours</span><br><span class="w dead">blobiliciousfully</span><span class="tag dead">blocked</span></td>
-  <td><strong>The first justified inserted vowel.</strong> In <em>blobilicious</em> the <code>-i-</code> is <strong>epenthesis</strong> — a vowel breaking an awkward cluster, since <em>bloblicious</em> collides two <code>bl-</code> onsets. Every earlier inserted vowel had no source and no motivation; this one has a job. <em>Blob</em> is also an ideal libfix base: one syllable, comic by texture. (Cf. <em>blobitecture</em>, mid-90s.)</td>
-  <td><strong>blobifully — right rhythm, missing part.</strong> BLOB-i-ful is exactly S-w-w, the <em>beautiful/dutiful/merciful</em> shape, so the stress is flawless. But there is no <em>*blobby</em> as a noun, so the <code>i</code> has nothing to mutate from. The ear built the correct shape around an absent base.</td>
-  <td><strong><code>-ful</code> has two senses.</strong> <em>Characterised by</em> — beautiful, careful, hopeful. <em>Amount contained in</em> — handful, mouthful, spoonful, armful. Concrete nouns trigger the measure reading by default, which is why <em>blobful</em> is a quantity of paint and not a personality. <br><br><strong>blobiliciousfully</strong> is the <code>-ously</code> stack in new clothes: <code>-licious</code> and <code>-fully</code> are both "characterised by," two roads to one destination.</td>
-  <td class="score"><span class="total">15</span><span class="bits">2·4·4·5·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">brainfarticiously</span><span class="tag yours">yours</span></td>
-  <td><strong>Fails on the project's first discovery.</strong> <code>-ciously</code> pulls stress forward one syllable, never two. <em>dis·CLAIM·er → dis·clai·MER·cious·ly</em> is one hop; <em>BRAIN·fart → brain·fart·I·cious·ly</em> is two, and produces the same stranded-middle wobble as <em>disclaimerouciously</em>. <code>-icious</code> also lacks a <code>-ce</code> stem, so it would be an ear-word regardless — permitted, but only when the ear approves.</td>
-  <td><span class="w">brainfartingly</span> — BRAIN·fart·ing·ly. The compound converts to a verb freely, <code>-ingly</code> takes it, and the stress never moves; secondary stress on <em>fart</em> carries the four-syllable tail exactly as in <em>wordsmithingly</em> and <em>vibepromptingly</em>, both 18s.</td>
-  <td><strong>Open slot.</strong> <em>Absentmindedly</em> names a state — ongoing distraction. A brain fart is a discrete event, one glitch in an otherwise attentive mind. Only the first has a word. <br><br><em>She addressed it brainfartingly to the whole company, having been careful all week.</em></td>
-  <td class="score"><span class="total">11</span><span class="bits">3·2·4·2·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">legitimateciously</span><span class="tag yours">yours</span></td>
-  <td>Founding rule again: <em>le·GIT·i·mate → le·git·i·MATE·cious·ly</em> hops the stress two syllables. And <strong>legitimately</strong> already exists, fully regular.</td>
-  <td><span class="w">legiticiously</span> — <strong>clip the base to fix the meter.</strong> <em>Legit</em> is already a real clipping, and clipping moves the stress rightward to meet the suffix: <em>le·git·I·cious·ly</em> scans w·w·S·w·w, the <strong>identical metrical shape as</strong> <em>dis·clai·MER·cious·ly</em>. One hop, five syllables, same rhythm. Register does independent work — a word about performed legitimacy should not sound respectable.</td>
-  <td><strong>The concept is among the best here.</strong> <em>Legitimately</em> means actually legitimate; English has nothing for <em>performing</em> legitimacy. Sits beside <em>infographicity</em> and <em>successitiously</em>, and describes the founding image's self-convened council exactly. <br><br><em>The paperwork was filed legiticiously, by an office that had existed for six days.</em></td>
-  <td class="score"><span class="total">10</span><span class="bits">5·1·3·1·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">litigatious</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">"someone who likes to litigate"</span></td>
-  <td><strong>litigious</strong> already exists and means exactly that — Latin <em>litigiosus</em>, from <em>litigium</em>, a dispute. Slot occupied by seniority.</td>
-  <td><strong>Properly formed, though — and it corrects me.</strong> <code>-atious</code> does not attach to verbs; it comes from <code>-ation</code> nouns, and the set is nearly closed: <em>ostentation→ostentatious, flirtation→flirtatious, vexation→vexatious, disputation→disputatious</em>. <em>Litigation</em> is fully live, so <em>litigatious</em> has its base. My own <em>ponderatiously</em> does not — it needs <em>ponderation</em>, which is archaic. Your word on this suffix is sounder than mine.</td>
-  <td><strong>Sixth correction.</strong> Earlier in this file <code>-atious</code> was called "the one adjective family in this region still accepting new members." Overstated — it is licensed by an <code>-ation</code> noun underneath, and there are only a handful. <em>Litigious</em> wins only because it entered English through <em>litigium</em> rather than through <em>litigation</em>, centuries before the regular form could be derived.</td>
-  <td class="score"><span class="total">14</span><span class="bits">0·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">bangerlicious</span> <span class="w">bangerliciously</span><span class="tag yours">yours</span><br><span class="w dead">bargerliciousfully</span><span class="tag dead">blocked</span></td>
-  <td><strong>New rule: libfixes want neutral bases.</strong> The suffix supplies the judgment. <em>Booty, vibe, blob</em> are neutral and <code>-licious</code> adds the appetite. <em>Banger</em> already means excellent, so the suffix says it twice — intensification without new meaning. Louder, not richer.</td>
-  <td><strong>bangerliciously</strong> is formable but <code>-ly</code> blunts it. Libfixes are punchy by nature; <em>deliciously</em> works because <em>delicious</em> is a full adjective, while a fifth syllable turns a snack suffix into a sentence.</td>
-  <td><strong>bargerliciousfully</strong> — stacking, by the rule from <em>blobiliciousfully</em>: <code>-licious</code> and <code>-fully</code> are both "characterised by." <br><br><strong>Where <code>-licious</code> still has room:</strong> not bodies (saturated), not food (home field), not evaluations (redundant). <em>Vibelicious</em> found the live vein — neutral abstractions — and it is not worked out.</td>
-  <td class="score"><span class="total">14</span><span class="bits">1·4·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">rejectificationsly</span> <span class="w">misspelingfications</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">"who are you to judge?" · "all misspelingfications matter"</span></td>
-  <td><strong>Standing conceded.</strong> "Dead by the rule" was the wrong phrase, used often in this table. These rules describe what English currently does — weather reports, not permits. A word is dead only if nobody picks it up, and uptake is not mine to grant.</td>
-  <td><strong>The slogan is defensible linguistics.</strong> Every libfix documented here was once an error: <em>a napron→an apron, a nadder→an adder, an ekename→a nickname, naranja→orange, helico-pter→copter, warderobe→-drobe, deliciosus→-licious</em>. Each was somebody getting it wrong, and each is now correct.</td>
-  <td><strong>The <code>-s</code> is legitimate.</strong> English has an adverbial <code>-s</code>, an Old English genitive surviving in <em>always, besides, towards, nowadays, unawares, needs must</em>. <em>Rejectificationsly</em> stacks two adverb markers where the language normally takes one — redundancy, not illegality, and redundancy is exactly how <em>nowadays</em> acquired its <code>-s</code>. <br><br><strong>Self-demonstrating:</strong> <em>misspelingfications</em> misspells <em>misspelling</em>. Third self-enacting coinage in the file.</td>
-  <td class="score"><span class="total">—</span><span class="bits">judgment withdrawn</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">hackification</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">"hackification could have occurred"</span></td>
-  <td>Passes the noun-base diagnostic cleanly — <em>hack → hackify → hackification</em>. No squatter: <em>hacking</em> has a hacker in it, this has none.</td>
-  <td><strong>The subtitle carries it.</strong> "Could have occurred" is breach-notification English verbatim — no actor, no certainty, no committing tense. Paired with an agentless noun, <strong>both halves delete the responsible party</strong>: the noun removes the hacker, the modal removes the event. Purest specimen of the agent-suppression pattern in the file, and it arrived on a poster rather than in this table.</td>
-  <td><strong>A couldism in the wild</strong>, coined two turns earlier and deployed without flagging — a real event described in the tense English reserves for unreality. <br><br><strong>Third disclaimercious artifact:</strong> the hedge given monumental typographic weight. <br><br><strong>Open slot:</strong> the conversion of ordinary objects into attack surface — fridges, doorbells, pacemakers. Unnamed, and this word sits on it.</td>
-  <td class="score"><span class="total">18</span><span class="bits">4·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">hackisiously</span><span class="tag yours">yours</span></td>
-  <td><strong>Stress passes, with a corollary.</strong> <em>Hack</em> is monosyllabic, so the stress has nowhere to sit but adjacent to the suffix — one hop, guaranteed. <strong>Short bases cannot fail the <code>-ciously</code> test.</strong> It caught <em>brainfarticiously</em> and <em>legitimateciously</em>, both two hops; it can never catch a one-syllable base.</td>
-  <td><strong>Spelling.</strong> English writes /ʃəs/ as <code>-cious</code>, <code>-tious</code> or <code>-xious</code>, never <code>-sious</code> — so <span class="w">hackicious</span> (on <em>malicious, delicious</em>) or <em>hackitious</em>.</td>
-  <td><strong>Squatter: <em>hackish</em> is real</strong> — Jargon File vocabulary, "characteristic of hackers," with <em>hackishly</em> as the existing adverb, phonetically near what was written. <br><br><strong>But they differ usefully.</strong> <em>Hackishly</em> = in the manner of. <em>Hackiciously</em> = with the relish of — <code>-icious</code> evaluates (<em>delicious, malicious, precious</em>) where <code>-ish</code> only classifies. The pleasure of the elegant kludge is open ground. <br><br><em>He solved it hackiciously, in four lines nobody else could read.</em></td>
-  <td class="score"><span class="total">12</span><span class="bits">2·3·3·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">mindfuckish</span> <span class="w">mindfuckishingly</span><span class="tag yours">yours</span></td>
-  <td>Clean — <code>-ish</code> takes nouns freely (<em>childish, bookish, foolish, feverish, sheepish</em>) and is among the most productive suffixes English has left. Picked up directly from <em>hackish</em> the turn before.</td>
-  <td><strong>The hedge is accurate.</strong> <code>-ish</code> softens (<em>smallish, reddish, fine-ish</em>), so <em>mindfuckish</em> means mindfuck-adjacent rather than the thing itself — which is honest about the image: pink llamas, broccoli and a Beatles submarine are pleasant weirdness, not vertigo. Contrast the founding image, which was earnest — sacred geometry, MASS AWAKENING, solemn as liturgy. That one asserted profundity; this one plays, and <code>-ish</code> marks exactly that difference.</td>
-  <td><strong>mindfuckishingly</strong> — the <code>-ing</code> has nowhere to attach. <code>-ish</code> yields an adjective and <code>-ing</code> needs a verb; there is no <em>to mindfuckish</em>. Same shape as the terminal-<code>-ness</code> finding. Straight to <span class="w">mindfuckishly</span>, on <em>childishly, foolishly, sheepishly</em>.</td>
-  <td class="score"><span class="total">17</span><span class="bits">3·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">invation</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">"invitation to invasion — a new category, merging in"</span></td>
-  <td><strong>New category: blending.</strong> Everything prior was affixation or compounding; this is a portmanteau, where the parents share material rather than sit adjacent. First one made deliberately — <em>floordrobe</em> was found, not built.</td>
-  <td><strong>Unusually well-seated.</strong> Both parents share <em>two</em> seams — the <code>in-</code> prefix and the <code>-ion</code> ending — where most blends overlap at one (<em>br+unch, sm+og, mot+otel</em>). And they are semantically adjacent: both carry Latin <em>in-</em>, "into." Invitation is calling someone in; invasion is going in uninvited. Same act, opposite permission, and the word sits on the hinge.</td>
-  <td><strong>Referent is real:</strong> entry legitimised by an invitation the enterer arranged. "Invited intervention" recurs in international law disputes; so do terms of service, consent banners where accepting <em>is</em> the entry, and the guest who treats one invitation as standing access. The <em>legiticiously</em> problem in physical form. <br><br><strong>Weakness:</strong> <em>invasion</em> is loud, <em>invitation</em> survives only as that lone <code>t</code>. <span class="w">invitasion</span> keeps both audible at one syllable more — economy against legibility.</td>
-  <td class="score"><span class="total">17</span><span class="bits">5·4·4·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">hypersticiously</span><span class="tag yours">yours</span><br><span style="font-size:.82rem;color:var(--muted)">"bringing reality into existence through shared belief and reinforcing feedback loops"</span></td>
-  <td><strong>Hyperstition already exists</strong> — CCRU, Warwick, 1990s (Nick Land, Sadie Plant, Mark Fisher): fictions that make themselves real. The subtitle is an accurate definition. Spelling takes a <code>t</code>: <span class="w">hyperstitiously</span>, on <em>superstition→superstitious</em>, from Latin <em>superstitiosus</em>.</td>
-  <td><strong>The eighth false seam — and one that won.</strong> <em>Superstitio</em> is <em>super</em> + <em>stare</em>, "to stand over." There is no morpheme <em>stition</em>. The CCRU sliced where the seam wasn't, treated <code>-stition</code> as reusable, and swapped the prefix — the identical operation behind <code>-licious</code>, <code>-gate</code>, <code>-athon</code>, <code>-drobe</code>.</td>
-  <td><strong>Self-demonstrating at maximum depth.</strong> A word about fictions that become real by circulating, which became real by circulating, formed by the very mechanism this file documents: an error that caught on. <br><br><strong>And it names the founding image.</strong> <em>PlanetaryCouncil.org</em> — an authority existing because it was typed — was logged in the first entry as "the asserted institution," with no word for the mechanism. The mechanism is hyperstition.</td>
-  <td class="score"><span class="total">14</span><span class="bits">1·4·4·5·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">remixification</span><span class="tag yours">yours</span></td>
-  <td>Clean by the diagnostic — <em>remix</em> is a noun, chain runs <em>remix → remixify → remixification</em>. Register sits comfortably: <em>mix</em> is Latinate (<em>miscere</em>), so the suffix isn't crashing a Germanic party.</td>
-  <td><strong>Agentless in the useful way.</strong> <em>Remixing</em> has a remixer in it; this has none. The process happens to a domain rather than being done to it.</td>
-  <td><strong>Slot is real.</strong> Lessig's <em>remix culture</em> names the condition; nothing names the process by which a domain becomes source material — the point where nothing is made, only recombined. Also a fair description of this table: fifty-eight turns of remixifying English morphemes.</td>
-  <td class="score"><span class="total">17</span><span class="bits">3·5·5·4·—</span></td>
-</tr>
-
-<tr>
-  <td><span class="w">acquiescence</span> <span class="w">acquiescenceable</span><span class="tag yours">yours</span></td>
-  <td><code>-able</code> wants a verb — <em>readable, breakable, acceptable</em>, "capable of being X-ed." <em>Acquiescence</em> is already a noun derived from <em>acquiesce</em>, so the suffix has nothing to bite on. And the adjective slot is occupied: <strong>acquiescent</strong>, ready to accept without protest.</td>
-  <td>Built from the verb, the model would be <strong>agreeable</strong>: <code>-able</code> on an intransitive means <em>disposed to</em> rather than <em>can be done to</em>, as in <em>perishable</em>, liable to perish. That yields <em>acquiescable</em>, which <em>acquiescent</em> already covers.</td>
-  <td><strong>The etymology is the find.</strong> <em>Acquiesce</em> is Latin <em>ad-</em> + <em>quiescere</em>, "to become quiet at" — consent by going silent, stated in its own root. Family: <em>quiet, quiescent, tranquil, requiem</em>, and <em>coy</em>, which reached English through French from <em>quietus</em>. <br><br><strong>The purest agentless act in English.</strong> A deed composed entirely of absence: nobody does anything, they fail to object, and the failure is converted into consent — <em>qui tacet consentire videtur</em>. Every <code>-ification</code> in this table reached for a process with no one performing it. This is an agreement with no one agreeing, and it has been in English since the 1600s.</td>
-  <td class="score"><span class="total">6</span><span class="bits">0·1·3·2·—</span></td>
-</tr>
-
-</tbody>
-</table>
-</div>
-
-<div class="rule" style="margin-top:1.2rem; border-left-color: var(--yours-fg)">
-  <strong>Libfixes — the seam problem, vindicated.</strong> A mis-heard join, extracted and reused, is how
-  English manufactures suffixes. <code>-gate</code> (<em>Watergate</em> is a hotel), <code>-athon</code>
-  (<em>Marathon</em> is a place), <code>-holic</code> (<em>alcohol</em>+<em>ic</em>), <code>-tastic</code>
-  (<em>fantastic</em> isn't <em>fan</em>+<em>tastic</em>), <code>-splain</code> (<em>ex</em>+<em>plain</em>),
-  <code>-burger</code> (<em>Hamburg</em>+<em>er</em>), <code>-licious</code> (Latin <em>deliciosus</em>).
-  Arnold Zwicky's term for these is <em>libfix</em>. The ear that hears <code>-fication</code> as one solid
-  chunk is running the same mechanism that produced <em>hackathon</em> and <em>mansplain</em>. The only
-  difference between the error and the innovation is uptake.
-</div>
-
-<div class="rule" style="margin-top:1.2rem; border-left-color: var(--dead-fg)">
-  <strong>Correction.</strong> An earlier note here claimed no suffix attaches past an <code>-ing</code>.
-  Wrong, and it cost you a word. Only <em>derivational</em> suffixes are blocked (<code>-ous</code>,
-  <code>-ity</code>, <code>-ify</code>); <code>-ly</code> attaches freely and productively —
-  <em>lovingly, knowingly, jokingly, strikingly</em>. <strong>ponderingly</strong> was legal from the start,
-  formed off <em>pondering</em> exactly as first written. <em>Ponderatiously</em> was never needed to reach
-  that sense.
-</div>
-
-<div class="rule" style="margin-top:1.2rem; border-left-color: var(--mine-fg)">
-  <strong>The seam problem.</strong> Five chunks heard as single suffixes. Four are really joins, with the
-  first piece belonging to the base:
-  <code>-fication</code> is <code>-ify</code>+<code>-ation</code> (the <code>i</code> was dropped);
-  <code>-ifully</code> is a <code>-y</code> noun + <code>-ful</code>+<code>-ly</code> (an <code>i</code> was added);
-  <code>-cious</code> needs a <code>-ce</code> stem;
-  <code>-alistic</code> is a <code>-al</code> base + <code>-istic</code> (<em>natural, ideal, material</em>).
-  The fifth, <code>-licious</code>, is a genuine productive libfix — the identical move, made right by uptake.
-  These are all real rhythmic units, which is why the coinages scan. The ear is correct about the music and
-  blind to the seam, and that is precisely the faculty that manufactures new suffixes. Four wrong, one born.
-</div>
-
-<div class="rule" style="margin-top:1.2rem">
-  <strong>The <code>-ification</code> diagnostic.</strong> Nine proposals sort with no exceptions.
-  Noun bases work — <em>loophole</em>, <em>success</em>, <em>follow</em> (n.). Verb bases are round trips —
-  <em>intertwine</em>, <em>reprogram</em>, <em>unhappen</em>, <em>prevent</em>, <em>expand</em> — because
-  <code>-ify</code>'s only job is making a verb out of something that isn't one. Give it a verb and it has
-  nothing to do, so the plain <code>-ing</code> or <code>-ion</code> form wins. The suffix is your signature
-  move and two of the strongest words here came from it; it just needs a noun.
-</div>
-
-<h2>The rubric</h2>
-<p class="note">Five axes, 0–5 each, 25 total. Scores are shown as <code>slot·form·clarity·music·spine</code>. Provisional and arguable — rewrite the axes if they measure the wrong things.</p>
-
-<div class="rubric">
-  <div class="card">
-    <span class="k">Slot</span>
-    <h3>Is the meaning unoccupied?</h3>
-    <p>Does an existing word already cover it? <em>Ponderously</em> and <em>infographically</em> each killed a candidate by already being there.</p>
-  </div>
-  <div class="card">
-    <span class="k">Form</span>
-    <h3>Is the derivation legal?</h3>
-    <p>Right suffix, right base, right linking vowel, no stacking. An honest ear-word scores well here; a disguised one does not.</p>
-  </div>
-  <div class="card">
-    <span class="k">Clarity</span>
-    <h3>Understood on first contact?</h3>
-    <p>Your test. Would a stranger guess it without a paragraph of explanation?</p>
-  </div>
-  <div class="card">
-    <span class="k">Music</span>
-    <h3>Does it sound like a word?</h3>
-    <p>Stress, syllable count, dead weight — plus any buried gift, like the <em>mercy</em> in <em>disclaimerciously</em>.</p>
-  </div>
-  <div class="card">
-    <span class="k">Spine</span>
-    <h3>Does it fit the collection?</h3>
-    <p>So far every strong entry names one thing: the performance of a relation nobody is actually in.</p>
-  </div>
-</div>
-
-<h2>Open questions</h2>
-<div class="rule">
-  <p style="margin:0 0 .6rem"><strong>1.</strong> What was <em>infographicously</em> reaching for? Never asked, and the answer changes what replaces it.</p>
-  <p style="margin:0 0 .6rem"><strong>2.</strong> What did you mean by <em>ponderingciously</em>? I inferred a sense and built on the inference.</p>
-  <p style="margin:0"><strong>3.</strong> Keep <em>reprogamification</em>? The typo left <em>gamification</em> intact inside it and the referent is real.</p>
-</div>
-
+<body><div class="wrap">
+<nav><a href="">the lexicon</a><a href="leaderboard/">leaderboard</a><a href="working-table.html">working table</a><a href="https://github.com/PlanetaryCouncil/wordshaping.org">source</a></nav>
+<h1>Wordshaping</h1><p class="byline">A lexicon by <b>Marsita</b></p><p class="tag-line">Words that should already exist.</p><blockquote class="epi">Subtle nuances like this matter. Good wordsmithing and wordshaping matters.</blockquote><h2>The lexicon</h2><p class="lede">Every word has its own page and its own URL, where the original wording is preserved and public use is documented. Nothing here is removed for scoring badly.</p><div class="entry"><a class="w" href="disclaimerciously/">disclaimerciously</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>Publishing something extravagant while affixing a disclaimer that absolves nothing and advertises everything. Of an object: bearing a disclaimer as composition rather than appendix — the hedge given margin, weight and iconography.</p><div class="orig">first written <b>disclaimerouciously</b></div></div>
+<div class="entry"><a class="w" href="followance/">followance</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>Subscription sustained without attention; the dutiful maintenance of a following one does not read.</p></div>
+<div class="entry"><a class="w" href="couldism/">couldism</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>Possibility held as identity. Faces forward — the novel always going to be written, the potential one is perpetually sitting on.</p></div>
+<div class="entry"><a class="w" href="wouldism/">wouldism</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>The counterfactual held as identity. Faces back — I would have been a—</p></div>
+<div class="entry"><a class="w" href="genrification/">genrification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span> <span class="score">· 1 sighting</span><p>The process by which art becomes gentrified enough to be categorised into genres.</p><div class="orig">first written <b>genrefication</b></div></div>
+<div class="entry"><a class="w" href="loopholification/">loopholification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>The restructuring of a rule system around its exceptions, continued until the exceptions constitute the system.</p><div class="orig">first written <b>loopholefication</b></div></div>
+<div class="entry"><a class="w" href="successification/">successification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>Work restructured around the measurement of winning, until the measuring is the work.</p><div class="orig">first written <b>successfication</b></div></div>
+<div class="entry"><a class="w" href="compostification/">compostification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>Generative decay; breakdown that is the point. The dead thing becoming the material of the next thing.</p></div>
+<div class="entry"><a class="w" href="hackification/">hackification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span> <span class="score">· 1 sighting</span><p>The conversion of ordinary objects into attack surface — fridges, doorbells, pacemakers, thermostats.</p></div>
+<div class="entry"><a class="w" href="clusterfuckification/">clusterfuckification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>The mechanism rather than the state — the incremental path by which individually reasonable decisions arrive at disaster with nobody having chosen it.</p><div class="orig">first written <b>clusterfuckation</b></div></div>
+<div class="entry"><a class="w" href="remixification/">remixification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>The process by which a domain becomes source material — the point at which nothing is made, only recombined.</p></div>
+<div class="entry"><a class="w" href="followification/">followification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>The conversion of every relation — colleagues, clergy, physicians, friends — into an account one subscribes to asymmetrically.</p></div>
+<div class="entry"><a class="w" href="intertwinification/">intertwinification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>Entanglement pursued as policy — things bound together so they cannot later be separated. Vendor lock-in, forced bundling, the merger structured to be unwindable.</p></div>
+<div class="entry"><a class="w" href="reprogramification/">reprogramification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>The doctrine that any settled thing — a habit, a belief, an institution, a culture — is a codebase awaiting a patch.</p></div>
+<div class="entry"><a class="w" href="preventification/">preventification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>The condition of an institution in which every process exists to prevent rather than to do; the risk register eating the whole job.</p></div>
+<div class="entry"><a class="w" href="warification/">warification</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>The reframing of a non-war thing as war — a trial, a policy dispute, a newsroom argument.</p><div class="orig">first written <b>wagewarification</b></div></div>
+<div class="entry"><a class="w" href="preventfully/">preventfully</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>Out of a temperament organised around what one is avoiding — as distinct from preventively, which describes a purpose rather than a disposition.</p><div class="orig">first written <b>preventifully</b></div></div>
+<div class="entry"><a class="w" href="wordsmithingly/">wordsmithingly</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>Polishing the wording while the substance sits untouched.</p><div class="orig">first written <b>worsmithingly</b></div></div>
+<div class="entry"><a class="w" href="vibepromptingly/">vibepromptingly</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>Building by asks given as moods rather than specifications. The input end of the thing vibe coding names at the output end.</p></div>
+<div class="entry"><a class="w" href="mindfuckish/">mindfuckish</a> <span class="pos">adjective</span> <span class="badge b-marsita">coined here</span><p>Mindfuck-adjacent. Near it, not it — pleasant weirdness rather than vertigo, with the dosage stated honestly on the label.</p></div>
+<div class="entry"><a class="w" href="invation/">invation</a> <span class="pos">noun</span> <span class="badge b-marsita">coined here</span><p>Entry legitimised by an invitation the enterer arranged.</p></div>
+<div class="entry"><a class="w" href="vibelicious/">vibelicious</a> <span class="pos">adjective</span> <span class="badge b-marsita">coined here</span><p>Of an atmosphere: consumed with appetite rather than merely present. Vibey describes a room; vibelicious describes wanting to eat it.</p></div>
+<div class="entry"><a class="w" href="warcriminalicious/">warcriminalicious</a> <span class="pos">adjective</span> <span class="badge b-marsita">coined here</span> <span class="score">· 1 sighting</span><p>Relishing the spectacle of an accused inverting the frame on the tribunal.</p></div>
+<div class="entry"><a class="w" href="hackiciously/">hackiciously</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>With the relish of a hacker — the pleasure of the elegant kludge. Doing it the clever way because the clever way is delicious, not because it is better.</p><div class="orig">first written <b>hackisiously</b></div></div>
+<div class="entry"><a class="w" href="legiticiously/">legiticiously</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>In a manner that performs legitimacy rather than possessing it.</p><div class="orig">first written <b>legitimateciously</b></div></div>
+<div class="entry"><a class="w" href="brainfartingly/">brainfartingly</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>By a discrete lapse in an otherwise attentive mind — as distinct from absentmindedly, which names an ongoing state.</p><div class="orig">first written <b>brainfarticiously</b></div></div>
+<div class="entry"><a class="w" href="blobilicious/">blobilicious</a> <span class="pos">adjective</span> <span class="badge b-marsita">coined here</span><p>Pleasingly amorphous. Referent still open — the form is sound and the meaning is unclaimed.</p></div>
+<div class="entry"><a class="w" href="absurdalistic/">absurdalistic</a> <span class="pos">adjective</span> <span class="badge b-marsita">coined here</span><p>The absurd performed as a genre rather than arrived at.</p></div>
+<div class="entry"><a class="w" href="rebracketingly/">rebracketingly</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>Listening in such a way that the seams fall somewhere other than where the history put them.</p></div>
+<div class="entry"><a class="w" href="higherdimensionalshapeshifterously/">higherdimensionalshapeshifterously</a> <span class="pos">adverb</span> <span class="badge b-marsita">coined here</span><p>In the manner of meaning asserted by accumulation — on the theory that enough stacked components must add up to profundity.</p></div>
+<div class="entry"><a class="w" href="unhappening/">unhappening</a> <span class="pos">noun</span> <span class="badge b-claude">suggested</span><p>The removal of an occurred event from the record; an incident officially declared not to have taken place while the people who lived it remain.</p><div class="orig">first written <b>unhappenfication</b></div></div>
+<div class="entry"><a class="w" href="infographicity/">infographicity</a> <span class="pos">noun</span> <span class="badge b-claude">suggested</span><p>Evidentiary appearance in excess of evidentiary content. The bar chart without an axis; the arrow diagram asserting a causation nobody measured.</p><div class="orig">first written <b>infographicously</b></div></div>
+<div class="entry"><a class="w" href="successitiously/">successitiously</a> <span class="pos">adverb</span> <span class="badge b-claude">suggested</span><p>In a manner that performs success; the win assembled after the fact, the metric chosen once the number was known.</p><div class="orig">first written <b>successficatiously</b></div></div><h2>Kept as a record</h2><p class="lede">Built on reasoning that later turned out to be wrong. Retained rather than deleted, because the reasoning is the point.</p><div class="entry"><a class="w" href="ponderatiously/">ponderatiously</a> <span class="pos">adverb</span> <span class="badge b-claude">suggested</span><p>Performing thought without conducting any — the held pause, the stroked chin, the hmm that precedes no consideration.</p><div class="orig">first written <b>ponderingciously</b></div></div><h2>Words that turned out to be real</h2><p class="lede">Proposed here, then found already living in the language. Half the work of coining is discovering you did not need to.</p><div class="entry"><a class="w" href="floordrobe/">floordrobe</a> <span class="pos">noun</span> <span class="badge b-wild">found in the wild</span><p>The clothing stratum on the bedroom floor, used as storage.</p></div>
+<div class="entry"><a class="w" href="hyperstition/">hyperstition</a> <span class="pos">noun</span> <span class="badge b-wild">found in the wild</span> <span class="score">· 1 sighting</span><p>Fictions that make themselves real; an idea that, once circulating, functions causally to bring about the conditions it describes.</p><div class="orig">first written <b>hypersticiously</b></div></div>
+<div class="entry"><a class="w" href="planification/">planification</a> <span class="pos">noun</span> <span class="badge b-wild">found in the wild</span><p>Institutional planning at ministry scale.</p></div>
+<div class="entry"><a class="w" href="chutzpah/">chutzpah</a> <span class="pos">noun</span> <span class="badge b-wild">found in the wild</span><p>Audacity of a kind that inverts the frame — the offender claiming the victim&#x27;s standing.</p></div><h2>Eight false seams</h2><p class="lede">Chunks heard as single suffixes where the join actually falls elsewhere. Three of the eight are now in dictionaries or academic use. Nothing distinguishes them from the other five except that enough people repeated them.</p><table><thead><tr><th>heard as</th><th>actually</th><th>fate</th></tr></thead><tbody><tr><td><code>-fication</code></td><td>-ify + -ation; the i belongs to the stem side of the join</td><td>does not parse</td></tr>
+<tr><td><code>-ifully</code></td><td>a -y noun + -ful + -ly; that i is the noun&#x27;s own mutated y</td><td>does not parse</td></tr>
+<tr><td><code>-cious</code></td><td>needs a -ce or -ice stem (malice, caprice, grace, space)</td><td>does not parse</td></tr>
+<tr><td><code>-alistic</code></td><td>a -al base + -istic (natural, ideal, material, journal)</td><td>does not parse</td></tr>
+<tr><td><code>-stically</code></td><td>-istic + -ally, the -istic belonging to the base</td><td>does not parse</td></tr>
+<tr><td><code>-licious</code></td><td>delicious is Latin deliciosus; there is no -licious</td><td><span class=win>IN DICTIONARIES</span></td></tr>
+<tr><td><code>-drobe</code></td><td>wardrobe is warderobe, a guard-robe; there is no -drobe</td><td><span class=win>IN DICTIONARIES</span></td></tr>
+<tr><td><code>-stition</code></td><td>superstitio is super + stare; there is no -stition</td><td><span class=win>IN ACADEMIC USE</span></td></tr></tbody></table><h2>How the words were made</h2><p class="field"><b>One suffix, one move</b><span>Each suffix names a destination. They are alternate roads, not successive rungs — -ification plus -ously gains syllables without gaining density. The legal exit from -ification is -ationally.</span></p>
+<p class="field"><b>-ification wants a noun</b><span>Loophole, success, compost, remix, hack, war worked. Intertwine, reprogram, unhappen, prevent, expand are round trips, because -ify&#x27;s only job is making a verb out of something that is not one.</span></p>
+<p class="field"><b>Stress travels one syllable, never two</b><span>dis·CLAIM·er becomes dis·clai·MER·cious·ly and holds. BRAIN·fart and le·GIT·i·mate cannot reach. Monosyllabic bases can never fail this test.</span></p>
+<p class="field"><b>Compounds buy syllables</b><span>Secondary stress keeps a long tail from collapsing. WORD·smith·ing·ly survives four syllables; VIC·to·ri·ful cannot.</span></p>
+<p class="field"><b>Clip the base to fix the meter</b><span>Long word, early stress, suffix that pulls right? Shorten the base and the stress comes to meet the suffix instead of failing to reach it. legitimate → legit.</span></p>
+<p class="field"><b>Libfixes want short, neutral bases outside their home field</b><span>One or two syllables; the suffix supplies the judgment, so an already-evaluative base is redundant; and the field the fragment came from is saturated.</span></p>
+<p class="field"><b>The suffix must carry the meaning</b><span>Not just the part of speech. -licious encodes appetite, -ification encodes process. Neither encodes inversion — that is prefix territory.</span></p>
+<p class="field"><b>-ness and -ish are terminal for suffixation</b><span>Nothing derives further from them. Inflection, conversion and compounding still work.</span></p>
+<p class="field"><b>Check whether the rules already built it</b><span>Say it aloud. If it sounds merely unfamiliar rather than invented, it is not a coinage — it is English you had not happened to use. Ponderously, infographically, unhingedly, ponderingly, litigious and victoriously each killed a candidate.</span></p>
+<p class="field"><b>Inspect the typos</b><span>Three accidents paid: mercy inside the founding word, Middle English -tioun from a slipped u, and a three-hundred-year-old split between flour and flower.</span></p>
+<p class="field"><b>Uptake decides, not rules</b><span>These rules describe what English currently does. They are weather reports, not permits. Three of eight false seams here are in dictionaries, and nothing distinguishes them from the other five except that enough people repeated them.</span></p>
 <footer>
-  Companion to <code>WORDS.md</code>, which carries the full entries and the formation notes.
-  This table is the record of what was proposed; that file is the record of what was reasoned.
-  Nothing here has been cut and nothing here will be.
+<a href="">Wordshaping</a> — a lexicon of words that should already exist.<br>
+Sightings are the only thing ranked here. Add one by
+<a href="https://github.com/PlanetaryCouncil/wordshaping.org/issues/new">opening an issue</a> or editing <code>words.json</code>.
 </footer>
-
-</div>
-</body>
+</div></body>
 </html>
