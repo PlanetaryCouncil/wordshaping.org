@@ -765,6 +765,29 @@
       "proposed": "flamingling"
     },
     {
+      "slug": "storylivingrytellers",
+      "word": "storylivingrytellers",
+      "pos": "noun, plural — sing. storylivingryteller; the practice is storylivingrytelling",
+      "say": "STOR-ee-LIV-ing-ree-TELL-erz",
+      "coiner": "eleprocon",
+      "status": "coined",
+      "wotd": "2026-08-26",
+      "def": "People who narrate their own lives while still inside them, in a way that is of practical use to whoever is listening — telling as an act of building rather than of recall.",
+      "cite": "Not the memoir written afterwards, but the account kept while the thing is still being done.",
+      "etym": "storytellers, opened at the waist and packed. Threaded through it is storyliving — being inside the narrative rather than receiving it, current in immersive-media writing since about 2017 — and threaded through that is Buckminster Fuller's livingry (Critical Path, 1981), the tools that support life, coined against weaponry.",
+      "note": "Every other blend in this lexicon has one seam. This has three, and they overlap in a chain: storyLIVING, LIVINGry, story…TELLERS. Each join is paid for by material the next word already owns, so nothing is inserted — the parts are threaded. The frame word survives intact underneath: storytellers is STO-ry-tell-ers, primary on STO and secondary on TELL, and the long form keeps both exactly where they were, with the packed material taking its own beat on LIV. Stress travels zero, as in flamingling. Fuller's livingry is the load-bearing piece: it carries the ethical claim, that the telling is a tool and not an ornament.",
+      "score": null,
+      "sightings": [
+        {
+          "date": "2026-06",
+          "where": "Eleprocon, Substack — “Storylivingrytellers”",
+          "what": "Coined and set out in full: the word broken into its four parts, with storyliving and Fuller's livingry named as the sources.",
+          "url": "https://eleprocon.substack.com/p/storylivingrytellers"
+        }
+      ],
+      "proposed": "storylivingrytellers"
+    },
+    {
       "slug": "floordrobe",
       "word": "floordrobe",
       "pos": "noun",
@@ -931,11 +954,21 @@
   "people": {
     "marsita": {
       "name": "Marsita",
-      "url": "https://github.com/marsrobertson"
+      "url": "https://github.com/marsrobertson",
+      "label": "coined here",
+      "tint": "marsita"
     },
     "venus": {
       "name": "Venus of Artizen",
-      "url": ""
+      "url": "",
+      "label": "coined here",
+      "tint": "venus"
+    },
+    "eleprocon": {
+      "name": "Mark Smith aka Eleprocon",
+      "url": "https://eleprocon.substack.com",
+      "label": "coined elsewhere",
+      "tint": "eleprocon"
     }
   }
 }

@@ -13,6 +13,7 @@ never presented as an erratum.
 """
 
 import json, html, shutil
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -21,19 +22,19 @@ REPO = "https://github.com/PlanetaryCouncil/wordshaping.org"
 CSS = """
 :root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;--line:#e3e0d9;
 --panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;--y-fg:#8a5a2b;
---m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45;--v-bg:#fbe9ef;--v-fg:#9c3f60}
+--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45;--v-bg:#fbe9ef;--v-fg:#9c3f60;--e-bg:#e6eff1;--e-fg:#3d6470}
 @media (prefers-color-scheme:dark){:root{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;
 --faint:#77746d;--line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;
 --y-bg:#3a2c17;--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094;
---v-bg:#3a222c;--v-fg:#eaa2bc}}
+--v-bg:#3a222c;--v-fg:#eaa2bc;--e-bg:#1e2c31;--e-fg:#93c0cc}}
 :root[data-theme=dark]{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;--faint:#77746d;
 --line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;--y-bg:#3a2c17;
 --y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094;
---v-bg:#3a222c;--v-fg:#eaa2bc}
+--v-bg:#3a222c;--v-fg:#eaa2bc;--e-bg:#1e2c31;--e-fg:#93c0cc}
 :root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;
 --line:#e3e0d9;--panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;
 --y-fg:#8a5a2b;--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45;
---v-bg:#fbe9ef;--v-fg:#9c3f60}
+--v-bg:#fbe9ef;--v-fg:#9c3f60;--e-bg:#e6eff1;--e-fg:#3d6470}
 *{box-sizing:border-box}
 body{margin:0;padding:2.5rem 1.5rem 6rem;background:var(--bg);color:var(--fg);
 font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
@@ -66,6 +67,7 @@ font-weight:700;padding:.15rem .45rem;border-radius:3px;vertical-align:2px}
 .b-claude{background:var(--m-bg);color:var(--m-fg)}
 .b-wild{background:var(--w-bg);color:var(--w-fg)}
 .b-venus{background:var(--v-bg);color:var(--v-fg)}
+.b-eleprocon{background:var(--e-bg);color:var(--e-fg)}
 .pos{font-style:italic;color:var(--faint);font-size:.92rem}
 .def{font-size:1.14rem;margin:0 0 1.2rem}
 .cite{font-family:Georgia,serif;font-style:italic;color:var(--muted);padding-left:1rem;
@@ -182,14 +184,28 @@ def pretty(iso):
     return f"{int(dd)} {MONTHS[int(m) - 1]} {y}"
 
 
-def word_of_the_day(ws):
-    """The entry with the latest wotd date. Ties break on document order."""
-    dated = [w for w in ws if w.get("wotd")]
-    return max(dated, key=lambda w: w["wotd"]) if dated else None
+def wotd_schedule(ws):
+    """Every dated entry, oldest first."""
+    return sorted((w for w in ws if w.get("wotd")), key=lambda w: w["wotd"])
 
 
-def badge(c):
-    return f'<span class="badge b-{c}">{LABEL.get(c, c)}</span>'
+def word_of_the_day(ws, on=None):
+    """The latest entry whose day has arrived. Future dates wait their turn."""
+    on = on or date.today().isoformat()
+    due = [w for w in wotd_schedule(ws) if w["wotd"] <= on]
+    return due[-1] if due else None
+
+
+def badge(c, by=None):
+    label = (by or {}).get("label") or LABEL.get(c, c)
+    tint = (by or {}).get("tint", c)
+    return f'<span class="badge b-{tint}">{label}</span>'
+
+
+def named(by):
+    """The coiner's name, linked to wherever their work lives."""
+    n = e(by["name"])
+    return f'<a href="{e(by["url"])}">{n}</a>' if by.get("url") else n
 
 
 def origin_block(w, by):
@@ -214,7 +230,7 @@ def word_page(w, site, d):
                  f' · music {s["music"]} → {s["total"]}/25 · one reader\'s opinion, ranks nothing</p>')
 
     by = person(w, d)
-    author_line = (f'<p class="byline">Coined by <b>{e(by["name"])}</b></p>' if by else
+    author_line = (f'<p class="byline">Coined by <b>{named(by)}</b></p>' if by else
                    f'<p class="byline">{e(LABEL[w["coiner"]]).capitalize()}</p>')
 
     stamp = ""
@@ -225,7 +241,7 @@ def word_page(w, site, d):
     p = [f'<h1>{e(w["word"])}</h1>',
          author_line,
          stamp,
-         f'<p class="tag-line"><span class="pos">{e(w["pos"])}</span> {badge(w["coiner"])}</p>',
+         f'<p class="tag-line"><span class="pos">{e(w["pos"])}</span> {badge(w["coiner"], by)}</p>',
          f'<p class="say">{e(w["say"])}</p>',
          origin_block(w, by),
          f'<p class="def">{e(w["def"])}</p>']
@@ -302,7 +318,7 @@ def lexicon_page(d, site, author):
             orig = ("" if w["proposed"] == w["word"] else
                     f'<div class="orig">first written <b>{e(w["proposed"])}</b></div>')
             out.append(f'<div class="entry"><a class="w" href="{w["slug"]}/">{e(w["word"])}</a> '
-                       f'<span class="pos">{e(w["pos"])}</span> {badge(w["coiner"])}{cred}{seen}'
+                       f'<span class="pos">{e(w["pos"])}</span> {badge(w["coiner"], pby)}{cred}{seen}'
                        f'<p>{e(w["def"])}</p>{orig}</div>')
         return "\n".join(out)
 
@@ -322,9 +338,27 @@ def lexicon_page(d, site, author):
     if wd:
         wby = person(wd, d)
         credit = f' <span class="pos">— {e(wby["name"])}</span>' if wby else ""
-        body += (f'<div class="wotd"><div class="k">Word of the day · {e(pretty(wd["wotd"]))}</div>'
-                 f'<a class="w" href="{wd["slug"]}/">{e(wd["word"])}</a>{credit}'
-                 f'<p>{e(wd["def"])}</p></div>')
+        body += (f'<div class="wotd" id="wotd">'
+                 f'<div class="k">Word of the day · <span data-w="on">{e(pretty(wd["wotd"]))}</span></div>'
+                 f'<a class="w" data-w="slug" href="{wd["slug"]}/">{e(wd["word"])}</a>'
+                 f'<span data-w="by">{credit}</span>'
+                 f'<p data-w="def">{e(wd["def"])}</p></div>')
+        # The page is rebuilt only on push, so the turnover happens in the reader's
+        # own clock. Scheduled entries are inert until their date arrives.
+        sched = [{"on": x["wotd"], "pretty": pretty(x["wotd"]), "slug": x["slug"],
+                  "word": x["word"], "def": x["def"],
+                  "by": (person(x, d) or {}).get("name", "")}
+                 for x in wotd_schedule(ws)]
+        body += ('<script>(function(){var S=' + json.dumps(sched) + ';'
+                 'var t=new Date(),p=function(n){return(n<10?"0":"")+n},'
+                 'today=t.getFullYear()+"-"+p(t.getMonth()+1)+"-"+p(t.getDate()),c=null;'
+                 'for(var i=0;i<S.length;i++){if(S[i].on<=today)c=S[i]}'
+                 'if(!c)return;var b=document.getElementById("wotd");'
+                 'b.querySelector(\'[data-w="on"]\').textContent=c.pretty;'
+                 'var a=b.querySelector(\'[data-w="slug"]\');a.href=c.slug+"/";a.textContent=c.word;'
+                 'b.querySelector(\'[data-w="def"]\').textContent=c["def"];'
+                 'b.querySelector(\'[data-w="by"]\').innerHTML=c.by?'
+                 '\' <span class="pos">\\u2014 \'+c.by+"</span>":"";})();</script>')
 
     for title, lede, lst in groups:
         body += f'<h2>{title}</h2><p class="lede">{lede}</p>{block(lst)}'
@@ -345,13 +379,14 @@ def lexicon_page(d, site, author):
 
 
 def leaderboard_page(d, site):
+    PEOPLE = d.get("people", {})
     ws = [w for w in d["words"] if w["status"] in ("coined", "already-real")]
     ws.sort(key=lambda w: (-len(w.get("sightings", [])), w["word"]))
     total = sum(len(w.get("sightings", [])) for w in ws)
     live = sum(1 for w in ws if w.get("sightings"))
     rows = "".join(
         f'<div class="rank"><div class="n">{i}</div><div class="body">'
-        f'<a href="../{w["slug"]}/">{e(w["word"])}</a> {badge(w["coiner"])}</div>'
+        f'<a href="../{w["slug"]}/">{e(w["word"])}</a> {badge(w["coiner"], PEOPLE.get(w["coiner"]))}</div>'
         f'<div class="count{"" if w.get("sightings") else " zero"}">'
         f'{len(w.get("sightings", []))}</div></div>'
         for i, w in enumerate(ws, 1))
