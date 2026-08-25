@@ -21,16 +21,19 @@ REPO = "https://github.com/PlanetaryCouncil/wordshaping.org"
 CSS = """
 :root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;--line:#e3e0d9;
 --panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;--y-fg:#8a5a2b;
---m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45}
+--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45;--v-bg:#fbe9ef;--v-fg:#9c3f60}
 @media (prefers-color-scheme:dark){:root{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;
 --faint:#77746d;--line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;
---y-bg:#3a2c17;--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094}}
+--y-bg:#3a2c17;--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094;
+--v-bg:#3a222c;--v-fg:#eaa2bc}}
 :root[data-theme=dark]{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;--faint:#77746d;
 --line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;--y-bg:#3a2c17;
---y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094}
+--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094;
+--v-bg:#3a222c;--v-fg:#eaa2bc}
 :root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;
 --line:#e3e0d9;--panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;
---y-fg:#8a5a2b;--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45}
+--y-fg:#8a5a2b;--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45;
+--v-bg:#fbe9ef;--v-fg:#9c3f60}
 *{box-sizing:border-box}
 body{margin:0;padding:2.5rem 1.5rem 6rem;background:var(--bg);color:var(--fg);
 font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
@@ -62,6 +65,7 @@ font-weight:700;padding:.15rem .45rem;border-radius:3px;vertical-align:2px}
 .b-marsita{background:var(--y-bg);color:var(--y-fg)}
 .b-claude{background:var(--m-bg);color:var(--m-fg)}
 .b-wild{background:var(--w-bg);color:var(--w-fg)}
+.b-venus{background:var(--v-bg);color:var(--v-fg)}
 .pos{font-style:italic;color:var(--faint);font-size:.92rem}
 .def{font-size:1.14rem;margin:0 0 1.2rem}
 .cite{font-family:Georgia,serif;font-style:italic;color:var(--muted);padding-left:1rem;
@@ -119,7 +123,13 @@ font-weight:700;padding:.2rem .5rem;border-radius:3px;background:var(--accent);c
 vertical-align:2px}
 """
 
-LABEL = {"marsita": "coined here", "claude": "suggested", "wild": "found in the wild"}
+LABEL = {"marsita": "coined here", "venus": "coined here",
+         "claude": "suggested", "wild": "found in the wild"}
+
+
+def person(w, d):
+    """The named human who coined this word, or None if nobody is credited."""
+    return d.get("people", {}).get(w["coiner"])
 
 
 def e(s):
@@ -182,9 +192,9 @@ def badge(c):
     return f'<span class="badge b-{c}">{LABEL.get(c, c)}</span>'
 
 
-def origin_block(w, author):
+def origin_block(w, by):
     """The author's original, presented as the record it is."""
-    who = f'{e(author["name"])}' if w["coiner"] == "marsita" else e(LABEL[w["coiner"]]).capitalize()
+    who = e(by["name"]) if by else e(LABEL[w["coiner"]]).capitalize()
     if w["proposed"] == w["word"]:
         return (f'<div class="origin"><div class="k">As first written</div>'
                 f'<div class="p">{e(w["proposed"])}</div>'
@@ -195,7 +205,7 @@ def origin_block(w, author):
             f'The headword above is where it settled — the intention was here first.</div></div>')
 
 
-def word_page(w, site, author):
+def word_page(w, site, d):
     canon = f'{site}/{w["slug"]}/'
     s = w.get("score")
     score = ""
@@ -203,8 +213,8 @@ def word_page(w, site, author):
         score = (f'<p class="score">slot {s["slot"]} · form {s["form"]} · clarity {s["clarity"]}'
                  f' · music {s["music"]} → {s["total"]}/25 · one reader\'s opinion, ranks nothing</p>')
 
-    author_line = (f'<p class="byline">Coined by <b>{e(author["name"])}</b></p>'
-                   if w["coiner"] == "marsita" else
+    by = person(w, d)
+    author_line = (f'<p class="byline">Coined by <b>{e(by["name"])}</b></p>' if by else
                    f'<p class="byline">{e(LABEL[w["coiner"]]).capitalize()}</p>')
 
     stamp = ""
@@ -217,7 +227,7 @@ def word_page(w, site, author):
          stamp,
          f'<p class="tag-line"><span class="pos">{e(w["pos"])}</span> {badge(w["coiner"])}</p>',
          f'<p class="say">{e(w["say"])}</p>',
-         origin_block(w, author),
+         origin_block(w, by),
          f'<p class="def">{e(w["def"])}</p>']
 
     im = w.get("image")
@@ -256,8 +266,8 @@ def word_page(w, site, author):
           "name": w["word"], "description": w["def"], "url": canon,
           "alternateName": w["proposed"],
           "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "Wordshaping", "url": site + "/"}}
-    if w["coiner"] == "marsita":
-        ld["creator"] = {"@type": "Person", "name": author["name"], "url": author.get("url", "")}
+    if by:
+        ld["creator"] = {"@type": "Person", "name": by["name"], "url": by.get("url", "")}
 
     if og_image:
         ld["image"] = og_image
@@ -286,10 +296,13 @@ def lexicon_page(d, site, author):
         for w in lst:
             n = len(w.get("sightings", []))
             seen = f' <span class="score">· {n} sighting{"" if n == 1 else "s"}</span>' if n else ""
+            pby = person(w, d)
+            cred = (f' <span class="score">· {e(pby["name"])}</span>'
+                    if pby and pby["name"] != author["name"] else "")
             orig = ("" if w["proposed"] == w["word"] else
                     f'<div class="orig">first written <b>{e(w["proposed"])}</b></div>')
             out.append(f'<div class="entry"><a class="w" href="{w["slug"]}/">{e(w["word"])}</a> '
-                       f'<span class="pos">{e(w["pos"])}</span> {badge(w["coiner"])}{seen}'
+                       f'<span class="pos">{e(w["pos"])}</span> {badge(w["coiner"])}{cred}{seen}'
                        f'<p>{e(w["def"])}</p>{orig}</div>')
         return "\n".join(out)
 
@@ -307,8 +320,10 @@ def lexicon_page(d, site, author):
             f'Good wordsmithing and wordshaping matters.</blockquote>')
     wd = word_of_the_day(ws)
     if wd:
+        wby = person(wd, d)
+        credit = f' <span class="pos">— {e(wby["name"])}</span>' if wby else ""
         body += (f'<div class="wotd"><div class="k">Word of the day · {e(pretty(wd["wotd"]))}</div>'
-                 f'<a class="w" href="{wd["slug"]}/">{e(wd["word"])}</a>'
+                 f'<a class="w" href="{wd["slug"]}/">{e(wd["word"])}</a>{credit}'
                  f'<p>{e(wd["def"])}</p></div>')
 
     for title, lede, lst in groups:
@@ -368,7 +383,7 @@ def main():
     for w in d["words"]:
         out = ROOT / w["slug"]
         out.mkdir(exist_ok=True)
-        (out / "index.html").write_text(word_page(w, site, author))
+        (out / "index.html").write_text(word_page(w, site, d))
         urls.append(f'{site}/{w["slug"]}/')
         # Images live beside their page, at /<slug>/<file>, and are never generated.
         im = w.get("image")

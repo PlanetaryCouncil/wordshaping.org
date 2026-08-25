@@ -741,7 +741,7 @@
       "word": "flamingling",
       "pos": "verb, present participle — from to flamingle",
       "say": "fluh-MING-ling",
-      "coiner": "marsita",
+      "coiner": "venus",
       "status": "coined",
       "wotd": "2026-08-25",
       "def": "Mingling with the plumage on: attending an opening for the standing-about rather than the art — conspicuously present, decorative, one-legged, doing very little, and doing it beautifully.",
@@ -751,13 +751,13 @@
       "image": {
         "file": "poster.jpg",
         "alt": "Five people in evening dress holding champagne at a gallery opening, a live pink flamingo standing among them. Caption above: HOW WAS THE VERNISSAGE? Caption below in coral: I WAS FLAMINGLING.",
-        "caption": "The word in the wild, August 2026."
+        "caption": "The word in the wild, August 2026. Poster by Venus of Artizen."
       },
       "score": null,
       "sightings": [
         {
           "date": "2026-08",
-          "where": "Poster, gallery-opening photograph",
+          "where": "Poster by Venus of Artizen, gallery-opening photograph",
           "what": "Set as a two-line exchange over a vernissage scene: “HOW WAS THE VERNISSAGE?” / “I WAS FLAMINGLING.”",
           "url": ""
         }
@@ -927,5 +927,15 @@
   "site": {
     "url": "https://wordshaping.org",
     "fallback": "https://planetarycouncil.github.io/wordshaping.org"
+  },
+  "people": {
+    "marsita": {
+      "name": "Marsita",
+      "url": "https://github.com/marsrobertson"
+    },
+    "venus": {
+      "name": "Venus of Artizen",
+      "url": ""
+    }
   }
 }
