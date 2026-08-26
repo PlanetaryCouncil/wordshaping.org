@@ -233,6 +233,20 @@ def origin_block(w, by):
             f'The headword above is where it settled — the intention was here first.</div></div>')
 
 
+def moved_page(old, w, site):
+    """A word that changed its headword keeps its old URL alive, pointing here."""
+    dest = f'{site}/{w["slug"]}/'
+    body = (f'<h1>{e(w["word"])}</h1>'
+            f'<p class="tag-line">This word is now at <a href="../{w["slug"]}/">'
+            f'/{e(w["slug"])}/</a>. It was catalogued here as <b>{e(old)}</b>, which was a '
+            f'shortening of the author\'s original. The original stands.</p>'
+            f'<p><a class="cta" href="../{w["slug"]}/">Go to {e(w["word"])} &rarr;</a></p>')
+    h = page(f'{old} — now {w["word"]} — Wordshaping',
+             f'{old} is now catalogued as {w["word"]}.', dest, body, 1)
+    return h.replace("<head>", f'<head>\n<meta http-equiv="refresh" content="0; url=../{w["slug"]}/">'
+                               f'\n<meta name="robots" content="noindex,follow">', 1)
+
+
 def word_page(w, site, d):
     canon = f'{site}/{w["slug"]}/'
     s = w.get("score")
@@ -449,6 +463,11 @@ def main():
         (out / "index.html").write_text(word_page(w, site, d))
         urls.append(f'{site}/{w["slug"]}/')
         # Images live beside their page, at /<slug>/<file>, and are never generated.
+        for old in w.get("was", []):
+            o = ROOT / old
+            o.mkdir(exist_ok=True)
+            (o / "index.html").write_text(moved_page(old, w, site))
+
         im = w.get("image")
         if im:
             f = im["file"]

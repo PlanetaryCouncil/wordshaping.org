@@ -331,16 +331,16 @@
       "proposed": "preventification"
     },
     {
-      "slug": "warification",
-      "word": "warification",
+      "slug": "wagewarification",
+      "word": "wagewarification",
       "pos": "noun",
-      "say": "war·i·fi·CA·tion",
+      "say": "wage·war·i·fi·CA·tion",
       "coiner": "marsita",
       "status": "coined",
-      "def": "The reframing of a non-war thing as war — a trial, a policy dispute, a newsroom argument.",
-      "cite": "Warification deployed by a defendant against the court trying him.",
-      "etym": "war + -ification. Noun base, diagnostic passes cleanly.",
-      "note": "Agentless in the honest way compostification is: nobody warifies a dispute, it becomes war-framed.",
+      "def": "The reframing of a proceeding against you as a war being waged on you — a trial, an investigation, a policy dispute recast as an act of aggression, so that answering the charge becomes indistinguishable from being attacked.",
+      "cite": "Wagewarification deployed by a defendant against the court trying him.",
+      "etym": "wage war + -ification. The verb phrase is nominalised whole rather than the noun war alone, which is what keeps the aggression inside the word: not war happening, but war being waged, by someone, on purpose.",
+      "note": "The word is one consonant and one vowel away from wage verification — a real phrase, the dull payroll document an employer files to confirm what someone earns. Everything after the first syllable is identical: the same five beats, the same stress on CA, the same -ification. That collision is the whole word. Verification is the thing a court actually does; wagewarification is what the accused calls it once he has decided the court is the aggressor. The two sit a hair apart in the mouth and at opposite ends of good faith.\n\nThe evidence for the near-homophone is that a speech-to-text system, hearing this word spoken, transcribed it as “wage verification” — reaching for the real phrase because the sound is nearly the same. The machine's error is the proof.\n\nShortening it to warification loses all of this: the wage, the agent doing the waging, and the collision. The long form is the word.",
       "score": {
         "slot": 3,
         "form": 5,
@@ -352,7 +352,7 @@
         {
           "date": "2026-08",
           "where": "Poster, pop-art halftone",
-          "what": "Set in pink as the second line of the title, in its original form: WAGEWARIFICATION, paired with warcriminalicious.",
+          "what": "Set in pink as the second line of the title — WAGEWARIFICATION — paired with warcriminalicious.",
           "url": ""
         }
       ],
@@ -360,8 +360,11 @@
       "image": {
         "file": "/warcriminalicious/poster.jpg",
         "alt": "Pop-art halftone poster. Title in yellow and pink: WARCRIMINALICIOUS WAGEWARIFICATION. Speech banner: “When an alleged war criminal accuses the court of waging war.” Beneath it a courtroom scene — a man in an orange jumpsuit marked ALLEGED WAR CRIMINAL before a panel of judges, a dove in a PEACE OFFICER vest, a prosecutor pointing. A yellow panel reads “Everyone deserves justice. The accused will have a chance to present evidence.” A footer panel defines CHUTZPAH: “Travelling internationally with an active arrest warrant to a city that does not welcome you.”",
-        "caption": "The same poster that carries warcriminalicious. The word appears on it as first written — wagewarification."
-      }
+        "caption": "The poster that carries both words. wagewarification is the second line, in pink."
+      },
+      "was": [
+        "warification"
+      ]
     },
     {
       "slug": "preventfully",
@@ -518,14 +521,14 @@
       "proposed": "warcriminalicious",
       "wotd": "2026-08-27",
       "wotd_with": [
-        "warification"
+        "wagewarification"
       ],
       "wotd_title": "warcriminalicious wagewarification",
       "wotd_note": "The two were made together and only work together: the adjective supplies the relish, the noun supplies the manoeuvre being relished. Neither is the joke on its own.",
       "image": {
         "file": "/warcriminalicious/poster.jpg",
         "alt": "Pop-art halftone poster. Title in yellow and pink: WARCRIMINALICIOUS WAGEWARIFICATION. Speech banner: “When an alleged war criminal accuses the court of waging war.” Beneath it a courtroom scene — a man in an orange jumpsuit marked ALLEGED WAR CRIMINAL before a panel of judges, a dove in a PEACE OFFICER vest, a prosecutor pointing. A yellow panel reads “Everyone deserves justice. The accused will have a chance to present evidence.” A footer panel defines CHUTZPAH: “Travelling internationally with an active arrest warrant to a city that does not welcome you.”",
-        "caption": "The pair in the wild, August 2026. The second word appears here as first written — wagewarification."
+        "caption": "The pair in the wild, August 2026."
       }
     },
     {
