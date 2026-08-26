@@ -348,8 +348,20 @@
         "music": 4,
         "total": 17
       },
-      "sightings": [],
-      "proposed": "wagewarification"
+      "sightings": [
+        {
+          "date": "2026-08",
+          "where": "Poster, pop-art halftone",
+          "what": "Set in pink as the second line of the title, in its original form: WAGEWARIFICATION, paired with warcriminalicious.",
+          "url": ""
+        }
+      ],
+      "proposed": "wagewarification",
+      "image": {
+        "file": "/warcriminalicious/poster.jpg",
+        "alt": "Pop-art halftone poster. Title in yellow and pink: WARCRIMINALICIOUS WAGEWARIFICATION. Speech banner: “When an alleged war criminal accuses the court of waging war.” Beneath it a courtroom scene — a man in an orange jumpsuit marked ALLEGED WAR CRIMINAL before a panel of judges, a dove in a PEACE OFFICER vest, a prosecutor pointing. A yellow panel reads “Everyone deserves justice. The accused will have a chance to present evidence.” A footer panel defines CHUTZPAH: “Travelling internationally with an active arrest warrant to a city that does not welcome you.”",
+        "caption": "The same poster that carries warcriminalicious. The word appears on it as first written — wagewarification."
+      }
     },
     {
       "slug": "preventfully",
@@ -499,11 +511,22 @@
         {
           "date": "2026-08",
           "where": "Poster, pop-art halftone",
-          "what": "Title treatment reading 'WARCRIMINALICIOUS WAGEWARIFICATION', with strapline and disclaimer panel.",
+          "what": "Title treatment reading WARCRIMINALICIOUS WAGEWARIFICATION, with strapline, disclaimer panel, and a CHUTZPAH definition in the footer.",
           "url": ""
         }
       ],
-      "proposed": "warcriminalicious"
+      "proposed": "warcriminalicious",
+      "wotd": "2026-08-27",
+      "wotd_with": [
+        "warification"
+      ],
+      "wotd_title": "warcriminalicious wagewarification",
+      "wotd_note": "The two were made together and only work together: the adjective supplies the relish, the noun supplies the manoeuvre being relished. Neither is the joke on its own.",
+      "image": {
+        "file": "/warcriminalicious/poster.jpg",
+        "alt": "Pop-art halftone poster. Title in yellow and pink: WARCRIMINALICIOUS WAGEWARIFICATION. Speech banner: “When an alleged war criminal accuses the court of waging war.” Beneath it a courtroom scene — a man in an orange jumpsuit marked ALLEGED WAR CRIMINAL before a panel of judges, a dove in a PEACE OFFICER vest, a prosecutor pointing. A yellow panel reads “Everyone deserves justice. The accused will have a chance to present evidence.” A footer panel defines CHUTZPAH: “Travelling internationally with an active arrest warrant to a city that does not welcome you.”",
+        "caption": "The pair in the wild, August 2026. The second word appears here as first written — wagewarification."
+      }
     },
     {
       "slug": "hackiciously",

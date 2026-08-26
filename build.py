@@ -120,6 +120,12 @@ color:var(--accent);margin-bottom:.55rem}
 color:var(--fg);text-decoration:none;letter-spacing:-.015em;word-break:break-word}
 .wotd a.w:hover{color:var(--accent)}
 .wotd p{margin:.45rem 0 0;color:var(--muted);font-size:.95rem}
+.wotd .pair-title{font-family:Georgia,serif;font-size:clamp(1.1rem,2.8vw,1.35rem);
+color:var(--muted);font-style:italic;margin-bottom:.5rem;word-break:break-word}
+.wotd .names{display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem .55rem}
+.wotd .amp{color:var(--accent);font-family:Georgia,serif;font-size:1.3rem;padding:0 .1rem}
+.wotd .pair-note{margin-top:.8rem;padding-top:.7rem;border-top:1px solid var(--line);
+font-size:.9rem;font-style:italic}
 .stamp{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;
 font-weight:700;padding:.2rem .5rem;border-radius:3px;background:var(--accent);color:var(--bg);
 vertical-align:2px}
@@ -189,6 +195,12 @@ def wotd_schedule(ws):
     return sorted((w for w in ws if w.get("wotd")), key=lambda w: w["wotd"])
 
 
+def wotd_cast(w, ws, d):
+    """The words sharing a day: the lead entry first, then any it is paired with."""
+    by_slug = {x["slug"]: x for x in ws}
+    return [w] + [by_slug[s] for s in w.get("wotd_with", []) if s in by_slug]
+
+
 def word_of_the_day(ws, on=None):
     """The latest entry whose day has arrived. Future dates wait their turn."""
     on = on or date.today().isoformat()
@@ -234,9 +246,11 @@ def word_page(w, site, d):
                    f'<p class="byline">{e(LABEL[w["coiner"]]).capitalize()}</p>')
 
     stamp = ""
-    if w.get("wotd"):
+    day = w.get("wotd") or next((x["wotd"] for x in d["words"]
+                                 if w["slug"] in x.get("wotd_with", [])), None)
+    if day:
         stamp = (f'<p class="tag-line"><span class="stamp">Word of the day</span> '
-                 f'<span class="pos">{e(pretty(w["wotd"]))}</span></p>')
+                 f'<span class="pos">{e(pretty(day))}</span></p>')
 
     p = [f'<h1>{e(w["word"])}</h1>',
          author_line,
@@ -249,9 +263,11 @@ def word_page(w, site, d):
     im = w.get("image")
     og_image = None
     if im:
-        og_image = f'{canon}{im["file"]}'
+        # A leading slash means site-root, so one poster can serve several pages.
+        src = im["file"]
+        og_image = site + src if src.startswith("/") else canon + src
         cap = f'<figcaption>{e(im.get("caption"))}</figcaption>' if im.get("caption") else ""
-        p.append(f'<figure><img src="{e(im["file"])}" alt="{e(im.get("alt"))}" '
+        p.append(f'<figure><img src="{e(src)}" alt="{e(im.get("alt"))}" '
                  f'loading="lazy">{cap}</figure>')
     if w.get("cite"):
         p.append(f'<p class="cite">{e(w["cite"])}</p>')
@@ -336,18 +352,31 @@ def lexicon_page(d, site, author):
             f'Good wordsmithing and wordshaping matters.</blockquote>')
     wd = word_of_the_day(ws)
     if wd:
-        wby = person(wd, d)
-        credit = f' <span class="pos">— {e(wby["name"])}</span>' if wby else ""
+        def band(x):
+            """One day's worth: a title, then every word that shares the day."""
+            cast = wotd_cast(x, ws, d)
+            names, defs = [], []
+            for c in cast:
+                cby = person(c, d)
+                credit = (f' <span class="pos">— {e(cby["name"])}</span>'
+                          if cby and cby["name"] != author["name"] else "")
+                names.append(f'<a class="w" href="{c["slug"]}/">{e(c["word"])}</a>{credit}')
+                lead = f'<b>{e(c["word"])}</b> — ' if len(cast) > 1 else ""
+                defs.append(f'<p>{lead}{e(c["def"])}</p>')
+            head = (f'<div class="pair-title">{e(x["wotd_title"])}</div>'
+                    if x.get("wotd_title") and len(cast) > 1 else "")
+            note = f'<p class="pair-note">{e(x["wotd_note"])}</p>' if x.get("wotd_note") else ""
+            return (head + '<div class="names">' + '<span class="amp">+</span>'.join(names)
+                    + '</div>' + "".join(defs) + note)
+
         body += (f'<div class="wotd" id="wotd">'
-                 f'<div class="k">Word of the day · <span data-w="on">{e(pretty(wd["wotd"]))}</span></div>'
-                 f'<a class="w" data-w="slug" href="{wd["slug"]}/">{e(wd["word"])}</a>'
-                 f'<span data-w="by">{credit}</span>'
-                 f'<p data-w="def">{e(wd["def"])}</p></div>')
+                 f'<div class="k">Word{"s" if wd.get("wotd_with") else ""} of the day · '
+                 f'<span data-w="on">{e(pretty(wd["wotd"]))}</span></div>'
+                 f'<div data-w="body">{band(wd)}</div></div>')
         # The page is rebuilt only on push, so the turnover happens in the reader's
         # own clock. Scheduled entries are inert until their date arrives.
-        sched = [{"on": x["wotd"], "pretty": pretty(x["wotd"]), "slug": x["slug"],
-                  "word": x["word"], "def": x["def"],
-                  "by": (person(x, d) or {}).get("name", "")}
+        sched = [{"on": x["wotd"], "pretty": pretty(x["wotd"]),
+                  "many": bool(x.get("wotd_with")), "html": band(x)}
                  for x in wotd_schedule(ws)]
         body += ('<script>(function(){var S=' + json.dumps(sched) + ';'
                  'var t=new Date(),p=function(n){return(n<10?"0":"")+n},'
@@ -355,10 +384,9 @@ def lexicon_page(d, site, author):
                  'for(var i=0;i<S.length;i++){if(S[i].on<=today)c=S[i]}'
                  'if(!c)return;var b=document.getElementById("wotd");'
                  'b.querySelector(\'[data-w="on"]\').textContent=c.pretty;'
-                 'var a=b.querySelector(\'[data-w="slug"]\');a.href=c.slug+"/";a.textContent=c.word;'
-                 'b.querySelector(\'[data-w="def"]\').textContent=c["def"];'
-                 'b.querySelector(\'[data-w="by"]\').innerHTML=c.by?'
-                 '\' <span class="pos">\\u2014 \'+c.by+"</span>":"";})();</script>')
+                 'b.querySelector(\'[data-w="body"]\').innerHTML=c.html;'
+                 'b.querySelector(".k").firstChild.nodeValue="Word"+(c.many?"s":"")+" of the day \\u00b7 ";'
+                 '})();</script>')
 
     for title, lede, lst in groups:
         body += f'<h2>{title}</h2><p class="lede">{lede}</p>{block(lst)}'
@@ -422,8 +450,11 @@ def main():
         urls.append(f'{site}/{w["slug"]}/')
         # Images live beside their page, at /<slug>/<file>, and are never generated.
         im = w.get("image")
-        if im and not (out / im["file"]).exists():
-            missing.append(f'{w["slug"]}/{im["file"]}')
+        if im:
+            f = im["file"]
+            where = ROOT / f.lstrip("/") if f.startswith("/") else out / f
+            if not where.exists():
+                missing.append(f)
 
     (ROOT / "index.html").write_text(lexicon_page(d, site, author))
     lb = ROOT / "leaderboard"
