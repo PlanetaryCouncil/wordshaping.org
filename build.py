@@ -291,6 +291,16 @@ def word_page(w, site, d):
         p.append(f'<p class="field"><b>Note</b><span>{e(w["note"])}</span></p>')
     p.append(score)
 
+    at = w.get("attested", [])
+    if at:
+        p.append('<h2>Prior use of the form</h2>'
+                 '<p class="lede">Where this string was already doing work before it was put to '
+                 'this use. The sense below is the coinage; the spelling is not.</p>')
+        for a in at:
+            link = f' — <a href="{e(a["url"])}">source</a>' if a.get("url") else ""
+            p.append(f'<div class="sight"><div class="when">{e(a.get("where"))}{link}</div>'
+                     f'<p class="what">{e(a.get("what"))}</p></div>')
+
     sg = w.get("sightings", [])
     n = len(sg)
     p.append(f'<h2>Sightings in public <span class="count{"" if n else " zero"}">{n}</span></h2>')
@@ -332,6 +342,10 @@ def lexicon_page(d, site, author):
                "Built on reasoning that later turned out to be wrong. Retained rather than deleted, "
                "because the reasoning is the point.",
                [w for w in ws if w["status"] == "deprecated"]),
+              ("Old words, new senses",
+               "The form was already in the language, in a field with nothing to do with this one. "
+               "What is new is the sense — no empty slot to fill, an occupied one to take.",
+               [w for w in ws if w["status"] == "new-sense"]),
               ("Words that turned out to be real",
                "Proposed here, then found already living in the language. Half the work of coining "
                "is discovering you did not need to.",
@@ -422,7 +436,7 @@ def lexicon_page(d, site, author):
 
 def leaderboard_page(d, site):
     PEOPLE = d.get("people", {})
-    ws = [w for w in d["words"] if w["status"] in ("coined", "already-real")]
+    ws = [w for w in d["words"] if w["status"] in ("coined", "new-sense", "already-real")]
     ws.sort(key=lambda w: (-len(w.get("sightings", [])), w["word"]))
     total = sum(len(w.get("sightings", [])) for w in ws)
     live = sum(1 for w in ws if w.get("sightings"))

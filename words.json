@@ -820,17 +820,29 @@
       "pos": "adverb",
       "say": "ther·mo·BAR·i·cal·ly",
       "coiner": "marsita",
-      "status": "coined",
+      "status": "new-sense",
       "wotd": "2026-08-29",
       "def": "In a manner consistent with thermobaric weapons: leaving in the way they leave — the air gone, the pressure still arriving, nothing standing that was standing before. Of a departure, that the going itself was the damage.",
       "cite": "He left Gaza thermobarically.",
       "etym": "thermobaric + -ally. The adjective is Greek twice over — thermē, heat, and baros, pressure — and names a weapon that works by dispersing an aerosol, igniting it, and burning the available oxygen: it kills by heat, by sustained overpressure, and by taking the air.",
-      "note": "The grammar is the argument. Leave is a verb of motion with no object and no blame in it — he left, and nothing in the clause did anything to anyone. All the destruction is loaded into an adverb of manner, the slot English reserves for how someone felt while acting: he left angrily, he left quietly. Put a weapon system in that slot and the sentence keeps its innocent shape while describing a razed place. The reader has to reconstruct the agent the sentence declined to name.\n\nThat is the reverse of the move most of this lexicon makes. The -ification words delete the agent and leave a process standing by itself — nobody wagewarifies, it becomes war-framed. This one keeps the agent in the subject position, in plain view, and hides the act instead, as manner, as style, as an aside about how he went.\n\nFirst written thermobaricly, which would have put it in the company of publicly — the one -ic adjective in ordinary English that takes bare -ly. The author settled it the other way, so the rule stands undisturbed: -ic takes -ally, and publicly is still alone.",
+      "note": "The form was already taken. Search it and you land in physical oceanography, where thermobarically has been doing quiet work for decades: water that is stably stratified at one pressure and unstable at another, and the convection that follows. Deep lakes, the Southern Ocean, the underside of sea ice.\n\nSo this is not a new word. It is a new sense on an old one, which is a different kind of coinage and arguably the harder one — there is no empty slot to fill, only an occupied one to take. Nothing was invented here. What was done was to move the adverb out of a discipline that uses it of water and into a manner slot with a human subject, where English had not put it.\n\nThe grammar is the argument. Leave is a verb of motion with no object and no blame in it — he left, and nothing in the clause did anything to anyone. All the destruction is loaded into an adverb of manner, the slot English reserves for how someone felt while acting: he left angrily, he left quietly. Put a weapon system in that slot and the sentence keeps its innocent shape while describing a razed place. The reader has to reconstruct the agent the sentence declined to name.\n\nThat is the reverse of the move most of this lexicon makes. The -ification words delete the agent and leave a process standing by itself — nobody wagewarifies, it becomes war-framed. This one keeps the agent in the subject position, in plain view, and hides the act instead, as manner, as style, as an aside about how he went.\n\nFirst written thermobaricly, which would have put it in the company of publicly — the one -ic adjective in ordinary English that takes bare -ly. The author settled it the other way, so the rule stands undisturbed: -ic takes -ally, and publicly is still alone. And that settling turns out to have been the right call for a second reason: the attested spelling is thermobarically, so the word now matches the prior art it is arguing with.",
       "score": null,
       "sightings": [],
       "proposed": "thermobaricly",
       "was": [
         "thermobaricly"
+      ],
+      "attested": [
+        {
+          "where": "Physical oceanography — thermobaric instability and convection",
+          "what": "The adverb is in ordinary technical use for water: stratification that is stable at one pressure and not at another, and the convection that follows. “Thermobarically driven convection” is a standing phrase in the literature on ice-covered oceans.",
+          "url": "https://journals.ametsoc.org/view/journals/phoc/46/6/jpo-d-16-0017.1.pdf"
+        },
+        {
+          "where": "Maud Rise, Southern Ocean — thermobaricity and the Weddell Polynya",
+          "what": "Used of profiles susceptible to thermobaric instability by late winter, offered as a cause of the observed openings in the sea ice.",
+          "url": "https://www.researchgate.net/publication/248620437_Is_thermobaricity_a_major_factor_in_Southern_Ocean_ventilation"
+        }
       ]
     },
     {
