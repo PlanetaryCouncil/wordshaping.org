@@ -815,20 +815,23 @@
       "proposed": "storylivingrytellers"
     },
     {
-      "slug": "thermobaricly",
-      "word": "thermobaricly",
+      "slug": "thermobarically",
+      "word": "thermobarically",
       "pos": "adverb",
-      "say": "ther·mo·BAR·ic·ly",
+      "say": "ther·mo·BAR·i·cal·ly",
       "coiner": "marsita",
       "status": "coined",
       "wotd": "2026-08-29",
       "def": "In a manner consistent with thermobaric weapons: leaving in the way they leave — the air gone, the pressure still arriving, nothing standing that was standing before. Of a departure, that the going itself was the damage.",
-      "cite": "He left Gaza thermobaricly.",
-      "etym": "thermobaric + -ly. The adjective is Greek twice over — thermē, heat, and baros, pressure — and names a weapon that works by dispersing an aerosol, igniting it, and burning the available oxygen: it kills by heat, by sustained overpressure, and by taking the air. English spells the adverb thermobarically; publicly is the one -ic adjective that takes bare -ly, and this is written into its company.",
-      "note": "The grammar is the argument. Leave is a verb of motion with no object and no blame in it — he left, and nothing in the clause did anything to anyone. All the destruction is loaded into an adverb of manner, the slot English reserves for how someone felt while acting: he left angrily, he left quietly. Put a weapon system in that slot and the sentence keeps its innocent shape while describing a razed place. The reader has to reconstruct the agent the sentence declined to name.\n\nThat is the reverse of the move most of this lexicon makes. The -ification words delete the agent and leave a process standing by itself — nobody wagewarifies, it becomes war-framed. This one keeps the agent in the subject position, in plain view, and hides the act instead, as manner, as style, as an aside about how he went.\n\nOn the spelling: the rule is that -ic adjectives take -ally, and the count of exceptions in ordinary English is one. Whether thermobaricly joins publicly is not settled by argument. It is settled by whether anyone else writes it that way.",
+      "cite": "He left Gaza thermobarically.",
+      "etym": "thermobaric + -ally. The adjective is Greek twice over — thermē, heat, and baros, pressure — and names a weapon that works by dispersing an aerosol, igniting it, and burning the available oxygen: it kills by heat, by sustained overpressure, and by taking the air.",
+      "note": "The grammar is the argument. Leave is a verb of motion with no object and no blame in it — he left, and nothing in the clause did anything to anyone. All the destruction is loaded into an adverb of manner, the slot English reserves for how someone felt while acting: he left angrily, he left quietly. Put a weapon system in that slot and the sentence keeps its innocent shape while describing a razed place. The reader has to reconstruct the agent the sentence declined to name.\n\nThat is the reverse of the move most of this lexicon makes. The -ification words delete the agent and leave a process standing by itself — nobody wagewarifies, it becomes war-framed. This one keeps the agent in the subject position, in plain view, and hides the act instead, as manner, as style, as an aside about how he went.\n\nFirst written thermobaricly, which would have put it in the company of publicly — the one -ic adjective in ordinary English that takes bare -ly. The author settled it the other way, so the rule stands undisturbed: -ic takes -ally, and publicly is still alone.",
       "score": null,
       "sightings": [],
-      "proposed": "thermobaricly"
+      "proposed": "thermobaricly",
+      "was": [
+        "thermobaricly"
+      ]
     },
     {
       "slug": "floordrobe",
