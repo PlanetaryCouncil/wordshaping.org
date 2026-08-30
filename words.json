@@ -815,6 +815,21 @@
       "proposed": "storylivingrytellers"
     },
     {
+      "slug": "complicaments",
+      "word": "complicaments",
+      "pos": "noun, plural — sing. complicament",
+      "say": "COM·pli·ca·ments",
+      "coiner": "marsita",
+      "status": "coined",
+      "def": "Compliments sent in the full knowledge that they will cause trouble. The courtesy is sincere and the trouble is foreseen, and they go in the same envelope.",
+      "cite": "With respect and complicaments.",
+      "etym": "compliments + complications, welded on the compli- that both already own. Underneath sits Latin complicāre, to fold together — com- plus plicāre, to fold, the root of complex, ply, plait and deploy. compliment comes from the other direction, complēre, to fill up, by way of Spanish cumplimiento: the courtesy that completes an obligation. So the word is a filling-out and a folding-together at once, which is what the email is.",
+      "note": "The trouble is in the word but never stressed. compliments is COM-pli-ments; complicaments is COM-pli-ca-ments, the same opening beat, one syllable longer, the stress unmoved. The syllable that gets smuggled in is CA — which in complications carries the primary stress and here carries none at all. The complication is present, audible, and swallowed. That is the email.\n\nIt also parses without the blend. Latin made nouns by putting -mentum on a verb stem, and English kept the pattern: medicament from medicāre, predicament, impediment, ligament. complicāre would have given complicāmentum, a thing folded together, and it simply never did. Read that way the word is not a portmanteau at all but a gap in Latin being filled two thousand years late.\n\nThe two readings pull the stress apart — the blend wants COM-pli-ca-ments, the Latin noun wants com-PLIC-a-ments, the way predicament and medicament go. The sign-off settles it. Dropped into the slot where with compliments belongs, the phrase forces the first reading and inherits the whole ritual of the compliments slip: the small card, the good manners, the thing enclosed.",
+      "score": null,
+      "sightings": [],
+      "proposed": "complicaments"
+    },
+    {
       "slug": "thermobarically",
       "word": "thermobarically",
       "pos": "adverb",
