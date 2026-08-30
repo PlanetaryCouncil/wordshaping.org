@@ -831,6 +831,29 @@
       "wotd": "2026-08-30"
     },
     {
+      "slug": "moation",
+      "word": "moation",
+      "pos": "noun",
+      "say": "MOH·chun — /ˈmoʊtʃən/, the coiner's own notation",
+      "coiner": "alexwg",
+      "status": "coined",
+      "wotd": "2026-08-31",
+      "def": "The ability to turn one temporary competitive advantage into the next before the first is competed away. A moat is a position; moation is a process — today's transient edge in capital, talent, compute, data or distribution spent on building tomorrow's.",
+      "cite": "In the Singularity, there may be no permanent moats. Only moation.",
+      "etym": "moat + motion, welded on /moʊ/. moat is Old French mote, the mound a castle stands on — the word originally named the earthwork and migrated to the ditch dug to raise it. motion is Latin mōtiō, from movēre, to move. A fortification folded into a word for movement.",
+      "note": "One phoneme carries the whole word. motion is /ˈmoʊʃən/; the coiner writes moation as /ˈmoʊtʃən/. The entire audible difference is the /t/ — and the /t/ is the moat. A single consonant standing guard inside a word about defences that have to keep moving, and if the speaker relaxes it, the word collapses into plain motion. The spelling does the same work for the eye that the /t/ does for the ear: moat sits whole inside the first syllable, and stress travels zero, as in flamingling.\n\nThe eye also parses it a second way: mo- + -ation, as though there were a verb to moat and this were its nominalisation. That misreading is truer than it looks. -ation names a process, and process-not-position is the definition. The word's own grammar votes for the meaning.\n\nIt is also this lexicon's first entry where agentlessness is the good outcome rather than the evasion. planification and wagewarification use the agentless noun to hide someone; moation is agentless because the advantage-to-advantage conversion is meant to run as a standing process, not as a heroic act. The same grammatical machinery, pointed at candour instead of away from it.",
+      "score": null,
+      "sightings": [
+        {
+          "date": "2026-08",
+          "where": "@alexwg on X",
+          "what": "Coined and defined in full: a moat is a position, moation is a process — closing on the cite above.",
+          "url": "https://x.com/alexwg/status/2094051899502690804"
+        }
+      ],
+      "proposed": "moation"
+    },
+    {
       "slug": "thermobarically",
       "word": "thermobarically",
       "pos": "adverb",
@@ -1041,6 +1064,12 @@
     "eleprocon": {
       "name": "Mark Smith aka Eleprocon",
       "url": "https://eleprocon.substack.com",
+      "label": "coined elsewhere",
+      "tint": "eleprocon"
+    },
+    "alexwg": {
+      "name": "Dr. Alex Wissner-Gross",
+      "url": "https://x.com/alexwg",
       "label": "coined elsewhere",
       "tint": "eleprocon"
     }
