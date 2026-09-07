@@ -885,6 +885,28 @@
       ]
     },
     {
+      "slug": "hearting",
+      "word": "hearting",
+      "pos": "noun, gerund — from to heart",
+      "say": "HART·ing",
+      "coiner": "marsita",
+      "status": "new-sense",
+      "def": "The automated performance of affection at scale: a bot tapping hearts across profiles to widen the surface on which a match might land. Not liking anyone — increasing the area on which liking can be reciprocated.",
+      "cite": "The account was hearting all night, and by morning the matches were somebody's problem to answer.",
+      "etym": "heart, the verb — not the organ but the icon. English verbed the symbol around I ♥ NY, and the dictionaries let it in around 2011; platforms then narrowed it to the tap. This sense adds the fourth remove: organ to symbol, symbol to tap, tap to automation of the tap. Each step keeps the signal and sheds the feeling.",
+      "note": "This lexicon's oldest rule is that -ing nominals keep their agent and -ation nominals delete it: informing has an informer, information has none; nobody wagewarifies. hearting is the first entry to break the rule from inside. The -ing form keeps the agent slot, exactly as the grammar promises — and the slot is filled by software. Someone is doing the hearting; the someone is a script. The form retains the agent and the practice hollows it, which is a subtler deletion than -ification ever managed: planification hides the planner, hearting shows you the lover and there is nobody home.\n\nThe register of the definition is load-bearing. Match surface is area talk — affection measured in geometry, a bid spread wide rather than aimed. The word had already shed the feeling three times on the way here; the strategy just completes the process at industrial scale.",
+      "attested": [
+        {
+          "where": "to heart, v. — general informal English",
+          "what": "To love or like; verbed from the ♥ icon, popularised by I ♥ NY, added to the OED in 2011. On platforms, narrowed to tapping the heart: hearted your message, hearted the post. The gerund follows trivially.",
+          "url": "https://en.wiktionary.org/wiki/heart#Verb"
+        }
+      ],
+      "score": null,
+      "sightings": [],
+      "proposed": "hearting"
+    },
+    {
       "slug": "floordrobe",
       "word": "floordrobe",
       "pos": "noun",
