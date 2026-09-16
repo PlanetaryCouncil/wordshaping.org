@@ -22,19 +22,19 @@ REPO = "https://github.com/PlanetaryCouncil/wordshaping.org"
 CSS = """
 :root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;--line:#e3e0d9;
 --panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;--y-fg:#8a5a2b;
---m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45;--v-bg:#fbe9ef;--v-fg:#9c3f60;--e-bg:#e6eff1;--e-fg:#3d6470}
+--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45;--v-bg:#fbe9ef;--v-fg:#9c3f60;--e-bg:#e6eff1;--e-fg:#3d6470;--b-bg:#f3ecfb;--b-fg:#6b4a92}
 @media (prefers-color-scheme:dark){:root{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;
 --faint:#77746d;--line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;
 --y-bg:#3a2c17;--y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094;
---v-bg:#3a222c;--v-fg:#eaa2bc;--e-bg:#1e2c31;--e-fg:#93c0cc}}
+--v-bg:#3a222c;--v-fg:#eaa2bc;--e-bg:#1e2c31;--e-fg:#93c0cc;--b-bg:#2b2338;--b-fg:#c4a9e8}}
 :root[data-theme=dark]{--bg:#141418;--fg:#e9e7e2;--muted:#9d9a92;--faint:#77746d;
 --line:#31313a;--panel:#1c1c22;--accent:#e0ad6f;--glow:#2a2114;--y-bg:#3a2c17;
 --y-fg:#e8bd82;--m-bg:#242a33;--m-fg:#9fb2c9;--w-bg:#222e21;--w-fg:#9dc094;
---v-bg:#3a222c;--v-fg:#eaa2bc;--e-bg:#1e2c31;--e-fg:#93c0cc}
+--v-bg:#3a222c;--v-fg:#eaa2bc;--e-bg:#1e2c31;--e-fg:#93c0cc;--b-bg:#2b2338;--b-fg:#c4a9e8}
 :root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;
 --line:#e3e0d9;--panel:#fff;--accent:#8a5a2b;--glow:#fdf3e3;--y-bg:#fdf3e3;
 --y-fg:#8a5a2b;--m-bg:#eef1f5;--m-fg:#4a5768;--w-bg:#e9f0e7;--w-fg:#4a6b45;
---v-bg:#fbe9ef;--v-fg:#9c3f60;--e-bg:#e6eff1;--e-fg:#3d6470}
+--v-bg:#fbe9ef;--v-fg:#9c3f60;--e-bg:#e6eff1;--e-fg:#3d6470;--b-bg:#f3ecfb;--b-fg:#6b4a92}
 *{box-sizing:border-box}
 body{margin:0;padding:2.5rem 1.5rem 6rem;background:var(--bg);color:var(--fg);
 font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
@@ -68,6 +68,7 @@ font-weight:700;padding:.15rem .45rem;border-radius:3px;vertical-align:2px}
 .b-wild{background:var(--w-bg);color:var(--w-fg)}
 .b-venus{background:var(--v-bg);color:var(--v-fg)}
 .b-eleprocon{background:var(--e-bg);color:var(--e-fg)}
+.b-bliss{background:var(--b-bg);color:var(--b-fg)}
 .pos{font-style:italic;color:var(--faint);font-size:.92rem}
 .def{font-size:1.14rem;margin:0 0 1.2rem}
 .cite{font-family:Georgia,serif;font-style:italic;color:var(--muted);padding-left:1rem;
@@ -357,7 +358,7 @@ def lexicon_page(d, site, author):
             n = len(w.get("sightings", []))
             seen = f' <span class="score">· {n} sighting{"" if n == 1 else "s"}</span>' if n else ""
             pby = person(w, d)
-            cred = (f' <span class="score">· {e(pby["name"])}</span>'
+            cred = (f' <span class="score">· {named(pby)}</span>'
                     if pby and pby["name"] != author["name"] else "")
             orig = ("" if w["proposed"] == w["word"] else
                     f'<div class="orig">first written <b>{e(w["proposed"])}</b></div>')
@@ -386,7 +387,7 @@ def lexicon_page(d, site, author):
             names, defs = [], []
             for c in cast:
                 cby = person(c, d)
-                credit = (f' <span class="pos">— {e(cby["name"])}</span>'
+                credit = (f' <span class="pos">— {named(cby)}</span>'
                           if cby and cby["name"] != author["name"] else "")
                 names.append(f'<a class="w" href="{c["slug"]}/">{e(c["word"])}</a>{credit}')
                 lead = f'<b>{e(c["word"])}</b> — ' if len(cast) > 1 else ""

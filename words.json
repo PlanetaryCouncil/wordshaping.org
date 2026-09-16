@@ -881,7 +881,7 @@
       "sightings": [
         {
           "date": "2026-09",
-          "where": "bliss_nine on Instagram",
+          "where": "@bliss_nine on Instagram",
           "what": "Coined and defined on-screen in a reel: FIGURINI, captioned “The rare state of being when you're too big for Bikini, but still too small for Figure.”",
           "url": "https://www.instagram.com/bliss_nine/reel/DdU6fpTO0Vn/"
         }
@@ -1146,10 +1146,10 @@
       "tint": "eleprocon"
     },
     "blissnine": {
-      "name": "bliss_nine",
+      "name": "@bliss_nine",
       "url": "https://www.instagram.com/bliss_nine/",
-      "label": "coined elsewhere",
-      "tint": "eleprocon"
+      "label": "coined by @bliss_nine",
+      "tint": "bliss"
     }
   }
 }
