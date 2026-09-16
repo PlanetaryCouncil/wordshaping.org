@@ -854,17 +854,51 @@
       "proposed": "moation"
     },
     {
+      "slug": "figurini",
+      "word": "figurini",
+      "pos": "noun — plural in shape, singular in use",
+      "say": "fig-yuh-REE-nee",
+      "coiner": "blissnine",
+      "status": "coined",
+      "wotd": "2026-09-16",
+      "def": "The division that does not exist, and the competitor standing in it: too big for Bikini, still too small for Figure, eligible for neither. The two class names folded into one word, so that the gap between them has something to be called.",
+      "cite": "FIGURINI — the rare state of being when you're too big for Bikini, but still too small for Figure.",
+      "etym": "Figure + bikini: the head of the division above and the tail of the division below, welded so that both class names sit inside one word. Underneath, figure is Latin figūra, shape, from fingere, to form — the same verb that gives fiction and effigy. bikini is an atoll in the Marshall Islands, borrowed for the swimsuit in 1946 and for the division long after.",
+      "attested": [
+        {
+          "where": "Italian — figurino, pl. figurini",
+          "what": "A fashion plate: the sketch a garment is drawn on, and, said of a person, someone impeccably turned out. It is the diminutive of figura. The form has meant 'a small figure' in another language for two centuries.",
+          "url": "https://en.wiktionary.org/wiki/figurino"
+        },
+        {
+          "where": "English — figurine",
+          "what": "A statuette; a figure reduced to something you can stand on a shelf. Same diminutive, arrived by way of French.",
+          "url": ""
+        }
+      ],
+      "note": "The word is a blend that turns out not to need to be one. Read it as Figure + bikini and it names the gap by jamming the two class names together. Read it as the diminutive — figura, figurino, figurine — and it says small Figure, which is the entry requirement it fails, in the one grammatical form built for falling short of a size. The joke and the etymology arrive at the same place from opposite directions, and the second route was already paved: Italian has had figurini for the fashion plate since the nineteenth century.\n\nThe stress settles the allegiance. figure is FIG-ure, bikini is bi-KI-ni, and figurini is fi-gu-RI-ni — penultimate, exactly where bikini puts it. Measured against figure the beat has travelled two syllables, which this lexicon's oldest rule forbids; measured against bikini it has not moved at all. The word keeps the prosody of the division it has outgrown and cannot take on the prosody of the one it is reaching for. It is stuck in precisely the way it describes.\n\nThe plural is the last of it. figurini is a plural with no singular in use — nobody is a figurino — so the word names a population rather than a person, which is what a division is. It is a class name for a class that was never convened.",
+      "score": null,
+      "sightings": [
+        {
+          "date": "2026-09",
+          "where": "bliss_nine on Instagram",
+          "what": "Coined and defined on-screen in a reel: FIGURINI, captioned “The rare state of being when you're too big for Bikini, but still too small for Figure.”",
+          "url": "https://www.instagram.com/bliss_nine/reel/DdU6fpTO0Vn/"
+        }
+      ],
+      "proposed": "FIGURINI"
+    },
+    {
       "slug": "betweenweight",
       "word": "betweenweight",
       "pos": "noun — the state, and the person standing in it",
       "say": "bih-TWEEN-weight",
       "coiner": "marsita",
-      "status": "coined",
-      "wotd": "2026-09-16",
+      "status": "deprecated",
       "def": "The state of having outgrown one category without yet reaching the next, and the person in it: too big for Bikini, too small for Figure, eligible for nothing. Named like a weight class in order to mark the place where one is missing.",
       "cite": "Two years of work, and now she's a betweenweight — there is nothing she can enter.",
       "etym": "between (Old English betwēonum, be + the dative of twā, 'two' — literally 'by twos') + -weight, the element that names the fighting classes: flyweight, welterweight, middleweight, cruiserweight. The suffix is lifted from the one system that has always answered this problem by subdividing; the base insists there are exactly two things and that you are neither.",
-      "note": "The stress gives the word away. Every real class name in the sport is a trochee with the beat on the first element — FLYweight, MIDDLEweight, HEAVYweight, BIKIni, FIGure — and between is be-TWEEN, iambic, and stays that way in the compound: bih-TWEEN-weight. This lexicon's founding rule is that stress may travel one syllable and never two. Here it refuses to travel at all, and the refusal is the definition read aloud: the word will not scan into the list it is named for.\n\n-weight does not name a mass, it names an eligibility. Nobody is a heavyweight by weighing something; they are a heavyweight because a federation agreed to weigh them and wrote the result on a card. betweenweight keeps that grammar exactly and removes the federation. It is a class with all the morphology of a class and no card behind it.\n\nEvery real division was a betweenweight first. Cruiserweight, super-middleweight, light-heavyweight — each exists because enough people stood in a gap long enough that the sport wrote them a rung. The IFBB Pro League did it again in 2020, adding Wellness between Bikini and Figure. So the word is built to expire: it names the condition that ends when the taxonomy catches up, and it is the taxonomy, not the body, that is behind.\n\nOutside the gym it is everywhere, and always read as the person's fault. Too senior for the junior title and too junior for the senior one. Too literary for genre and too genre for literary. Past seed and short of Series A. In every case the shortfall is announced and the growth is not, though the growth is what caused it. This is the only state of being you arrive at by getting better at something.\n\nThe occasion: a reel by bliss_nine, Instagram, September 2026, captioned \"The rare state of being when you're too big for Bikini, but still too small for Figure\" — https://www.instagram.com/bliss_nine/reel/DdU6fpTO0Vn/ . The caption names the state precisely and leaves the slot empty. This fills it.",
+      "note": "The stress gives the word away. Every real class name in the sport is a trochee with the beat on the first element — FLYweight, MIDDLEweight, HEAVYweight, BIKIni, FIGure — and between is be-TWEEN, iambic, and stays that way in the compound: bih-TWEEN-weight. This lexicon's founding rule is that stress may travel one syllable and never two. Here it refuses to travel at all, and the refusal is the definition read aloud: the word will not scan into the list it is named for.\n\n-weight does not name a mass, it names an eligibility. Nobody is a heavyweight by weighing something; they are a heavyweight because a federation agreed to weigh them and wrote the result on a card. betweenweight keeps that grammar exactly and removes the federation. It is a class with all the morphology of a class and no card behind it.\n\nEvery real division was a betweenweight first. Cruiserweight, super-middleweight, light-heavyweight — each exists because enough people stood in a gap long enough that the sport wrote them a rung. The IFBB Pro League did it again in 2020, adding Wellness between Bikini and Figure. So the word is built to expire: it names the condition that ends when the taxonomy catches up, and it is the taxonomy, not the body, that is behind.\n\nOutside the gym it is everywhere, and always read as the person's fault. Too senior for the junior title and too junior for the senior one. Too literary for genre and too genre for literary. Past seed and short of Series A. In every case the shortfall is announced and the growth is not, though the growth is what caused it. This is the only state of being you arrive at by getting better at something.\n\nAnd the slot was already filled. The reel that prompted this word had the word in it: bliss_nine put FIGURINI on the screen and the caption underneath it — https://www.instagram.com/bliss_nine/reel/DdU6fpTO0Vn/ — and this entry was written from the caption alone, without reading the title. The search that was run checked whether betweenweight was taken. It was not. The question that mattered was whether the sense was taken, and it was, by the person who had the thing to name.\n\nKept as a record because the failure is the lesson this project is about: the work of coining is mostly the work of finding out that someone got there first, and that check has to come before the morphology, not after it. The stress argument above still holds. It is a decent word for a slot that did not need one. See figurini.",
       "score": null,
       "sightings": [],
       "proposed": "betweenweight"
@@ -1108,6 +1142,12 @@
     "alexwg": {
       "name": "Dr. Alex Wissner-Gross",
       "url": "https://x.com/alexwg",
+      "label": "coined elsewhere",
+      "tint": "eleprocon"
+    },
+    "blissnine": {
+      "name": "bliss_nine",
+      "url": "https://www.instagram.com/bliss_nine/",
       "label": "coined elsewhere",
       "tint": "eleprocon"
     }
