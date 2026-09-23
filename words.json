@@ -904,6 +904,52 @@
       "proposed": "betweenweight"
     },
     {
+      "slug": "spymark",
+      "word": "spymark",
+      "pos": "noun and transitive verb — spymarked, spymarking; spymarking n., spymarked adj.",
+      "say": "SPY·mark",
+      "coiner": "brandonthomas",
+      "status": "coined",
+      "def": "A hidden signal embedded in media to trace its origin, tools, or distribution history without the user's meaningful control. As a verb, to embed one; spymarking, the practice; spymarked, bearing one.",
+      "cite": "The spymarks tied each copy to a different recipient.",
+      "etym": "spy + mark, cast in the mould of watermark. English keeps a whole series of -mark compounds for marks that certify — hallmark, from the assay office at Goldsmiths' Hall; trademark; postmark; benchmark; watermark itself, the papermaker's device seen against the light. Every one of them is a mark made to be seen, and the seeing is what confers the trust. spymark joins the series and inverts it: the first -mark made not to be seen, extracting information instead of declaring it.",
+      "note": "Coined 21 September 2026, in an essay titled Spymarks, not Watermarks, and the coinage is the argument: watermark implies something visible, declared and benign, and the things being deployed — SynthID, audio beacons, printer dots, provenance manifests — are none of those. Rename them and, in the author's words, the privacy concern is built into the word. This is the counter-move to half of this lexicon. thermobarically and the -ification words show grammar being used to hide an act; spymark is naming used to unhide one. The surveillance was already there — the word makes it audible.\n\nIt also arrived complete. Most coinages show up as a single form and grow their paradigm over years; this one shipped as a full dictionary family on day one — noun, transitive verb, gerund, participial adjective, each with its example sentence. The social network spymarks every uploaded image. Removing the file's metadata still left the image spymarked. Zero-derivation straight to the verb, exactly the path watermark took, walked in an afternoon instead of a century.\n\nAnd it took two days to stop being hypothetical: front page of Hacker News on the 22nd, follow-up coverage, and tools on GitHub named for it. Every other word here waits on the leaderboard for a second sighting. This one arrived with five.",
+      "score": null,
+      "sightings": [
+        {
+          "date": "2026-09-21",
+          "where": "brand.io — “Spymarks, not Watermarks”",
+          "what": "The coining essay: the definition, the case against watermark, and the full word family set out in dictionary form.",
+          "url": "https://brand.io/article/spymarks/"
+        },
+        {
+          "date": "2026-09-22",
+          "where": "Hacker News, front page",
+          "what": "The essay discussed under its own title; the word used in comments as an ordinary noun and verb.",
+          "url": "https://news.ycombinator.com/item?id=49794615"
+        },
+        {
+          "date": "2026-09-22",
+          "where": "The Daily Commit",
+          "what": "Story syndicated under the coinage: “Spymarks, Not Watermarks”.",
+          "url": "https://thedailycommit.in/story/2026-09-22/07-hn-spymarks-not-watermarks"
+        },
+        {
+          "date": "2026-09",
+          "where": "byteiota",
+          "what": "Explainer adopting the term: “Spymarks: The Hidden Trackers in Your AI Outputs”.",
+          "url": "https://byteiota.com/spymarks-ai-watermarks-hidden-trackers/"
+        },
+        {
+          "date": "2026-09",
+          "where": "GitHub",
+          "what": "Tools named for the word within days of the essay: spymark-remover, and a SpyMark defence project.",
+          "url": "https://github.com/alkaplan/spymark-remover"
+        }
+      ],
+      "proposed": "spymark"
+    },
+    {
       "slug": "thermobarically",
       "word": "thermobarically",
       "pos": "adverb",
@@ -1150,6 +1196,12 @@
       "url": "https://www.instagram.com/bliss_nine/",
       "label": "coined by @bliss_nine",
       "tint": "bliss"
+    },
+    "brandonthomas": {
+      "name": "Brandon Thomas",
+      "url": "https://brand.io",
+      "label": "coined elsewhere",
+      "tint": "eleprocon"
     }
   }
 }
