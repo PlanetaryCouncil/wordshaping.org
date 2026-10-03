@@ -296,6 +296,15 @@ def word_page(w, site, d):
         p.append(f'<p class="field"><b>Derived forms</b><span>{e(w["forms"])}</span></p>')
     p.append(score)
 
+    fam = [x for x in d["words"] if w.get("family") and x.get("family") == w["family"]]
+    if fam:
+        p.append('<h2>Word family</h2>')
+        for x in fam:
+            name = (f'<b>{e(x["word"])}</b>' if x["slug"] == w["slug"]
+                    else f'<a href="../{e(x["slug"])}/">{e(x["word"])}</a>')
+            p.append(f'<div class="sight"><div class="when">{name} · {e(x["pos"])}</div>'
+                     f'<p class="what">{e(x.get("gloss", ""))}</p></div>')
+
     bg = w.get("background")
     if bg:
         p.append('<h2>Background</h2>')
