@@ -296,14 +296,21 @@
       "gloss": "To fuse unrelated items into one unamendable vote.",
       "def": "To fuse unrelated items into one unamendable vote, so that opposing one means appearing to defend the others.",
       "cite": "They intercommingled the three bans into a single order and dared anyone to vote no.",
-      "etym": "inter- + commingle. Com- already means “together”, so inter- says it twice; the redundancy is the point. Back-formed from intercomminglification, as edit came from editor.",
-      "note": "The verb of the family: what is done, by whom. The noun names the technique; this names the act, and keeps the agent in the sentence.",
+      "etym": "inter- + commingle. Com- already means “together”, so inter- says it twice; the redundancy is the point. The form is old: an intensive of commingle, “to mix together thoroughly”, in print since at least the 1840s. The new sense narrows it from mixing to bundling for a vote.",
+      "note": "The verb of the family: what is done, by whom. The noun names the technique; this names the act, and keeps the agent in the sentence. The old verb said things were mixed; the new one says somebody mixed them, and when, and why the mixture cannot now be voted apart.",
       "coiner": "marsita",
-      "status": "coined",
+      "status": "new-sense",
       "family": "intercomminglification",
       "score": null,
       "sightings": [],
-      "proposed": "intercommingle"
+      "proposed": "intercommingle",
+      "attested": [
+        {
+          "where": "English — intercommingled, intercommingling, 1847 onward",
+          "what": "The form in its plain sense: mixed together thoroughly, a doubled intermingle. It turns up in print from 1847 to 2014 in Google Books, rarely but steadily, almost always as the participles. Nothing in it about votes, bundles or procedure.",
+          "url": "https://books.google.com/ngrams/graph?content=intercommingled%2Cintercommingling&year_start=1800&year_end=2019&corpus=en&smoothing=3"
+        }
+      ]
     },
     {
       "slug": "intercomminglification",
@@ -314,7 +321,7 @@
       "status": "coined",
       "def": "The fusing of unrelated items into a single unamendable vote, so that opposing one means appearing to defend the others.",
       "cite": "The order was passed by intercomminglification: nobody could vote against one ban without voting against all three.",
-      "etym": "inter- + commingle + -ification. Commingle is already a verb, so -ify is a round trip, and com- already means “together”, so inter- says it twice. Both redundancies are kept on purpose: the word does to its own parts what it describes.",
+      "etym": "inter- + commingle + -ification. Commingle is already a verb, so -ify is a round trip, and com- already means “together”, so inter- says it twice. Both redundancies are kept on purpose: the word does to its own parts what it describes. The verb inside it turns out to be old (intercommingled is in print from 1847), but the -ification is new: no earlier record of the noun, the adjective, or either un- form.",
       "note": "Near neighbour of intertwinification. That one binds things so they cannot be separated later; this one binds them for the length of one vote, so that they cannot be judged separately now.",
       "background": {
         "text": "On 30 June 2025 the Home Office laid a single draft order adding three organisations to the United Kingdom’s list of proscribed terrorist groups: Palestine Action, Maniacs Murder Cult and the Russian Imperial Movement. A proscription order is a statutory instrument, which Parliament can approve or reject but not amend. In the Commons debate on 2 July 2025, Jeremy Corbyn asked why groups are always put together in these orders rather than dealt with separately. The Commons approved the order 385 to 26; after the vote, a Member said on a point of order that everyone who voted no had wanted to ban the other two. The Lords approved the order on 3 July and it came into force on 5 July.",
