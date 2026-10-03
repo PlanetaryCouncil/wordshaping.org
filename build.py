@@ -292,7 +292,17 @@ def word_page(w, site, d):
         p.append(f'<p class="field"><b>Etymology</b><span>{e(w["etym"])}</span></p>')
     if w.get("note"):
         p.append(f'<p class="field"><b>Note</b><span>{e(w["note"])}</span></p>')
+    if w.get("forms"):
+        p.append(f'<p class="field"><b>Derived forms</b><span>{e(w["forms"])}</span></p>')
     p.append(score)
+
+    bg = w.get("background")
+    if bg:
+        p.append('<h2>Background</h2>')
+        p.append(f'<p class="lede">{e(bg["text"])}</p>')
+        for s in bg.get("sources", []):
+            p.append(f'<div class="sight"><div class="when"><a href="{e(s["url"])}">'
+                     f'{e(s["where"])}</a></div></div>')
 
     at = w.get("attested", [])
     if at:

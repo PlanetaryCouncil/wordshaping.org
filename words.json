@@ -289,6 +289,39 @@
       "proposed": "intertwinification"
     },
     {
+      "slug": "intercomminglification",
+      "word": "intercomminglification",
+      "pos": "noun",
+      "say": "in·ter·com·min·gli·fi·CA·tion",
+      "coiner": "marsita",
+      "status": "coined",
+      "def": "The fusing of unrelated items into a single unamendable vote, so that opposing one means appearing to defend the others.",
+      "cite": "The order was passed by intercomminglification: nobody could vote against one ban without voting against all three.",
+      "etym": "inter- + commingle + -ification. Commingle is already a verb, so -ify is a round trip, and com- already means “together”, so inter- says it twice. Both redundancies are kept on purpose: the word does to its own parts what it describes.",
+      "note": "Near neighbour of intertwinification. That one binds things so they cannot be separated later; this one binds them for the length of one vote, so that they cannot be judged separately now.",
+      "forms": "intercommingle (verb): to fuse unrelated items into one unamendable vote. intercomminglified (adjective): the state of the items afterwards. unintercommingle (verb): to separate them again. unintercomminglification (noun): the remedy, which the procedure does not offer.",
+      "background": {
+        "text": "On 30 June 2025 the Home Office laid a single draft order adding three organisations to the United Kingdom’s list of proscribed terrorist groups: Palestine Action, Maniacs Murder Cult and the Russian Imperial Movement. A proscription order is a statutory instrument, which Parliament can approve or reject but not amend. In the Commons debate on 2 July 2025, Jeremy Corbyn asked why groups are always put together in these orders rather than dealt with separately. The Commons approved the order 385 to 26; after the vote, a Member said on a point of order that everyone who voted no had wanted to ban the other two. The Lords approved the order on 3 July and it came into force on 5 July.",
+        "sources": [
+          {
+            "where": "Hansard, House of Commons, 2 July 2025 — Prevention and Suppression of Terrorism",
+            "url": "https://hansard.parliament.uk/commons/2025-07-02/debates/6C9338E8-E516-494A-81A2-B3FEF549DD48/PreventionAndSuppressionOfTerrorism"
+          },
+          {
+            "where": "Left Foot Forward — how every MP voted (385 to 26)",
+            "url": "https://leftfootforward.org/2025/07/palestine-action-how-every-mp-voted-on-proscribing-them-as-a-terrorist-group/"
+          },
+          {
+            "where": "High Court judgment setting out the order’s dates",
+            "url": "https://caselaw.nationalarchives.gov.uk/ewhc/admin/2026/292"
+          }
+        ]
+      },
+      "score": null,
+      "sightings": [],
+      "proposed": "intercomminglification"
+    },
+    {
       "slug": "reprogramification",
       "word": "reprogramification",
       "pos": "noun",
