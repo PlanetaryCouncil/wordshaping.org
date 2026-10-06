@@ -1178,6 +1178,22 @@
       "score": null,
       "sightings": [],
       "proposed": "chutzpah"
+    },
+    {
+      "slug": "entitledfication",
+      "word": "entitledfication",
+      "pos": "noun",
+      "say": "en·ti·tled·fi·CA·tion",
+      "coiner": "marsita",
+      "status": "coined",
+      "wotd": "2026-10-06",
+      "def": "The process of becoming entitled: the slow drift by which a favour turns into an expectation, an expectation into a right, and a right into something owed.",
+      "cite": "Three years of free upgrades, and the entitledfication was complete: the first time he paid, he complained.",
+      "etym": "entitled + -fication. The regular build would be entitlification, from the verb entitle, but that leans toward the legal sense, being given title to something. Keeping the -ed builds on the adjective instead, entitled as an attitude, so the word means becoming entitled in the sense of acting it, not being granted it.",
+      "note": "English has a word for the state, entitlement, and none for the process. Entitlement also has a dry legal sense (benefits, rights, permissions in software), so it cannot say whether someone has a right or merely feels they do. Entitledfication can: it only ever means the feeling, and it names the drift rather than the end point. The -ification is earned on the systemic reading: loyalty schemes, perks that became expected, and platforms that teach users that the free tier is owed.\n\nThe seam is rough on purpose. -ledf- is not a cluster English likes, and you hear the -ed sticking out of the middle of the word, the participle refusing to dissolve, which is roughly what entitled people do.",
+      "score": null,
+      "sightings": [],
+      "proposed": "entitledfication"
     }
   ],
   "seams": [
