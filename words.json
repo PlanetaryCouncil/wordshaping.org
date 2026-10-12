@@ -1194,6 +1194,39 @@
       "score": null,
       "sightings": [],
       "proposed": "entitledfication"
+    },
+    {
+      "slug": "unhappen",
+      "word": "unhappen",
+      "pos": "intransitive verb — unhappens, unhappening, unhappened",
+      "say": "un·HAP·pen",
+      "coiner": "wild",
+      "status": "already-real",
+      "wotd": "2026-10-12",
+      "def": "Of an event: to stop having taken place, as if it had never occurred.",
+      "cite": "It happened, and then it unhappened.",
+      "etym": "un- + happen. A reversative un- (as in untie, undo) on a verb that should not take one. You can untie a knot because the knot is still there to work on; an event is over, so there is nothing left to reach back into. The prefix asks for something the verb cannot give, and that is the whole charge of the word.",
+      "note": "Not a new word. It is in print from 1711 and has its own Wiktionary entry, so it sits here with the old words. It is here because it names a wish English otherwise has to spell out at length: not that something be fixed, forgiven or forgotten, but that it stop having happened.\n\nThe poster pushes it further: Timeline Shift, Extra Life, Higher-dimensional Technology. In the dictionary sense, unhappening is figurative, “as if it were undone.” In the poster's sense it is literal: the event is removed from the timeline, a whole heart restored where the broken one was, as if by a video game's extra life. That is the frontier the word points at. Forgiveness works on the consequences of an event; unhappening would work on the event itself.\n\nUnintercommingle, earlier in this lexicon, is the procedural version of the same wish: not to amend the result, but to go back to before the items were fused.",
+      "image": {
+        "file": "poster.jpg",
+        "alt": "Poster: UNHAPPEN in glowing green letters; “It happened, and then it unhappened.” A whole red crystal heart and a shattered one are linked by green threads through a seedling. Footer: Timeline Shift, Extra Life, Higherdimensional Technology.",
+        "caption": "It happened, and then it unhappened."
+      },
+      "attested": [
+        {
+          "where": "Wiktionary — unhappen, v.",
+          "what": "“For an event to stop having taken place, as if it were undone.” With its own entries for unhappened and unhappening (the latter also as a rare noun: a nonevent).",
+          "url": "https://en.wiktionary.org/wiki/unhappen"
+        },
+        {
+          "where": "Google Books, 1711 onward",
+          "what": "unhappen, unhappened and unhappening all in print for three centuries, with steady use through 2019.",
+          "url": "https://books.google.com/ngrams/graph?content=unhappen%2Cunhappened%2Cunhappening&year_start=1700&year_end=2019&corpus=en&smoothing=3"
+        }
+      ],
+      "score": null,
+      "sightings": [],
+      "proposed": "unhappen"
     }
   ],
   "seams": [
