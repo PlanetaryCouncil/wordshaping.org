@@ -71,6 +71,7 @@ font-weight:700;padding:.15rem .45rem;border-radius:3px;vertical-align:2px}
 .b-venus{background:var(--v-bg);color:var(--v-fg)}
 .b-eleprocon{background:var(--e-bg);color:var(--e-fg)}
 .b-bliss{background:var(--b-bg);color:var(--b-fg)}
+.b-wanted{background:transparent;color:var(--accent);border:1px dashed var(--accent)}
 .pos{font-style:italic;color:var(--faint);font-size:.92rem}
 .def{font-size:1.14rem;margin:0 0 1.2rem}
 .cite{font-family:Georgia,serif;font-style:italic;color:var(--muted);padding-left:1rem;
@@ -171,7 +172,7 @@ def page(title, desc, canon, body, depth, jsonld=None, og_image=None):
 <style>{CSS}</style>
 </head>
 <body><div class="wrap">
-<nav><a href="{up if depth else ''}">the lexicon</a><a href="{up}leaderboard/">leaderboard</a><a href="{up}working-table.html">working table</a><a href="{REPO}">source</a></nav>
+<nav><a href="{up if depth else ''}">the lexicon</a><a href="{up}leaderboard/">leaderboard</a><a href="{up}wanted/">wanted</a><a href="{up}working-table.html">working table</a><a href="{REPO}">source</a></nav>
 {body}
 <footer>
 <a href="{up if depth else ''}">Wordshaping</a> — a lexicon of words that should already exist.<br>
@@ -250,6 +251,51 @@ def moved_page(old, w, site):
                                f'\n<meta name="robots" content="noindex,follow">', 1)
 
 
+WANTED_BADGE = '<span class="badge b-wanted">wanted</span>'
+
+
+def propose_url(w):
+    return f'{REPO}/issues/new?title=Proposal:+{w["slug"]}'
+
+
+def proposals_block(w):
+    """The open shop on a gap's page: what has been offered, and how to offer more."""
+    pr = w.get("proposals", [])
+    out = [f'<h2>Proposals <span class="count{"" if pr else " zero"}">{len(pr)}</span></h2>']
+    if pr:
+        for x in pr:
+            who = f' — {e(x["by"])}' if x.get("by") else ""
+            out.append(f'<div class="sight"><div class="when"><b>{e(x["word"])}</b>{who}</div>'
+                       f'<p class="what">{e(x.get("what", ""))}</p></div>')
+    else:
+        out.append('<div class="empty">Nothing offered yet. The shop is open: propose a word, '
+                   'and it is listed here under your name. A proposal that catches on gets its '
+                   'own page in the lexicon, credited to you.</div>')
+    out.append(f'<a class="cta" href="{propose_url(w)}">Propose a word →</a>')
+    return out
+
+
+def wanted_page(d, site):
+    gaps = [w for w in d["words"] if w["status"] == "wanted"]
+    rows = "".join(
+        f'<div class="entry"><a class="w" href="../{w["slug"]}/">{e(w["word"])}</a> '
+        f'<span class="pos">{e(w["pos"])}</span> {WANTED_BADGE} '
+        f'<span class="score">· {len(w.get("proposals", []))} proposed</span>'
+        f'<p>{e(w["def"])}</p></div>' for w in gaps)
+    body = (f'<h1>Wanted</h1><p class="tag-line">The shop is open.</p>'
+            f'<blockquote class="epi">Words that should exist and do not, yet.</blockquote>'
+            f'<p class="lede">Each gap below is a distinction people need and English will not '
+            f'make for them. Propose a word for any of them — open an issue, or edit '
+            f'<code>words.json</code> directly. Every proposal is listed on the gap\'s page under '
+            f'its coiner\'s name, and the one that gets used in public moves into the lexicon '
+            f'with its own page and its own credit.</p>'
+            f'<h2>Open gaps <span class="count">{len(gaps)}</span></h2>{rows}'
+            f'<p><a class="cta" href="{REPO}/issues/new?title=Wanted:+">Report a gap →</a></p>')
+    return page("Wanted — Wordshaping",
+                "Gaps in English waiting for a word. Propose one.",
+                f"{site}/wanted/", body, 1)
+
+
 def word_page(w, site, d):
     canon = f'{site}/{w["slug"]}/'
     s = w.get("score")
@@ -259,7 +305,9 @@ def word_page(w, site, d):
                  f' · music {s["music"]} → {s["total"]}/25 · one reader\'s opinion, ranks nothing</p>')
 
     by = person(w, d)
-    author_line = (f'<p class="byline">Coined by <b>{named(by)}</b></p>' if by else
+    wanted = w["status"] == "wanted"
+    author_line = (f'<p class="byline">Gap raised by <b>{named(by)}</b></p>' if wanted and by else
+                   f'<p class="byline">Coined by <b>{named(by)}</b></p>' if by else
                    f'<p class="byline">{e(LABEL[w["coiner"]]).capitalize()}</p>')
 
     stamp = ""
@@ -272,7 +320,8 @@ def word_page(w, site, d):
     p = [f'<h1>{e(w["word"])}</h1>',
          author_line,
          stamp,
-         f'<p class="tag-line"><span class="pos">{e(w["pos"])}</span> {badge(w["coiner"], by)}</p>',
+         f'<p class="tag-line"><span class="pos">{e(w["pos"])}</span> '
+         f'{WANTED_BADGE if wanted else badge(w["coiner"], by)}</p>',
          f'<p class="say">{e(w["say"])}</p>',
          origin_block(w, by),
          f'<p class="def">{e(w["def"])}</p>']
@@ -315,7 +364,10 @@ def word_page(w, site, d):
 
     at = w.get("attested", [])
     if at:
-        p.append('<h2>Prior use of the form</h2>'
+        p.append('<h2>What English already tried</h2>'
+                 '<p class="lede">Patches already in circulation. Each covers one of the gaps, '
+                 'none covers all of them.</p>' if wanted else
+                 '<h2>Prior use of the form</h2>'
                  '<p class="lede">Where this string was already doing work before it was put to '
                  'this use. The sense below is the coinage; the spelling is not.</p>')
         for a in at:
@@ -323,10 +375,15 @@ def word_page(w, site, d):
             p.append(f'<div class="sight"><div class="when">{e(a.get("where"))}{link}</div>'
                      f'<p class="what">{e(a.get("what"))}</p></div>')
 
-    sg = w.get("sightings", [])
+    if wanted:
+        p.extend(proposals_block(w))
+    sg = [] if wanted else w.get("sightings", [])
     n = len(sg)
-    p.append(f'<h2>Sightings in public <span class="count{"" if n else " zero"}">{n}</span></h2>')
-    if sg:
+    if not wanted:
+        p.append(f'<h2>Sightings in public <span class="count{"" if n else " zero"}">{n}</span></h2>')
+    if wanted:
+        pass
+    elif sg:
         p.append('<p class="lede">Documented uses outside this project.</p>')
         for si in sg:
             link = f' — <a href="{e(si["url"])}">link</a>' if si.get("url") else ""
@@ -337,8 +394,9 @@ def word_page(w, site, d):
         p.append('<div class="empty">No documented use yet. Every word in every dictionary '
                  'started exactly here, and the only thing that ever moved one was somebody '
                  'using it where other people could see.</div>')
-    p.append(f'<a class="cta" href="{REPO}/issues/new?title=Sighting:+{e(w["slug"])}">'
-             f'Document a sighting →</a>')
+    if not wanted:
+        p.append(f'<a class="cta" href="{REPO}/issues/new?title=Sighting:+{e(w["slug"])}">'
+                 f'Document a sighting →</a>')
 
     ld = {"@context": "https://schema.org", "@type": "DefinedTerm",
           "name": w["word"], "description": w["def"], "url": canon,
@@ -360,6 +418,10 @@ def lexicon_page(d, site, author):
                "Every word has its own page and its own URL, where the original wording is preserved "
                "and public use is documented. Nothing here is removed for scoring badly.",
                [w for w in ws if w["status"] == "coined"]),
+              ("Wanted",
+               "Gaps with no word yet. The shop is open: each one takes proposals, and the "
+               "proposal that catches on moves up into the lexicon under its coiner's name.",
+               [w for w in ws if w["status"] == "wanted"]),
               ("Kept as a record",
                "Built on reasoning that later turned out to be wrong. Retained rather than deleted, "
                "because the reasoning is the point.",
@@ -383,8 +445,9 @@ def lexicon_page(d, site, author):
                     if pby and pby["name"] != author["name"] else "")
             orig = ("" if w["proposed"] == w["word"] else
                     f'<div class="orig">first written <b>{e(w["proposed"])}</b></div>')
+            tag = WANTED_BADGE if w["status"] == "wanted" else badge(w["coiner"], pby)
             out.append(f'<div class="entry"><a class="w" href="{w["slug"]}/">{e(w["word"])}</a> '
-                       f'<span class="pos">{e(w["pos"])}</span> {badge(w["coiner"], pby)}{cred}{seen}'
+                       f'<span class="pos">{e(w["pos"])}</span> {tag}{cred}{seen}'
                        f'<p>{e(w["def"])}</p>{orig}</div>')
         return "\n".join(out)
 
@@ -515,6 +578,10 @@ def main():
     lb = ROOT / "leaderboard"
     lb.mkdir(exist_ok=True)
     (lb / "index.html").write_text(leaderboard_page(d, site))
+    wp = ROOT / "wanted"
+    wp.mkdir(exist_ok=True)
+    (wp / "index.html").write_text(wanted_page(d, site))
+    urls.insert(2, f"{site}/wanted/")
 
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
