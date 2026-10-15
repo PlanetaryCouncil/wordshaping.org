@@ -1275,6 +1275,33 @@
       "score": null,
       "sightings": [],
       "proposed": "you"
+    },
+    {
+      "slug": "abysmalcatastrofuck",
+      "word": "abysmalcatastrofuck",
+      "pos": "noun",
+      "say": "a·bys·mal·ca·TAS·tro·fuck",
+      "coiner": "marsita",
+      "status": "coined",
+      "def": "A disaster so extreme words give up.",
+      "cite": "It wasn't a setback, or a crisis, or even a catastrophe. It was an abysmalcatastrofuck.",
+      "etym": "abysmal + catastrofuck, itself catastrophe + fuck. Two Greek words and one English one. Abyss is Greek abyssos, “bottomless”; catastrophe is katastrophē, “an overturning”, originally the turn at the end of a tragedy. So the word runs: no bottom, everything overturned, and then the one syllable English keeps for when the Greek runs out.",
+      "note": "A word about the failure of words that works by piling them up. When one intensifier stops being enough, you add another, then fuse them so nobody can stop to breathe between them. Seven syllables with no space is what giving up sounds like.\n\nThe joins are clean. Abysmal ends on -al, catastrofuck starts with a hard c-, and the stress lands once, on -TAS-, so the whole thing comes out in one collapse rather than three words in a row. Of the three parts, only the last is a single syllable.\n\nOn the scale of disasters it sits one rung above catastrofuck, which already sits above clusterfuck. Clusterfuck is chaos, catastrofuck is chaos with consequences, and abysmalcatastrofuck is consequences with no floor.",
+      "image": {
+        "file": "poster.jpg",
+        "alt": "Poster: ABYSMALCATASTROFUCK (noun) = a disaster so extreme words give up. Below, a ruined city under a tornado, with a cow and a car in the air, a sign reading THIS WAS A BAD IDEA, and a broken mug with crossed-out eyes.",
+        "caption": "A disaster so extreme words give up."
+      },
+      "attested": [
+        {
+          "where": "catastrofuck — the inner word, credited to Jon Stewart, The Daily Show, October 2006",
+          "what": "Catastrophe + fuck, said of the Iraq war; since used for any spectacular mess. Only the second half of this word is prior: the full compound has no earlier use found.",
+          "url": "https://www.urbandictionary.com/define.php?term=Catastrofuck"
+        }
+      ],
+      "score": null,
+      "sightings": [],
+      "proposed": "abysmalcatastrofuck"
     }
   ],
   "seams": [
