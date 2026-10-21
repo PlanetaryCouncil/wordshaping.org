@@ -1302,6 +1302,64 @@
       "score": null,
       "sightings": [],
       "proposed": "abysmalcatastrofuck"
+    },
+    {
+      "slug": "mayber",
+      "word": "mayber",
+      "pos": "noun, informal",
+      "say": "MAY·ber",
+      "status": "new-sense",
+      "gloss": "A person permanently in the maybe.",
+      "def": "A person permanently in the maybe. Replies “maybe” to every invitation, keeps every tab open, never commits, never fully declines. The opposite of a decider.",
+      "cite": "“Is Dave coming tonight?” “He's a mayber. Plan for half a Dave.”",
+      "etym": "maybe + -er, the agent suffix: the one who does the maybe, as a decider is the one who decides. The -e of maybe folds into the -er, so the word sounds like maybe said with a shrug on the end.",
+      "note": "Decider names a person by what they do, which is end the question. Mayber names a person by what they do instead, which is keep it open. It is not indecision, which is a temporary state; a mayber is a fixed type of person. You do not wait for a mayber to decide. You plan around them, which is the joke in plan for half a Dave.\n\nThe family runs: a mayber is maybering, and if you're lucky, maybring snacks.",
+      "attested": [
+        {
+          "where": "Urban Dictionary — mayber",
+          "what": "An unrelated earlier sense: maybe slurred with an extra syllable on the end, as said when drunk. Same spelling, nothing about a kind of person.",
+          "url": "https://www.urbandictionary.com/define.php?term=mayber"
+        }
+      ],
+      "coiner": "marsita",
+      "family": "mayber",
+      "score": null,
+      "sightings": [],
+      "proposed": "mayber"
+    },
+    {
+      "slug": "maybering",
+      "word": "maybering",
+      "pos": "verb, continuous",
+      "say": "MAY·ber·ing",
+      "status": "coined",
+      "gloss": "Actively dwelling in the maybe state.",
+      "def": "Actively dwelling in the maybe state: not deciding, and not exactly failing to decide either, but occupying the undecided state as an activity in its own right.",
+      "cite": "“Still deciding on the job offer?” “Yeah, I'm maybering.”",
+      "etym": "mayber + -ing. Built off the person, not off maybe, so it means doing what a mayber does. The continuous form is the point: maybering never has a past tense that finishes.",
+      "note": "English has hesitating, dithering and wavering, all of which sound like faults. Maybering sounds like a hobby. That is the honest part: the maybe state has its comforts, every option still open and nobody let down yet, and the word admits it.",
+      "coiner": "marsita",
+      "family": "mayber",
+      "score": null,
+      "sightings": [],
+      "proposed": "maybering"
+    },
+    {
+      "slug": "maybring",
+      "word": "maybring",
+      "pos": "verb",
+      "say": "MAY·bring",
+      "status": "coined",
+      "gloss": "May or may not bring something.",
+      "def": "To may or may not bring something; to promise an item in the maybe, so nobody can count on it or complain when it doesn't come.",
+      "cite": "“Is he bringing wine?” “He's maybring it.”",
+      "etym": "maybe + bring, overlapping on the shared may-. It splits two ways at once: as may bring, the plain modal phrase, and as maybe + bring, bringing in the maybe. Both readings say the same thing, which is why the pun lands.",
+      "note": "It looks like a typo of maybering and is a different word: one letter shorter, and the -bring is a real verb, not a suffix. Maybering is the state; maybring is the state applied to a specific bottle of wine.\n\nGrammatically it bends the rules: may is a modal and does not normally take -ing, so “he's maybring it” cannot exist in standard English. It is said anyway, because it is the only way to fit the hedge inside the verb.",
+      "coiner": "marsita",
+      "family": "mayber",
+      "score": null,
+      "sightings": [],
+      "proposed": "maybring"
     }
   ],
   "seams": [
