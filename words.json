@@ -1360,6 +1360,30 @@
       "score": null,
       "sightings": [],
       "proposed": "maybring"
+    },
+    {
+      "slug": "catastropreneur",
+      "word": "Catastropreneur",
+      "pos": "noun",
+      "say": "ca·tas·tro·pre·NEUR",
+      "coiner": "wild",
+      "status": "coined",
+      "wotd": "2026-10-21",
+      "gloss": "An entrepreneur whose ventures turn into catastrophes.",
+      "def": "An entrepreneur whose ventures turn into catastrophes; a business visionary with a gift for turning every opportunity into a disaster.",
+      "cite": "He pitched three businesses before lunch and bankrupted two by dinner. A natural catastropreneur.",
+      "etym": "catastrophe + entrepreneur. The opening of catastrophe replaces entre-, leaving -preneur to carry the business ambition and catastro- to announce the result.",
+      "note": "Found in the description of Mike Moe Money: This Is Not A Scam at Playhouse East, where the character is billed as the “World #1 Catastropreneur”. The joke compresses the show’s satire of hustle culture into a job title: confidence survives every business failure. This listing documents a use of the word, not a claim about who first coined it.",
+      "score": null,
+      "sightings": [
+        {
+          "date": "2026-10-21",
+          "where": "Playhouse East — Mike Moe Money: This Is Not A Scam",
+          "what": "The show description bills Mike Moe Money as “World #1 Catastropreneur”.",
+          "url": "https://shows.playhouseeast.com/mike-moe-money-this-is-not-a-scam#performances"
+        }
+      ],
+      "proposed": "Catastropreneur"
     }
   ],
   "seams": [
