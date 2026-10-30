@@ -18,6 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 REPO = "https://github.com/PlanetaryCouncil/wordshaping.org"
+X = "https://x.com/wordshaping"
 
 CSS = """
 :root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6f6e68;--faint:#94928b;--line:#e3e0d9;
@@ -177,7 +178,8 @@ def page(title, desc, canon, body, depth, jsonld=None, og_image=None):
 <footer>
 <a href="{up if depth else ''}">Wordshaping</a> — a lexicon of words that should already exist.<br>
 Sightings are the only thing ranked here. Add one by
-<a href="{REPO}/issues/new">opening an issue</a> or editing <code>words.json</code>.
+<a href="{REPO}/issues/new">opening an issue</a> or editing <code>words.json</code>.<br>
+On X: <a href="{X}">@wordshaping</a>
 </footer>
 </div></body>
 </html>
@@ -403,6 +405,15 @@ def word_page(w, site, d):
     if not wanted:
         p.append(f'<a class="cta" href="{REPO}/issues/new?title=Sighting:+{e(w["slug"])}">'
                  f'Document a sighting →</a>')
+
+    posts = w.get("posts", [])
+    if posts:
+        p.append('<h2>From @wordshaping</h2>'
+                 '<p class="lede">Our own posts about this word. Not counted as sightings.</p>')
+        for po in posts:
+            p.append(f'<div class="sight"><div class="when">{e(po.get("date"))} · '
+                     f'<a href="{e(po["url"])}">post on X</a></div>'
+                     f'<p class="what">{e(po.get("what"))}</p></div>')
 
     ld = {"@context": "https://schema.org", "@type": "DefinedTerm",
           "name": w["word"], "description": w["def"], "url": canon,
