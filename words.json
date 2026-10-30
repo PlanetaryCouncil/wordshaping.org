@@ -1389,6 +1389,55 @@
         "alt": "Message: Mike doesn't see it that way! Mike says: “Where other people see catastrophe, I see opportunity. I see catastrotunity.” Your description may be more accurate! I couldn't possibly comment! Thank you for this. Tickets are on sale if you want to learn the secrets of Catastronomics. Followed by a link to the show at Playhouse East.",
         "caption": "The reply: Mike doesn't see it that way."
       }
+    },
+    {
+      "slug": "photoccino",
+      "word": "photoccino",
+      "pos": "noun",
+      "say": "pho·to·CCI·no",
+      "coiner": "mariafreitas",
+      "status": "new-sense",
+      "def": "A cappuccino with a photo in the foam.",
+      "cite": "Photoccino ☕️",
+      "etym": "photo + -ccino, the tail of cappuccino. English has been using that tail as a suffix for decades: mochaccino, babyccino, frappuccino. Each one keeps the sound of the Italian and swaps out the front. Photo slots in cleanly because it already ends on an open -o, so the word needs no adjustment at the join.",
+      "note": "Posted by Maria Freitas PhD on 29 October 2026, as one word and a coffee emoji, over a picture of the author beside a cup with the same smiling face printed in the foam. The post tagged Próspera and Pristine Bay Resort. No definition was given or needed: the word and the picture did it together.\n\nThe drink already had a name. Selfieccino has been in use since at least 2017, when a London café began printing customers' faces onto their froth. But a selfieccino is limited to a selfie, while a photoccino takes any photo: your dog, your wedding, somebody else's face. It is the broader word, and arguably the one the machine always deserved.\n\nThe string itself is older than the drink. Photoccino was a photo-software startup from Haifa, bought by Shutterfly in 2012, whose name had nothing to do with foam. It joined photo and cappuccino as a pun; this use makes it literal. So it is filed under old words, new senses, and the credit here is for the sense, not the spelling.",
+      "image": {
+        "file": "post.jpg",
+        "alt": "Post by Maria Freitas PhD on X, 29 October 2026, reading Photoccino with a coffee emoji. A smiling selfie in glasses and a denim jacket, beside a white cup whose foam is printed with the same smiling face. Tagged: Próspera and Pristine Bay Resort.",
+        "caption": "Maria Freitas PhD on X, 29 October 2026. Tagged: Próspera and Pristine Bay Resort."
+      },
+      "tagged": [
+        {
+          "name": "Próspera",
+          "url": "https://www.prospera.co/"
+        },
+        {
+          "name": "Pristine Bay Resort",
+          "url": "https://www.prospera.co/en/visit"
+        }
+      ],
+      "attested": [
+        {
+          "where": "Photoccino — photo-software startup, Haifa, acquired by Shutterfly in 2012",
+          "what": "The same string as a company name: software that ranked and organised photos. A pun on photo and cappuccino, with no foam involved.",
+          "url": "https://thenextweb.com/news/shutterfly-buys-israeli-photo-analysis-story-telling-software-startup-photoccino"
+        },
+        {
+          "where": "selfieccino — the nearest neighbour, in use by 2017",
+          "what": "Not this string, but the same drink, limited to selfies. Reported from the Tea Terrace in London, where a customer's picture is scanned and printed onto the froth.",
+          "url": "https://www.euronews.com/2017/12/20/selfieccino-debutes-in-london-cafe"
+        }
+      ],
+      "score": null,
+      "sightings": [
+        {
+          "date": "2026-10-29",
+          "where": "X — @mariafreitasPhD",
+          "what": "“Photoccino ☕️”, over a photo of the drink, tagged Próspera and Pristine Bay Resort.",
+          "url": "https://x.com/mariafreitasPhD/status/2115955217942671570"
+        }
+      ],
+      "proposed": "Photoccino"
     }
   ],
   "seams": [
@@ -1521,6 +1570,12 @@
     "brandonthomas": {
       "name": "Brandon Thomas",
       "url": "https://brand.io",
+      "label": "coined elsewhere",
+      "tint": "eleprocon"
+    },
+    "mariafreitas": {
+      "name": "Maria Freitas PhD",
+      "url": "https://x.com/mariafreitasPhD",
       "label": "coined elsewhere",
       "tint": "eleprocon"
     }

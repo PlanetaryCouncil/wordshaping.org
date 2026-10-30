@@ -310,6 +310,12 @@ def word_page(w, site, d):
                    f'<p class="byline">Coined by <b>{named(by)}</b></p>' if by else
                    f'<p class="byline">{e(LABEL[w["coiner"]]).capitalize()}</p>')
 
+    tags = w.get("tagged", [])
+    if tags:
+        names = " · ".join(f'<a href="{e(t["url"])}">{e(t["name"])}</a>' if t.get("url")
+                           else e(t["name"]) for t in tags)
+        author_line += f'<p class="byline">Tagged: {names}</p>'
+
     stamp = ""
     day = w.get("wotd") or next((x["wotd"] for x in d["words"]
                                  if w["slug"] in x.get("wotd_with", [])), None)
