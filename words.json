@@ -1489,6 +1489,50 @@
       "score": null,
       "sightings": [],
       "proposed": "Actihating"
+    },
+    {
+      "slug": "oneprompter",
+      "word": "oneprompter",
+      "pos": "noun",
+      "say": "ONE·promp·ter",
+      "coiner": "marsita",
+      "status": "coined",
+      "family": "oneprompter",
+      "gloss": "an image made with a single prompt",
+      "def": "A generative AI image that was created by a single (one) prompt.",
+      "cite": "This is a oneprompter. This is an image that was created through a single prompt.",
+      "etym": "one + prompt + -er, the way a one-liner is a joke in one line. Not to be confused with one-shot prompting, a technical term for giving the model one worked example.",
+      "note": "Some people say that AI kills creativity, but some people say that AI makes the creativity infinite, because now you can just do whatever you want, and the cost is either zero or negligible. What would take a month, a team and years of skill now takes 1 minute. And to say that it is just democratized access to technology, creativity, tools: it is a creative revolution of epic proportions.\n\nSometimes it's easier to communicate an idea visually, with a single image that communicates an idea. And this is a oneprompter: an image that was created through a single prompt. Of course, this prompt had some words, but it was literally the very first prompt.",
+      "image": {
+        "file": "poster.jpg",
+        "alt": "Square poster in four panels under the headline BRITAIN. INVENTING THE FUTURE. Print, steam, farming and AI 2026, each with an angry protester holding a NO! sign; the last one, in a Union Jack waistcoat outside DeepMind, holds NO AI! beside a Luddites 2.0 banner. Bottom line: PROTESTING IT SINCE FOREVER. Signed Ministry of memes and better propaganda.",
+        "caption": "A oneprompter: the image from the very first prompt, in full resolution. Ministry of memes and better propaganda."
+      },
+      "score": null,
+      "sightings": [],
+      "proposed": "oneprompter"
+    },
+    {
+      "slug": "oneprompter-ultra",
+      "word": "oneprompter ultra",
+      "pos": "noun",
+      "say": "ONE·promp·ter UL·tra",
+      "coiner": "marsita",
+      "status": "coined",
+      "family": "oneprompter",
+      "gloss": "a oneprompter where the image becomes better as you prompt it",
+      "def": "A oneprompter where the image becomes better as you prompt it: you focus the conscious mind on the verbal description, talking in visual terms to the target audience, the AI, and that activates more of the subconscious mind.",
+      "cite": "This was oneprompter ultra, some ideas came to mind as I was specifically addressing the AI.",
+      "etym": "oneprompter + ultra.",
+      "note": "It has a secondary effect: as the creator was prompting, new ideas were coming to mind. Talking about something made the person focus the conscious mind on a descriptive nuance of the image, while the subconscious brain was able to harness additional background information. That is a very interesting nuance.\n\nThe evidence is the prompt itself. It starts with the Luddites, then: maybe actually we have a third image in the same series, so maybe like three side by side, or maybe even like two by two. Printing press, Luddites, industrialization of agriculture, and then the AI. The ideas came while it was being said.",
+      "image": {
+        "file": "prompt.jpg",
+        "alt": "Screenshot of a chat. The prompt, spoken in one go, asks for a square image of the UK leading the Luddite revolution, and while describing it adds a third image, then two by two: printing press, Luddites, agriculture, AI. Below it, the generated four-panel poster BRITAIN. INVENTING THE FUTURE. PROTESTING IT SINCE FOREVER.",
+        "caption": "Evidence: the single prompt and the image it produced."
+      },
+      "score": null,
+      "sightings": [],
+      "proposed": "oneprompter ultra"
     }
   ],
   "seams": [
