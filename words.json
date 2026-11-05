@@ -1446,6 +1446,49 @@
           "url": "https://x.com/wordshaping/status/2116169607182684293"
         }
       ]
+    },
+    {
+      "slug": "actihated",
+      "word": "actihated",
+      "pos": "adjective",
+      "say": "AK·ti·hay·ted",
+      "coiner": "marsita",
+      "status": "coined",
+      "family": "actihate",
+      "gloss": "hated actively, by people doing something about it",
+      "def": "Hated actively: not merely disliked, but opposed by people who are doing something about it, signing, campaigning, switching away, saying so in public.",
+      "cite": "Palantir is the most actihated company in the UK.",
+      "etym": "acti- (from active) + hated. The ear hears activated with the v knocked out and a hate let in, which is the point: this is hatred that has been switched on.",
+      "note": "Hated covers everything from a shrug to a crusade. Most hated things are hated passively: people grumble and carry on using them. Actihated keeps the word for the other kind, the hatred that turns into petitions, boycotts and cancelled contracts. It also shifts the emphasis from the feeling to the people having it: an actihated company is not just unpopular, it is being worked against.",
+      "background": {
+        "text": "Coined in reaction to a post by Good Law Project on 4 November 2026, congratulating Palantir on being the most hated company in the UK. Hated alone undersold it: the post came out of a campaign, with petitions and calls to cut government contracts, not a mood.",
+        "sources": [
+          {
+            "where": "Good Law Project on X, 4 November 2026",
+            "url": "https://x.com/GoodLawProject/status/2118043539040838068"
+          }
+        ]
+      },
+      "score": null,
+      "sightings": [],
+      "proposed": "Actihated"
+    },
+    {
+      "slug": "actihating",
+      "word": "actihating",
+      "pos": "verb (present participle) · noun",
+      "say": "AK·ti·hay·ting",
+      "coiner": "marsita",
+      "status": "coined",
+      "family": "actihate",
+      "gloss": "hating, with the emphasis on the active part",
+      "def": "Hating, with the emphasis on the active part: hatred being carried out rather than felt.",
+      "cite": "Half the country isn't just hating Palantir. They're actihating it.",
+      "etym": "acti- (from active) + hating. See actihated.",
+      "note": "Hating is something you can do from the sofa. Actihating is not. It is the doing: the petition signed, the account closed, the letter to the MP.",
+      "score": null,
+      "sightings": [],
+      "proposed": "Actihating"
     }
   ],
   "seams": [
