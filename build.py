@@ -360,10 +360,12 @@ def word_page(w, site, d):
             p.append(f'<p class="cite">{e(sub["cite"])}</p>')
         if sub.get("note"):
             p.append(f'<p class="field"><b>Note</b><span>{e(sub["note"])}</span></p>')
-    sp = w.get("specimen")
-    if sp:
+    sps = w.get("specimens", [])
+    if sps:
+        p.append('<h2>Specimen</h2>' if len(sps) == 1 else '<h2>Specimens</h2>')
+    for sp in sps:
         cap = f'<figcaption>{e(sp.get("caption"))}</figcaption>' if sp.get("caption") else ""
-        p.append(f'<h2>Specimen</h2><figure><img src="{e(sp["file"])}" '
+        p.append(f'<figure><img src="{e(sp["file"])}" '
                  f'alt="{e(sp.get("alt"))}" loading="lazy">{cap}</figure>')
     p.append(score)
 

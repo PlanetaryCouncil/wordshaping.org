@@ -1519,13 +1519,25 @@
           "note": "It has a secondary effect: as the creator was prompting, new ideas were coming to mind. Talking about something made the person focus the conscious mind on a descriptive nuance of the image, while the subconscious brain was able to harness additional background information. That is a very interesting nuance.\n\nThe evidence is the prompt itself. It starts with the Luddites, then: maybe actually we have a third image in the same series, so maybe like three side by side, or maybe even like two by two. Printing press, Luddites, industrialization of agriculture, and then the AI. The ideas came while it was being said."
         }
       ],
-      "specimen": {
-        "file": "prompt.jpg",
-        "alt": "Screenshot of a chat. The prompt, spoken in one go, asks for a square image of the UK leading the Luddite revolution, and while describing it adds a third image, then two by two: printing press, Luddites, agriculture, AI. Below it, the generated four-panel poster BRITAIN. INVENTING THE FUTURE. PROTESTING IT SINCE FOREVER.",
-        "caption": "Evidence: the single prompt and the image it produced."
-      },
       "was": [
         "oneprompter-ultra"
+      ],
+      "specimens": [
+        {
+          "file": "prompt.jpg",
+          "alt": "Screenshot of a chat. The prompt, spoken in one go, asks for a square image of the UK leading the Luddite revolution, and while describing it adds a third image, then two by two: printing press, Luddites, agriculture, AI. Below it, the generated four-panel poster BRITAIN. INVENTING THE FUTURE. PROTESTING IT SINCE FOREVER.",
+          "caption": "Evidence: the single prompt and the image it produced."
+        },
+        {
+          "file": "experts.jpg",
+          "alt": "Poster titled Experts in the Age of AI, nine illustrated panels: Know how to do it; Know the limitations; Know what would fix them; Know the ideas; Just educate yourself; Explain it simply; Take it into another tool; Competitive advantage; The imagination athlete. Bottom line: AI kills creativity? Replaces experts? I'm doing my part. I'm doing well. I have no complaints.",
+          "caption": "Another oneprompter: Experts in the Age of AI, in full resolution."
+        },
+        {
+          "file": "experts-prompt.jpg",
+          "alt": "Screenshot of a chat. The prompt, in one go, lists what experts know, ends with I am the imagination athlete, and asks for a three-by-three panel headlined Experts in the Age of AI. Below it, the generated poster.",
+          "caption": "Evidence: the single prompt and the image it produced."
+        }
       ]
     }
   ],
