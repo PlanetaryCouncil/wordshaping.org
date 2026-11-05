@@ -351,6 +351,20 @@ def word_page(w, site, d):
         p.append(f'<p class="field"><b>Note</b><span>{e(w["note"])}</span></p>')
     if w.get("forms"):
         p.append(f'<p class="field"><b>Derived forms</b><span>{e(w["forms"])}</span></p>')
+    for sub in w.get("sub", []):
+        p.append(f'<h2 id="{e(sub["slug"])}">{e(sub["word"])}</h2>')
+        if sub.get("say"):
+            p.append(f'<p class="field"><b>Say</b><span>{e(sub["say"])}</span></p>')
+        p.append(f'<p class="def">{e(sub["def"])}</p>')
+        if sub.get("cite"):
+            p.append(f'<p class="cite">{e(sub["cite"])}</p>')
+        if sub.get("note"):
+            p.append(f'<p class="field"><b>Note</b><span>{e(sub["note"])}</span></p>')
+    sp = w.get("specimen")
+    if sp:
+        cap = f'<figcaption>{e(sp.get("caption"))}</figcaption>' if sp.get("caption") else ""
+        p.append(f'<h2>Specimen</h2><figure><img src="{e(sp["file"])}" '
+                 f'alt="{e(sp.get("alt"))}" loading="lazy">{cap}</figure>')
     p.append(score)
 
     fam = [x for x in d["words"] if w.get("family") and x.get("family") == w["family"]]
