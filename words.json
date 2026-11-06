@@ -1539,6 +1539,26 @@
           "caption": "Evidence: the single prompt and the image it produced."
         }
       ]
+    },
+    {
+      "slug": "sausagefication",
+      "word": "sausagefication",
+      "pos": "noun",
+      "say": "SAU·sage·fi·CA·tion",
+      "coiner": "marsita",
+      "status": "coined",
+      "def": "When memes become the reality, at a speed faster than you can contain.",
+      "cite": "At some point organising singularity will be as simple as “make the biggest meme”.",
+      "etym": "sausage + -fication. From the saying about how sausages are made: the process is messy, fast, and better not watched too closely, and what comes out is real either way.",
+      "note": "That's how sausages are made, beyond the frontier.",
+      "image": {
+        "file": "covers.jpg",
+        "alt": "Five square images in a row: an album-cover editor with a glowing pink sun; a FRONTIER COUNCIL poster dated 21st September 2026, Global Peace Day & Singularity, with AI lab logos around a glowing dove and the Earth; a neon Earth with doves and a heart; I AM MAGNETIC, My energy attracts my reality; a glowing figure walking into a blue grid. Below, the prompt: Ultra singularity album cover, minimal text, higher-dimensional portal to reflect the vibe ultra, create image.",
+        "caption": "Album covers and the prompt behind one of them."
+      },
+      "score": null,
+      "sightings": [],
+      "proposed": "sausegefication"
     }
   ],
   "seams": [
