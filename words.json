@@ -1559,6 +1559,34 @@
       "score": null,
       "sightings": [],
       "proposed": "sausegefication"
+    },
+    {
+      "slug": "flabbergastable",
+      "word": "flabbergastable",
+      "pos": "adjective",
+      "say": "FLAB·ber·gast·a·ble",
+      "coiner": "marsita",
+      "status": "coined",
+      "def": "Of a thing: something that someone can easily get flabbergasted by.",
+      "cite": "These two laws, both of them are flabbergastable, because I was flabbergasted on both occasions.",
+      "etym": "flabbergast + -able, read the way laughable is: not something that can laugh, but something that can be laughed at. A flabbergastable thing is one you get flabbergasted at.",
+      "note": "There are two laws. One is that no person born after a certain date can buy tobacco products. So I was flabbergasted. And the second law was about new porn offenses. So they were just the government telling people what is legal. And I was flabbergasted on both occasions.",
+      "background": {
+        "text": "The two laws are in the UK. The Tobacco and Vapes Act 2026 got Royal Assent on 29 April 2026: from 1 January 2027, nobody born on or after 1 January 2009 can ever be sold tobacco. The Crime and Policing Act 2026 created new offences of possessing or publishing pornography that depicts strangulation or suffocation, among other content, in force in England and Wales from 6 November 2026.",
+        "sources": [
+          {
+            "where": "GOV.UK — Tobacco and Vapes Bill becomes law",
+            "url": "https://www.gov.uk/government/news/tobacco-and-vapes-bill-becomes-law"
+          },
+          {
+            "where": "GOV.UK — Crime and Policing Act 2026: offences relating to pornography",
+            "url": "https://www.gov.uk/guidance/crime-and-policing-act-2026-offences-relating-to-pornography"
+          }
+        ]
+      },
+      "score": null,
+      "sightings": [],
+      "proposed": "flabbergastable"
     }
   ],
   "seams": [
