@@ -1561,6 +1561,30 @@
       "proposed": "sausegefication"
     },
     {
+      "slug": "flabber",
+      "word": "flabber",
+      "pos": "noun",
+      "say": "FLAB·ber",
+      "coiner": "marsita",
+      "status": "new-sense",
+      "family": "flabber",
+      "gloss": "pure invented nonsense",
+      "def": "Pure invented nonsense: when you invented something non-existent, most likely a nonsense.",
+      "cite": "That's not a source, bro. That's flabber.",
+      "etym": "The first half of flabbergast, taken on its own. The two are connected: flabber is the kind of thing that flabbergasts you, and a flabbergastable law may well be full of it.",
+      "note": "Flabbergast has been in English since the 1770s, origin unknown, and the flabber half never meant anything by itself. That emptiness is the point: a word made of nothing, for something made of nothing.",
+      "attested": [
+        {
+          "where": "Frankie Howerd — “never has my flabber been so gasted”",
+          "what": "The comedian's joke split flabbergast in two and used flabber as a noun with no meaning beyond the joke. The Oxford English Dictionary has no entry for flabber on its own.",
+          "url": "https://www.worldwidewords.org/ww-fla1.html"
+        }
+      ],
+      "score": null,
+      "sightings": [],
+      "proposed": "Flabber"
+    },
+    {
       "slug": "flabbergastable",
       "word": "flabbergastable",
       "pos": "adjective",
@@ -1587,7 +1611,9 @@
       "score": null,
       "sightings": [],
       "proposed": "flabbergastable",
-      "wotd": "2026-11-22"
+      "wotd": "2026-11-22",
+      "family": "flabber",
+      "gloss": "something you can easily get flabbergasted by"
     }
   ],
   "seams": [
