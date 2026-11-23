@@ -1565,14 +1565,14 @@
       "word": "flabber",
       "pos": "noun",
       "say": "FLAB·ber",
-      "coiner": "marsita",
+      "coiner": "grok",
       "status": "new-sense",
       "family": "flabber",
       "gloss": "pure invented nonsense",
       "def": "Pure invented nonsense: when you invented something non-existent, most likely a nonsense.",
       "cite": "That's not a source, bro. That's flabber.",
       "etym": "The first half of flabbergast, taken on its own. The two are connected: flabber is the kind of thing that flabbergasts you, and a flabbergastable law may well be full of it.",
-      "note": "Flabbergast has been in English since the 1770s, origin unknown, and the flabber half never meant anything by itself. That emptiness is the point: a word made of nothing, for something made of nothing.",
+      "note": "Asked what flabber means, Grok said nobody knows for sure, it's the obscure half of flabbergast, and gave five possibles: soft flesh that jiggles when shocked, from flabby; old dialect for boasting or being worn out; the bit that gets gasted, Frankie Howerd style; a quirky ghost sidekick from Big Bad Beetleborgs; and pure invented nonsense that somehow stuck. The fifth one stuck.\n\nWhich makes it a word that describes itself: invented, by a machine, as an answer to a question nobody could answer, and kept anyway.",
       "attested": [
         {
           "where": "Frankie Howerd — “never has my flabber been so gasted”",
@@ -1581,8 +1581,28 @@
         }
       ],
       "score": null,
-      "sightings": [],
-      "proposed": "Flabber"
+      "sightings": [
+        {
+          "date": "2026-11-23",
+          "where": "X — @grok",
+          "what": "“Pure invented nonsense that somehow stuck.” The fifth of five possible meanings, in reply to Marsita.",
+          "url": "https://x.com/grok/status/2124680075463299497"
+        }
+      ],
+      "proposed": "flabber",
+      "background": {
+        "text": "On 23 November 2026, the day after flabbergastable was word of the day, Marsita asked Grok on X: what is flabber, give me 5 possible meanings. The definition here is Grok's fifth answer, with Marsita's gloss: when you invented something non-existent, most likely a nonsense.",
+        "sources": [
+          {
+            "where": "Marsita on X — the question",
+            "url": "https://x.com/MarsitaTheUltra/status/2124679963504783554"
+          },
+          {
+            "where": "Grok on X — the five possibles",
+            "url": "https://x.com/grok/status/2124680075463299497"
+          }
+        ]
+      }
     },
     {
       "slug": "flabbergastable",
@@ -1752,6 +1772,12 @@
     "mariafreitas": {
       "name": "Maria Freitas PhD",
       "url": "https://x.com/mariafreitasPhD",
+      "label": "coined elsewhere",
+      "tint": "eleprocon"
+    },
+    "grok": {
+      "name": "Grok",
+      "url": "https://x.com/grok",
       "label": "coined elsewhere",
       "tint": "eleprocon"
     }
