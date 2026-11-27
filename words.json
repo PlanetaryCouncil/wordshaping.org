@@ -1634,6 +1634,43 @@
       "wotd": "2026-11-22",
       "family": "flabber",
       "gloss": "something you can easily get flabbergasted by"
+    },
+    {
+      "slug": "femosphere",
+      "word": "femosphere",
+      "pos": "noun",
+      "say": "FEM·o·sphere",
+      "coiner": "wild",
+      "status": "already-real",
+      "wotd": "2026-11-27",
+      "via": {
+        "name": "King of Tarot",
+        "where": " on Instagram"
+      },
+      "def": "The opposite of the manosphere: the online sphere of blogs, influencers and communities built around women, as the manosphere is built around men.",
+      "cite": "If there's a manosphere, bro, there's a femosphere.",
+      "etym": "fem + -o- + -sphere, after the pattern of manosphere. The -o- is the joint manosphere already uses, so the two words scan the same: MAN-o-sphere, FEM-o-sphere.",
+      "note": "Brought to the lexicon by King of Tarot on Instagram, as the opposite of manosphere.\n\nThe word was already out there. Researchers have used it since at least 2024 for the female-centred corners of the internet that grew up partly in reaction to the manosphere, and some of those corners mirror it closely, pills and all. So it is filed under words found in the wild, and the credit here is for bringing it in.",
+      "attested": [
+        {
+          "where": "Wiktionary — femosphere",
+          "what": "“The totality of blogs, websites, and communities associated with conservative feminists and femcels.” Labelled internet, neologism.",
+          "url": "https://en.wiktionary.org/wiki/femosphere"
+        },
+        {
+          "where": "Jacob Johanssen and Jilly Boyce Kay, European Journal of Cultural Studies, 2024",
+          "what": "Uses the femosphere for a network of women's online communities, including femcels, that mirrors the manosphere.",
+          "url": "https://journals.sagepub.com/doi/abs/10.1177/13675494241293731"
+        },
+        {
+          "where": "The Week — What is the femosphere?",
+          "what": "Explainer on the term as the female counterpart of the manosphere.",
+          "url": "https://theweek.com/politics/what-is-the-femosphere"
+        }
+      ],
+      "score": null,
+      "sightings": [],
+      "proposed": "femosphere"
     }
   ],
   "seams": [

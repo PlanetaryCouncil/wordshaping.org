@@ -312,6 +312,11 @@ def word_page(w, site, d):
                    f'<p class="byline">Coined by <b>{named(by)}</b></p>' if by else
                    f'<p class="byline">{e(LABEL[w["coiner"]]).capitalize()}</p>')
 
+    via = w.get("via")
+    if via:
+        who = f'<a href="{e(via["url"])}">{e(via["name"])}</a>' if via.get("url") else e(via["name"])
+        author_line += f'<p class="byline">Brought here by <b>{who}</b>{e(via.get("where", ""))}</p>'
+
     tags = w.get("tagged", [])
     if tags:
         names = " · ".join(f'<a href="{e(t["url"])}">{e(t["name"])}</a>' if t.get("url")
